@@ -65,8 +65,9 @@ Artifacts are in `build/libs/`:
 Issues and PRs are welcome. Please keep code readable and match the existing style.
 
 ## License
-MIT. See `LICENSE`.
+MIT. See `[LICENSE](https://github.com/urmoit/ChosenLib/blob/main/LICENSE)`.
 
 ## Links
 - Fabric: https://fabricmc.net/
 - Yarn mappings: https://github.com/FabricMC/yarn
+
