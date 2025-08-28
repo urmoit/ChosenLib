@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "chosenlib",
+  "version": "${version}",
+  "name": "ChosenLib",
+  "description": "A chosen utility library for Fabric mods",
+  "authors": ["Your Name"],
+  "contact": {
+    "homepage": "https://github.com/yourusername/chosenlib",
+    "sources": "https://github.com/yourusername/chosenlib"
+  },
+  "license": "MIT",
+  "icon": "assets/modid/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.chosen.lib.ChosenLib"],
+    "client": ["com.chosen.lib.client.ChosenClient"]
+  },
+  "mixins": [
+    "chosenlib.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.17.2",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "badges": ["library"]
+    }
+  }
+}

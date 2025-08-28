@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Implementation-Title: Chosen-library
+Implementation-Version: 1.0.0
+Built-By: urmot
+Built-JDK: 21.0.7
+Build-Time: 2025-08-28T17:24:01+0300
+
