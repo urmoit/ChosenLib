@@ -8,6 +8,7 @@ A lightweight utility library for Fabric that streamlines common modding tasks. 
 
 ## Features
 - Utility helpers: `TextUtils` for clean, localized messages
+- General-purpose helpers: `ChosenLib` static utilities (random, clamp, lerp, etc.)
 - Client conveniences: sample keybinding and tick hook
 - Example mixin to safely start patching behavior
 - Sensible Gradle setup with sources JAR and per-env source sets
@@ -29,7 +30,7 @@ repositories {
 }
 
 dependencies {
-    modImplementation "com.yourgroup:chosenlib:<version>"
+    modImplementation "com.yourgroup:chosenlib:1.1.0"
 }
 ```
 
@@ -39,7 +40,23 @@ dependencies {
 - Utilities:
 ```java
 import com.chosen.lib.util.TextUtils;
-// Example: TextUtils.withPrefix("Hello")
+import com.chosen.lib.ChosenLib;
+
+// TextUtils examples:
+TextUtils.success("Operation successful!");
+TextUtils.error("Something went wrong!");
+TextUtils.capitalize("hello world");
+TextUtils.repeat("abc", 3); // "abcabcabc"
+TextUtils.isNullOrEmpty(""); // true
+TextUtils.join(", ", "a", "b", "c"); // "a, b, c"
+
+// ChosenLib general utilities:
+ChosenLib.randomInt(1, 10); // random int between 1 and 10
+ChosenLib.clamp(15, 0, 10); // 10
+ChosenLib.lerp(0.0, 10.0, 0.5); // 5.0
+ChosenLib.isBetween(5, 1, 10); // true
+ChosenLib.safeEquals("a", "a"); // true
+ChosenLib.debugLog("Debug message");
 ```
 - See `src/main/java` for examples and mixins.
 
@@ -48,26 +65,8 @@ import com.chosen.lib.util.TextUtils;
 ./gradlew clean build
 ```
 Artifacts are in `build/libs/`:
-- `<name>-<version>.jar` (use this)
-- `<name>-<version>-sources.jar` (sources)
+- `<name>-1.1.0.jar` (use this)
+- `<name>-1.1.0-sources.jar` (sources)
 
 ## Publishing (manual)
-- Upload the remapped JAR (no `-dev`/`-sources`) to Modrinth/CurseForge.
-- Mark Fabric API as a required dependency.
-- Provide a changelog and set release type.
-
-## Roadmap
-- More utility classes (math, NBT, data)
-- Optional integrations without hard Fabric API requirement
-- Versioned releases for multiple Minecraft versions
-
-## Contributing
-Issues and PRs are welcome. Please keep code readable and match the existing style.
-
-## License
-MIT. See `[LICENSE](https://github.com/urmoit/ChosenLib/blob/main/LICENSE)`.
-
-## Links
-- Fabric: https://fabricmc.net/
-- Yarn mappings: https://github.com/FabricMC/yarn
-
+- Upload the remapped JAR (no `-dev`/`
