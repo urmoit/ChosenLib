@@ -3,41 +3,43 @@ body {
     margin: 0;
     padding: 0;
     background: #f8f9fa;
-    color: #222;
+    color: #23272f;
     min-height: 100vh;
 }
 .topnav {
     width: 100%;
-    background: #23272f;
+    background: linear-gradient(90deg, #23272f 70%, #3fa7ff 100%);
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 2rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 0.7rem 2.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     position: sticky;
     top: 0;
     z-index: 100;
 }
 .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 800;
     letter-spacing: 1px;
     color: #7ecfff;
+    text-shadow: 0 2px 8px rgba(63,167,255,0.08);
 }
 .topnav a {
     color: #7ecfff;
     text-decoration: none;
-    margin: 0 1rem;
+    margin: 0 1.2rem;
     font-weight: 500;
-    font-size: 1.05rem;
-    transition: color 0.2s;
+    font-size: 1.1rem;
+    transition: color 0.2s, border-bottom 0.2s;
     border-bottom: 2px solid transparent;
     padding-bottom: 2px;
+    letter-spacing: 0.01em;
 }
 .topnav a.active, .topnav a:hover {
-    color: #3fa7ff;
-    border-bottom: 2px solid #3fa7ff;
+    color: #fff;
+    border-bottom: 2px solid #fff;
 }
 #darkModeToggle {
     background: none;
@@ -46,35 +48,38 @@ body {
     border-radius: 4px;
     padding: 0.3rem 0.7rem;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     transition: background 0.2s;
 }
 #darkModeToggle:hover {
     background: #1a232e;
 }
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 2.5rem auto 0 auto;
     padding: 0 1.5rem;
 }
 .hero {
     text-align: center;
     margin-bottom: 2.5rem;
-    padding: 2.5rem 1rem 2rem 1rem;
-    background: #344055;
+    padding: 3rem 1rem 2.5rem 1rem;
+    background: linear-gradient(120deg, #344055 70%, #3fa7ff 100%);
     color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(63,167,255,0.10);
+    position: relative;
 }
 .hero h1 {
-    font-size: 2.8rem;
+    font-size: 3rem;
     margin-bottom: 0.5rem;
-    font-weight: 800;
+    font-weight: 900;
+    letter-spacing: 0.03em;
 }
 .hero .subtitle {
-    font-size: 1.25rem;
-    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
     color: #cbe7ff;
+    font-weight: 400;
 }
 .badges {
     display: flex;
@@ -89,43 +94,61 @@ body {
     padding: 0.2rem 0.7rem;
     font-size: 1rem;
     font-weight: 600;
+    box-shadow: 0 1px 4px rgba(63,167,255,0.07);
 }
 .hero .quick-links {
     margin-bottom: 1.2rem;
 }
 .hero .quick-links a {
-    color: #7ecfff;
-    background: #23272f;
+    color: #fff;
+    background: #3fa7ff;
     border-radius: 4px;
-    padding: 0.3rem 0.8rem;
+    padding: 0.3rem 0.9rem;
     margin: 0 0.3rem;
     text-decoration: none;
     font-weight: 500;
     transition: background 0.2s, color 0.2s;
+    box-shadow: 0 1px 4px rgba(63,167,255,0.10);
 }
 .hero .quick-links a:hover {
-    background: #3fa7ff;
-    color: #fff;
+    background: #23272f;
+    color: #7ecfff;
 }
 #searchBar {
     width: 100%;
     max-width: 350px;
-    padding: 0.5rem;
-    border-radius: 4px;
+    padding: 0.6rem;
+    border-radius: 6px;
     border: 1px solid #bfc9d1;
     margin-bottom: 1.5rem;
-    font-size: 1rem;
+    font-size: 1.05rem;
+    background: #f8f9fa;
+    color: #23272f;
+    box-shadow: 0 1px 4px rgba(63,167,255,0.04);
 }
-.welcome {
+.welcome, .card, section {
     margin-top: 2.5rem;
     background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(63,167,255,0.07);
     padding: 2rem 1.5rem;
 }
-.welcome h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+.welcome h2, .card h2, section h2 {
+    font-size: 1.7rem;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    color: #344055;
+}
+.welcome ul, section ul {
+    margin: 0 0 0 1.2rem;
+    padding: 0;
+    font-size: 1.1rem;
+}
+.welcome li, section li {
+    margin-bottom: 0.5rem;
+}
+section {
+    margin-bottom: 2.5rem;
 }
 footer {
     text-align: center;
@@ -133,8 +156,51 @@ footer {
     background: #23272f;
     color: #fff;
     font-size: 1rem;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     width: 100%;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+}
+a {
+    color: #3fa7ff;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+a:hover {
+    color: #23272f;
+    background: #7ecfff;
+    border-radius: 3px;
+    text-decoration: none;
+}
+pre, code {
+    background: #f4f7fa;
+    color: #23272f;
+    border-radius: 6px;
+    padding: 0.2em 0.5em;
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+    font-size: 1em;
+}
+pre {
+    padding: 1em;
+    overflow-x: auto;
+    margin: 1.2em 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+}
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+}
+h2 {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+}
+h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem;
 }
 @media (max-width: 900px) {
     .container {
@@ -154,13 +220,16 @@ footer {
     .container {
         margin-top: 1.2rem;
     }
+    .hero h1 {
+        font-size: 2rem;
+    }
 }
 body.dark {
     background: #181c22;
     color: #e0e7ef;
 }
 body.dark .topnav {
-    background: #181c22;
+    background: linear-gradient(90deg, #181c22 70%, #3fa7ff 100%);
     color: #fff;
 }
 body.dark .container {
@@ -168,7 +237,7 @@ body.dark .container {
     color: #e0e7ef;
 }
 body.dark .hero {
-    background: #23272e;
+    background: linear-gradient(120deg, #23272e 70%, #3fa7ff 100%);
     color: #e0e7ef;
 }
 body.dark .badge {
@@ -183,11 +252,15 @@ body.dark .hero .quick-links a:hover {
     background: #3fa7ff;
     color: #fff;
 }
-body.dark .welcome {
+body.dark .welcome, body.dark .card, body.dark section {
     background: #23272e;
     color: #e0e7ef;
 }
 body.dark footer {
     background: #181c22;
     color: #bfc9d1;
+}
+body.dark pre, body.dark code {
+    background: #23272e;
+    color: #7ecfff;
 }
