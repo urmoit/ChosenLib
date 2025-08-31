@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference - ChosenLib</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>ChosenLib</h2>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="getting-started.html">Getting Started</a>
+            <a href="installation.html">Installation</a>
+            <a href="usage.html">Usage Examples</a>
+            <a href="api.html" class="active">API Reference</a>
+            <a href="changelog.html">Changelog</a>
+            <a href="faq.html">FAQ</a>
+            <a href="community.html">Community</a>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>API Reference</h1>
+        </header>
+        <section>
+            <h2>Classes</h2>
+            <ul>
+                <li><strong>ChosenLib</strong> - Main entrypoint and general utilities</li>
+                <li><strong>TextUtils</strong> - Text formatting and helpers</li>
+                <li><strong>Config</strong> - Configuration system</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Key Methods</h2>
+            <h3>ChosenLib</h3>
+            <ul>
+                <li><code>randomInt(int min, int max)</code> - Get a random integer in a range</li>
+                <li><code>clamp(int value, int min, int max)</code> - Clamp a value between min and max</li>
+                <li><code>lerp(double a, double b, double t)</code> - Linear interpolation</li>
+                <li><code>isBetween(int value, int min, int max)</code> - Check if a value is within a range</li>
+                <li><code>safeEquals(Object a, Object b)</code> - Null-safe equality check</li>
+                <li><code>debugLog(String message)</code> - Log debug messages</li>
+            </ul>
+            <h3>TextUtils</h3>
+            <ul>
+                <li><code>success(String message)</code> - Green success text</li>
+                <li><code>error(String message)</code> - Red error text</li>
+                <li><code>capitalize(String input)</code> - Capitalize first letter</li>
+                <li><code>repeat(String str, int times)</code> - Repeat a string</li>
+                <li><code>isNullOrEmpty(String str)</code> - Check if null or empty</li>
+                <li><code>join(String separator, String... elements)</code> - Join strings</li>
+                <li><code>combine(Text... texts)</code> - Combine Text objects</li>
+                <li><code>stripFormatting(Text text)</code> - Get plain string</li>
+                <li><code>format(String message, Formatting... formattings)</code> - Format with multiple options</li>
+                <li><code>clickable(String label, String url)</code> - Create clickable chat text</li>
+            </ul>
+            <h3>Config</h3>
+            <ul>
+                <li>See <code>Config.java</code> for available fields and usage.</li>
+            </ul>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2025 ChosenTechies. Licensed under the MIT License. | ChosenLib v1.2.1</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

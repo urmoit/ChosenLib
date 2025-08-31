@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation - ChosenLib</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>ChosenLib</h2>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="getting-started.html">Getting Started</a>
+            <a href="installation.html" class="active">Installation</a>
+            <a href="usage.html">Usage Examples</a>
+            <a href="api.html">API Reference</a>
+            <a href="changelog.html">Changelog</a>
+            <a href="faq.html">FAQ</a>
+            <a href="community.html">Community</a>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Installation</h1>
+        </header>
+        <section>
+            <h2>Download</h2>
+            <ul>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" target="_blank">CurseForge</a></li>
+                <li><a href="https://modrinth.com/mod/chosenlib" target="_blank">Modrinth (Coming Soon)</a></li>
+                <li><a href="https://github.com/yourusername/chosenlib" target="_blank">GitHub Releases</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>As a Mod</h2>
+            <ol>
+                <li>Download the latest <code>.jar</code> and place it in your <code>mods/</code> folder.</li>
+                <li>Make sure Fabric Loader and Fabric API are installed.</li>
+            </ol>
+        </section>
+        <section>
+            <h2>As a Dependency (Gradle)</h2>
+            <pre><code>repositories {
+    mavenCentral()
+    maven { url = 'https://maven.fabricmc.net/' }
+}
+dependencies {
+    modImplementation "com.chosen:chosenlib:1.2.1"
+}</code></pre>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2025 ChosenTechies. Licensed under the MIT License. | ChosenLib v1.2.1</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

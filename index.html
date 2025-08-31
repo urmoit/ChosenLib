@@ -7,35 +7,54 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>ChosenLib Documentation</h1>
+    <div class="sidebar">
+        <h2>ChosenLib</h2>
         <nav>
             <a href="index.html">Home</a>
-            <a href="#usage">Usage</a>
-            <a href="#api">API</a>
-            <a href="#faq">FAQ</a>
+            <a href="getting-started.html">Getting Started</a>
+            <a href="installation.html">Installation</a>
+            <a href="usage.html">Usage Examples</a>
+            <a href="api.html">API Reference</a>
+            <a href="changelog.html">Changelog</a>
+            <a href="faq.html">FAQ</a>
+            <a href="community.html">Community</a>
         </nav>
-    </header>
-    <main>
+        <div class="sidebar-footer">
+            <button id="darkModeToggle">🌙 Dark Mode</button>
+        </div>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>ChosenLib Documentation</h1>
+            <div class="badges">
+                <span class="badge">v1.2.1</span>
+                <span class="badge">MIT License</span>
+                <span class="badge">Fabric</span>
+            </div>
+            <input type="text" id="searchBar" placeholder="Search documentation..." />
+        </header>
         <section id="welcome">
             <h2>Welcome</h2>
-            <p>This is the official documentation for <strong>ChosenLib</strong>, a utility library for Fabric modding.</p>
+            <p><strong>ChosenLib</strong> is a modern utility library for Fabric modding. It provides helpers, utilities, and a solid foundation for your Minecraft mods.</p>
+            <ul>
+                <li>Easy-to-use API</li>
+                <li>Ready for client & server</li>
+                <li>Open-source, MIT licensed</li>
+                <li>Active community support</li>
+            </ul>
         </section>
-        <section id="usage">
-            <h2>Getting Started</h2>
-            <p>Instructions on how to install and use ChosenLib in your mod projects.</p>
+        <section id="quick-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" target="_blank">CurseForge</a></li>
+                <li><a href="https://modrinth.com/mod/chosenlib" target="_blank">Modrinth</a></li>
+                <li><a href="https://github.com/yourusername/chosenlib" target="_blank">Source (GitHub)</a></li>
+                <li><a href="https://discord.gg/yourinvite" target="_blank">Discord</a></li>
+            </ul>
         </section>
-        <section id="api">
-            <h2>API Reference</h2>
-            <p>Detailed API documentation coming soon.</p>
-        </section>
-        <section id="faq">
-            <h2>FAQ</h2>
-            <p>Frequently asked questions will be listed here.</p>
-        </section>
-    </main>
+    </div>
     <footer>
-        <p>&copy; 2025 ChosenTechies. Licensed under the MIT License.</p>
+        <p>&copy; 2025 ChosenTechies. Licensed under the MIT License. | ChosenLib v1.2.1</p>
     </footer>
     <script src="script.js"></script>
 </body>
