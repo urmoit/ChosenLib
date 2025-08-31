@@ -6,25 +6,28 @@
     <title>Usage Examples - ChosenLib</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="sidebar">
-        <h2>ChosenLib</h2>
-        <nav>
+<body class="dark">
+    <nav class="topnav">
+        <div class="nav-left">
+            <span class="logo">ChosenLib</span>
+        </div>
+        <div class="nav-center">
             <a href="index.html">Home</a>
             <a href="getting-started.html">Getting Started</a>
             <a href="installation.html">Installation</a>
-            <a href="usage.html" class="active">Usage Examples</a>
-            <a href="api.html">API Reference</a>
+            <a href="usage.html" class="active">Usage</a>
+            <a href="api.html">API</a>
             <a href="changelog.html">Changelog</a>
             <a href="faq.html">FAQ</a>
             <a href="community.html">Community</a>
-        </nav>
-    </div>
-    <div class="main-content">
-        <header>
+        </div>
+    </nav>
+    <main class="container">
+        <section class="hero glass">
             <h1>Usage Examples</h1>
-        </header>
-        <section>
+            <p class="subtitle">See how to use ChosenLib's utilities in your mod.</p>
+        </section>
+        <section class="card glass">
             <h2>TextUtils</h2>
             <pre><code>import com.chosen.lib.util.TextUtils;
 
@@ -39,7 +42,7 @@ TextUtils.stripFormatting(Text.literal("§aGreen"));
 TextUtils.format("Bold & Red", Formatting.BOLD, Formatting.RED);
 </code></pre>
         </section>
-        <section>
+        <section class="card glass">
             <h2>General Utilities</h2>
             <pre><code>import com.chosen.lib.ChosenLib;
 
@@ -51,7 +54,7 @@ ChosenLib.safeEquals("a", "a"); // true
 ChosenLib.debugLog("Debug message");
 </code></pre>
         </section>
-    </div>
+    </main>
     <footer>
         <p>&copy; 2025 ChosenTechies. Licensed under the MIT License. | ChosenLib v1.2.1</p>
     </footer>

@@ -3,12 +3,6 @@
 
 console.log('ChosenLib documentation loaded.');
 
-// Dark mode toggle
-const darkModeToggle = document.getElementById('darkModeToggle');
-darkModeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-});
-
 // Search bar placeholder
 const searchBar = document.getElementById('searchBar');
 if (searchBar) {
