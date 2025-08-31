@@ -36,11 +36,12 @@ public class ChosenLib implements ModInitializer {
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             dispatcher.register(CommandManager.literal("chosenlib")
                 .executes(context -> {
-                    String version = getVersion() != null ? getVersion() : "unknown";
+                    String version = "1.2.1";
                     context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("ChosenLib v" + version), false);
-                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("CurseForge: https://www.curseforge.com/minecraft/mc-mods/chosenlib"), false);
+                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.clickable("CurseForge: https://www.curseforge.com/minecraft/mc-mods/chosenlib", "https://www.curseforge.com/minecraft/mc-mods/chosenlib"), false);
                     context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("Modrinth: (Coming Soon)"), false);
-                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("Source: https://www.curseforge.com/minecraft/mc-mods/chosenlib"), false);
+                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.clickable("Source: https://www.curseforge.com/minecraft/mc-mods/chosenlib", "https://www.curseforge.com/minecraft/mc-mods/chosenlib"), false);
+                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.clickable("Discord: https://discord.gg/yourinvite", "https://discord.gg/yourinvite"), false);
                     context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("License: MIT License"), false);
                     return Command.SINGLE_SUCCESS;
                 })

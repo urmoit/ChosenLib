@@ -3,6 +3,8 @@ package com.chosen.lib.util;
 import net.minecraft.text.Text;
 import net.minecraft.text.MutableText;
 import net.minecraft.util.Formatting;
+import net.minecraft.text.Style;
+import net.minecraft.text.ClickEvent;
 
 public class TextUtils {
     public static Text format(String message, Formatting formatting) {
@@ -100,5 +102,17 @@ public class TextUtils {
             t = t.formatted(f);
         }
         return t;
+    }
+
+    /**
+     * Creates a clickable text that opens a URL when clicked.
+     * @param label The text to display.
+     * @param url The URL to open.
+     * @return A Text object with a click event.
+     */
+    public static Text clickable(String label, String url) {
+        return Text.literal(label)
+            .setStyle(Style.EMPTY.withFormatting(Formatting.BLUE, Formatting.UNDERLINE)
+                .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, url)));
     }
 }
