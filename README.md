@@ -9,6 +9,8 @@ A lightweight utility library for Fabric that streamlines common modding tasks. 
 ## Features
 - Utility helpers: `TextUtils` for clean, localized messages
 - General-purpose helpers: `ChosenLib` static utilities (random, clamp, lerp, etc.)
+- Configuration system: JSON config auto-generated at `config/chosenlib.json`
+- Custom command: `/chosenlib` for version, links, and license info
 - Client conveniences: sample keybinding and tick hook
 - Example mixin to safely start patching behavior
 - Sensible Gradle setup with sources JAR and per-env source sets
@@ -30,7 +32,7 @@ repositories {
 }
 
 dependencies {
-    modImplementation "com.yourgroup:chosenlib:1.1.0"
+    modImplementation "com.yourgroup:chosenlib:1.2.0"
 }
 ```
 
@@ -49,6 +51,9 @@ TextUtils.capitalize("hello world");
 TextUtils.repeat("abc", 3); // "abcabcabc"
 TextUtils.isNullOrEmpty(""); // true
 TextUtils.join(", ", "a", "b", "c"); // "a, b, c"
+TextUtils.combine(Text.literal("A"), Text.literal("B")); // Combines texts
+TextUtils.stripFormatting(Text.literal("§aGreen")); // "Green"
+TextUtils.format("Bold & Red", Formatting.BOLD, Formatting.RED);
 
 // ChosenLib general utilities:
 ChosenLib.randomInt(1, 10); // random int between 1 and 10
@@ -65,8 +70,8 @@ ChosenLib.debugLog("Debug message");
 ./gradlew clean build
 ```
 Artifacts are in `build/libs/`:
-- `<name>-1.1.0.jar` (use this)
-- `<name>-1.1.0-sources.jar` (sources)
+- `<name>-1.2.0.jar` (use this)
+- `<name>-1.2.0-sources.jar` (sources)
 
 ## Publishing (manual)
 - Upload the remapped JAR (no `-dev`/`

@@ -3,6 +3,18 @@ package com.chosen.lib;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import com.mojang.brigadier.Command;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import net.minecraft.server.command.CommandManager;
+import net.minecraft.server.command.ServerCommandSource;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.IOException;
+import com.chosen.lib.Config;
 
 public class ChosenLib implements ModInitializer {
     public static final String MOD_ID = "chosenlib";
@@ -11,10 +23,54 @@ public class ChosenLib implements ModInitializer {
 
     private static ChosenLib instance;
 
+    public static final Path CONFIG_PATH = Path.of("config/chosenlib.json");
+    public static Config CONFIG;
+    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+
     @Override
     public void onInitialize() {
         instance = this;
         LOGGER.info("{} v{} initialized", MOD_NAME, getVersion());
+        loadConfig();
+        // Register custom commands
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+            dispatcher.register(CommandManager.literal("chosenlib")
+                .executes(context -> {
+                    String version = getVersion() != null ? getVersion() : "unknown";
+                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("ChosenLib v" + version), false);
+                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("CurseForge: https://www.curseforge.com/minecraft/mc-mods/chosenlib"), false);
+                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("Modrinth: (Coming Soon)"), false);
+                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("Source: https://www.curseforge.com/minecraft/mc-mods/chosenlib"), false);
+                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("License: MIT License"), false);
+                    return Command.SINGLE_SUCCESS;
+                })
+            );
+        });
+    }
+
+    public static void loadConfig() {
+        try {
+            if (!Files.exists(CONFIG_PATH)) {
+                CONFIG = new Config();
+                saveConfig();
+            } else {
+                String json = Files.readString(CONFIG_PATH);
+                CONFIG = GSON.fromJson(json, Config.class);
+            }
+        } catch (IOException e) {
+            LOGGER.error("Failed to load config!", e);
+            CONFIG = new Config();
+        }
+    }
+
+    public static void saveConfig() {
+        try {
+            Files.createDirectories(CONFIG_PATH.getParent());
+            String json = GSON.toJson(CONFIG);
+            Files.writeString(CONFIG_PATH, json, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        } catch (IOException e) {
+            LOGGER.error("Failed to save config!", e);
+        }
     }
 
     public static ChosenLib getInstance() {
