@@ -7,35 +7,43 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="sidebar">
-        <h2>ChosenLib</h2>
-        <nav>
-            <a href="index.html">Home</a>
+    <nav class="topnav">
+        <div class="nav-left">
+            <span class="logo">ChosenLib</span>
+        </div>
+        <div class="nav-center">
+            <a href="index.html" class="active">Home</a>
             <a href="getting-started.html">Getting Started</a>
             <a href="installation.html">Installation</a>
-            <a href="usage.html">Usage Examples</a>
-            <a href="api.html">API Reference</a>
+            <a href="usage.html">Usage</a>
+            <a href="api.html">API</a>
             <a href="changelog.html">Changelog</a>
             <a href="faq.html">FAQ</a>
             <a href="community.html">Community</a>
-        </nav>
-        <div class="sidebar-footer">
-            <button id="darkModeToggle">🌙 Dark Mode</button>
         </div>
-    </div>
-    <div class="main-content">
-        <header>
-            <h1>ChosenLib Documentation</h1>
+        <div class="nav-right">
+            <button id="darkModeToggle">🌙</button>
+        </div>
+    </nav>
+    <main class="container">
+        <section class="hero">
+            <h1>ChosenLib</h1>
+            <p class="subtitle">A modern utility library for Fabric modding.<br>Helpers, utilities, and a solid foundation for your Minecraft mods.</p>
             <div class="badges">
                 <span class="badge">v1.2.1</span>
                 <span class="badge">MIT License</span>
                 <span class="badge">Fabric</span>
             </div>
+            <div class="quick-links">
+                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" target="_blank">CurseForge</a>
+                <a href="https://modrinth.com/mod/chosenlib" target="_blank">Modrinth</a>
+                <a href="https://github.com/yourusername/chosenlib" target="_blank">Source</a>
+                <a href="https://discord.gg/yourinvite" target="_blank">Discord</a>
+            </div>
             <input type="text" id="searchBar" placeholder="Search documentation..." />
-        </header>
-        <section id="welcome">
+        </section>
+        <section class="welcome">
             <h2>Welcome</h2>
-            <p><strong>ChosenLib</strong> is a modern utility library for Fabric modding. It provides helpers, utilities, and a solid foundation for your Minecraft mods.</p>
             <ul>
                 <li>Easy-to-use API</li>
                 <li>Ready for client & server</li>
@@ -43,16 +51,7 @@
                 <li>Active community support</li>
             </ul>
         </section>
-        <section id="quick-links">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" target="_blank">CurseForge</a></li>
-                <li><a href="https://modrinth.com/mod/chosenlib" target="_blank">Modrinth</a></li>
-                <li><a href="https://github.com/yourusername/chosenlib" target="_blank">Source (GitHub)</a></li>
-                <li><a href="https://discord.gg/yourinvite" target="_blank">Discord</a></li>
-            </ul>
-        </section>
-    </div>
+    </main>
     <footer>
         <p>&copy; 2025 ChosenTechies. Licensed under the MIT License. | ChosenLib v1.2.1</p>
     </footer>
