@@ -5,3 +5,4 @@ public class Config {
     public String welcomeMessage = "Welcome to ChosenLib!";
     // Add more config fields as needed
 }
+

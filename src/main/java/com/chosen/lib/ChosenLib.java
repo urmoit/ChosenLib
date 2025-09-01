@@ -36,7 +36,7 @@ public class ChosenLib implements ModInitializer {
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             dispatcher.register(CommandManager.literal("chosenlib")
                 .executes(context -> {
-                    String version = "1.2.1";
+                    String version = "1.3.0";
                     context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("ChosenLib v" + version), false);
                     context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.clickable("CurseForge: https://www.curseforge.com/minecraft/mc-mods/chosenlib", "https://www.curseforge.com/minecraft/mc-mods/chosenlib"), false);
                     context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("Modrinth: (Coming Soon)"), false);
