@@ -3,55 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Getting Started - ChosenLib</title>
+    <title>Getting Started - ChosenLib Documentation</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<body class="dark">
-    <nav class="topnav">
-        <div class="nav-left">
-            <span class="logo">ChosenLib</span>
-        </div>
-        <div class="nav-center">
-            <a href="index.html">Home</a>
-            <a href="getting-started.html" class="active">Getting Started</a>
-            <a href="installation.html">Installation</a>
-            <a href="usage.html">Usage</a>
-            <a href="api.html">API</a>
-            <a href="changelog.html">Changelog</a>
-            <a href="faq.html">FAQ</a>
-            <a href="community.html">Community</a>
-        </div>
-    </nav>
-    <main class="container">
-        <section class="hero glass">
-            <h1>Getting Started</h1>
-            <p class="subtitle">Learn what ChosenLib is and how to set up your environment.</p>
-        </section>
-        <section class="card glass">
-            <h2>What is ChosenLib?</h2>
-            <p>ChosenLib is a utility library for Fabric modding, designed to help you build mods faster and with less boilerplate.</p>
-        </section>
-        <section class="card glass">
-            <h2>Prerequisites</h2>
-            <ul>
-                <li>Java 21</li>
-                <li>Fabric Loader</li>
-                <li>Fabric API</li>
-                <li>Gradle (for development)</li>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">ChosenLib</a>
+            <ul class="nav-menu">
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="installation.html">Installation</a></li>
+                <li><a href="usage.html">Usage</a></li>
+                <li><a href="api.html">API Reference</a></li>
+                <li><a href="changelog.html">Changelog</a></li>
             </ul>
-        </section>
-        <section class="card glass">
-            <h2>Next Steps</h2>
-            <ul>
-                <li><a href="installation.html">Install ChosenLib</a></li>
-                <li><a href="usage.html">See Usage Examples</a></li>
-                <li><a href="api.html">Explore the API</a></li>
-            </ul>
-        </section>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>Getting Started</h1>
+                <p>Learn what ChosenLib is and how to set up your development environment for Fabric modding.</p>
+            </section>
+
+            <section class="content">
+                <div class="card">
+                    <h2>🎯 What is ChosenLib?</h2>
+                    <p>ChosenLib is a comprehensive utility library for Fabric modding, designed to help you build mods faster and with less boilerplate code. It provides essential utilities for common modding tasks, making your development process more efficient and enjoyable.</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <h3>📝 TextUtils</h3>
+                            <p>Enhanced text manipulation and formatting utilities for creating rich chat messages and user interfaces.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🎨 GuiUtils</h3>
+                            <p>Client-side GUI utilities for creating beautiful Minecraft interfaces with ease.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🎒 ItemUtils</h3>
+                            <p>Comprehensive item management and manipulation utilities for handling Minecraft items.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📋 Prerequisites</h2>
+                    <p>Before you start using ChosenLib, make sure you have the following installed:</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <h3>☕ Java 21</h3>
+                            <p>Latest LTS version of Java for optimal performance and modern language features.</p>
+                            <a href="https://adoptium.net/" class="btn btn-secondary">Download Java</a>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🎮 Fabric Loader</h3>
+                            <p>Required for running Fabric mods on Minecraft.</p>
+                            <a href="https://fabricmc.net/use/" class="btn btn-secondary">Get Fabric</a>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🔧 Fabric API</h3>
+                            <p>Core API that provides essential hooks and utilities for Fabric mods.</p>
+                            <a href="https://www.curseforge.com/minecraft/mc-mods/fabric-api" class="btn btn-secondary">Download API</a>
+                        </div>
+                        <div class="feature-card">
+                            <h3>📦 Gradle</h3>
+                            <p>Build system for managing dependencies and building your mod (included with Fabric template).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🚀 Quick Overview</h2>
+                    <p>Here's what you can do with ChosenLib:</p>
+                    
+                    <h3>Text Utilities</h3>
+                    <pre><code>// Send formatted messages
+TextUtils.success("Operation completed!");
+TextUtils.error("Something went wrong!");
+
+// Create clickable links
+TextUtils.clickable("Visit website", "https://example.com");
+
+// Text manipulation
+String capitalized = TextUtils.capitalize("hello world");
+boolean isEmail = TextUtils.isValidEmail("user@example.com");</code></pre>
+
+                    <h3>GUI Utilities (Client-side)</h3>
+                    <pre><code>// Center elements on screen
+int centerX = GuiUtils.centerX(200);
+int centerY = GuiUtils.centerY(100);
+
+// Create colors and draw shapes
+int red = GuiUtils.rgb(255, 0, 0);
+GuiUtils.drawRect(context, x, y, width, height, red);</code></pre>
+
+                    <h3>Item Utilities</h3>
+                    <pre><code>// Validate and compare items
+boolean isEmpty = ItemUtils.isEmpty(stack);
+boolean sameType = ItemUtils.isSameItem(stack1, stack2);
+
+// Get item information
+String itemId = ItemUtils.getItemId(stack);
+double damage = ItemUtils.getDamagePercentage(stack);</code></pre>
+                </div>
+
+                <div class="card">
+                    <h2>📚 Learning Path</h2>
+                    <p>Follow this recommended learning path to get the most out of ChosenLib:</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <h3>1️⃣ Installation</h3>
+                            <p>Set up ChosenLib in your project and configure your development environment.</p>
+                            <a href="installation.html" class="btn btn-primary">Install ChosenLib</a>
+                        </div>
+                        <div class="feature-card">
+                            <h3>2️⃣ Usage Examples</h3>
+                            <p>Learn how to use the utilities with practical examples and real-world scenarios.</p>
+                            <a href="usage.html" class="btn btn-primary">View Examples</a>
+                        </div>
+                        <div class="feature-card">
+                            <h3>3️⃣ API Reference</h3>
+                            <p>Explore the complete API documentation for all utility methods and classes.</p>
+                            <a href="api.html" class="btn btn-primary">Browse API</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>💡 Best Practices</h2>
+                    
+                    <h3>Getting Started Tips</h3>
+                    <ul>
+                        <li><strong>Start Small:</strong> Begin with basic TextUtils functions before moving to more complex GUI utilities</li>
+                        <li><strong>Check Compatibility:</strong> Ensure you're using the correct Minecraft and Fabric versions</li>
+                        <li><strong>Read Documentation:</strong> Always refer to the API reference for method signatures and examples</li>
+                        <li><strong>Test Regularly:</strong> Test your mod frequently to catch issues early</li>
+                    </ul>
+
+                    <h3>Common Pitfalls</h3>
+                    <ul>
+                        <li><strong>Client-side Code:</strong> Remember that GuiUtils is client-side only</li>
+                        <li><strong>Version Compatibility:</strong> Use the correct ChosenLib version for your Minecraft version</li>
+                        <li><strong>Dependencies:</strong> Make sure Fabric API is included in your mod</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>🔗 Resources</h2>
+                    <p>Additional resources to help you get started:</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <h3>📖 Fabric Documentation</h3>
+                            <p>Official Fabric documentation for mod development.</p>
+                            <a href="https://fabricmc.net/wiki/" class="btn btn-secondary">Fabric Wiki</a>
+                        </div>
+                        <div class="feature-card">
+                            <h3>💬 Discord Community</h3>
+                            <p>Join the Fabric community for support and discussions.</p>
+                            <a href="https://discord.gg/fabric" class="btn btn-secondary">Fabric Discord</a>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🐛 GitHub Issues</h3>
+                            <p>Report bugs or request features for ChosenLib.</p>
+                            <a href="https://github.com/urmoit/ChosenLib/issues" class="btn btn-secondary">Report Issue</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2025 ChosenTechies. Licensed under the MIT License. | ChosenLib v1.2.1</p>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib">CurseForge</a>
+                <a href="https://github.com/urmoit/ChosenLib">GitHub</a>
+                <a href="https://discord.gg/CFwkrnFD4P">Discord</a>
+                <a href="LICENSE">License</a>
+            </div>
+            <div class="footer-text">
+                <p>&copy; 2025 ChosenTechies. ChosenLib is licensed under the MIT License.</p>
+            </div>
+        </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

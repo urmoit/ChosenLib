@@ -3,61 +3,340 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usage Examples - ChosenLib</title>
+    <title>Usage Guide - ChosenLib Documentation</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<body class="dark">
-    <nav class="topnav">
-        <div class="nav-left">
-            <span class="logo">ChosenLib</span>
-        </div>
-        <div class="nav-center">
-            <a href="index.html">Home</a>
-            <a href="getting-started.html">Getting Started</a>
-            <a href="installation.html">Installation</a>
-            <a href="usage.html" class="active">Usage</a>
-            <a href="api.html">API</a>
-            <a href="changelog.html">Changelog</a>
-            <a href="faq.html">FAQ</a>
-            <a href="community.html">Community</a>
-        </div>
-    </nav>
-    <main class="container">
-        <section class="hero glass">
-            <h1>Usage Examples</h1>
-            <p class="subtitle">See how to use ChosenLib's utilities in your mod.</p>
-        </section>
-        <section class="card glass">
-            <h2>TextUtils</h2>
-            <pre><code>import com.chosen.lib.util.TextUtils;
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">ChosenLib</a>
+            <ul class="nav-menu">
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="installation.html">Installation</a></li>
+                <li><a href="usage.html">Usage</a></li>
+                <li><a href="api.html">API Reference</a></li>
+                <li><a href="changelog.html">Changelog</a></li>
+            </ul>
+        </nav>
+    </header>
 
-TextUtils.success("Operation successful!");
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>Usage Guide</h1>
+                <p>Learn how to use ChosenLib utilities effectively in your Fabric mods with practical examples and best practices.</p>
+            </section>
+
+            <section class="content">
+                <div class="card">
+                    <h2>🚀 Quick Start</h2>
+                    <p>Get started with ChosenLib in just a few steps:</p>
+                    
+                    <h3>1. Import the Utilities</h3>
+                    <pre><code>import com.chosen.lib.util.TextUtils;
+import com.chosen.lib.util.GuiUtils; // Client-side only
+import com.chosen.lib.util.ItemUtils;</code></pre>
+
+                    <h3>2. Use Basic Functions</h3>
+                    <pre><code>// Send a success message to chat
+TextUtils.success("Operation completed successfully!");
+
+// Check if an item stack is empty
+boolean isEmpty = ItemUtils.isEmpty(player.getMainHandStack());
+
+// Center a GUI element (client-side)
+int centerX = GuiUtils.centerX(200);</code></pre>
+                </div>
+
+                <div class="card">
+                    <h2>📝 TextUtils Examples</h2>
+                    <p>TextUtils provides comprehensive text manipulation and formatting capabilities.</p>
+
+                    <h3>Basic Text Messages</h3>
+                    <pre><code>// Send different types of messages
+TextUtils.success("Task completed!");
 TextUtils.error("Something went wrong!");
-TextUtils.capitalize("hello world");
-TextUtils.repeat("abc", 3); // "abcabcabc"
-TextUtils.isNullOrEmpty(""); // true
-TextUtils.join(", ", "a", "b", "c"); // "a, b, c"
-TextUtils.combine(Text.literal("A"), Text.literal("B"));
-TextUtils.stripFormatting(Text.literal("§aGreen"));
-TextUtils.format("Bold & Red", Formatting.BOLD, Formatting.RED);
-</code></pre>
-        </section>
-        <section class="card glass">
-            <h2>General Utilities</h2>
-            <pre><code>import com.chosen.lib.ChosenLib;
+TextUtils.info("Here's some information");
 
-ChosenLib.randomInt(1, 10); // random int between 1 and 10
-ChosenLib.clamp(15, 0, 10); // 10
-ChosenLib.lerp(0.0, 10.0, 0.5); // 5.0
-ChosenLib.isBetween(5, 1, 10); // true
-ChosenLib.safeEquals("a", "a"); // true
-ChosenLib.debugLog("Debug message");
-</code></pre>
-        </section>
+// Create clickable links
+TextUtils.clickable("Visit our website", "https://example.com");</code></pre>
+
+                    <h3>Text Manipulation</h3>
+                    <pre><code>// String manipulation
+String capitalized = TextUtils.capitalize("hello world"); // "Hello world"
+String repeated = TextUtils.repeat("abc", 3); // "abcabcabc"
+String truncated = TextUtils.truncate("Very long text", 10); // "Very long..."
+String reversed = TextUtils.reverse("hello"); // "olleh"
+
+// Text validation
+boolean isEmail = TextUtils.isValidEmail("user@example.com"); // true
+boolean isAlpha = TextUtils.isAlphanumeric("abc123"); // true
+String clean = TextUtils.removeSpecialChars("Hello@World!"); // "HelloWorld"</code></pre>
+
+                    <h3>Visual Elements</h3>
+                    <pre><code>// Create a progress bar
+Text progressBar = TextUtils.progressBar(75, 100, 20);
+
+// Center text in a specific width
+String centered = TextUtils.centerText("Centered", 50);
+
+// Create a text box
+String textBox = TextUtils.createTextBox("Important message", 30);</code></pre>
+
+                    <h3>Advanced Text Operations</h3>
+                    <pre><code>// Check if text is palindrome
+boolean isPal = TextUtils.isPalindrome("racecar"); // true
+
+// Count words
+int wordCount = TextUtils.wordCount("Hello world"); // 2
+
+// Convert to title case
+String title = TextUtils.toTitleCase("hello world"); // "Hello World"</code></pre>
+                </div>
+
+                <div class="card">
+                    <h2>🎨 GuiUtils Examples (Client-side only)</h2>
+                    <p>GuiUtils provides GUI utilities for creating beautiful Minecraft interfaces.</p>
+
+                    <h3>Screen Positioning</h3>
+                    <pre><code>// Center elements on screen
+int centerX = GuiUtils.centerX(200); // Center 200px wide element
+int centerY = GuiUtils.centerY(100); // Center 100px tall element
+
+// Center within a specific range
+int centered = GuiUtils.center(50, 200); // Center 50px in 200px range</code></pre>
+
+                    <h3>Color Utilities</h3>
+                    <pre><code>// Create colors
+int red = GuiUtils.rgb(255, 0, 0);
+int transparent = GuiUtils.rgba(255, 0, 0, 128);
+int withAlpha = GuiUtils.withAlpha(red, 128);
+
+// Convert HSV to RGB
+int green = GuiUtils.hsvToRgb(120, 1.0f, 1.0f);
+
+// Adjust brightness
+int brighter = GuiUtils.adjustBrightness(red, 1.5f);</code></pre>
+
+                    <h3>Drawing Shapes</h3>
+                    <pre><code>// Draw a filled rectangle
+GuiUtils.drawRect(context, 10, 10, 100, 50, red);
+
+// Draw a bordered rectangle
+GuiUtils.drawBorderedRect(context, 10, 10, 100, 50, fillColor, borderColor, 2);
+
+// Draw a gradient
+GuiUtils.drawGradient(context, 10, 10, 100, 50, startColor, endColor, true);
+
+// Draw a texture
+GuiUtils.drawTexture(context, texture, 10, 10, 0, 0, 32, 32, 64, 64);</code></pre>
+
+                    <h3>UI Components</h3>
+                    <pre><code>// Draw a progress bar
+GuiUtils.drawProgressBar(context, 10, 10, 100, 20, 0.75, bgColor, progressColor);
+
+// Check if mouse is over a rectangle
+boolean isHovering = GuiUtils.isPointInRect(mouseX, mouseY, 10, 10, 100, 50);</code></pre>
+                </div>
+
+                <div class="card">
+                    <h2>🎒 ItemUtils Examples</h2>
+                    <p>ItemUtils provides comprehensive item management and manipulation utilities.</p>
+
+                    <h3>Item Validation</h3>
+                    <pre><code>// Check if item stacks are empty
+boolean isEmpty = ItemUtils.isEmpty(stack);
+boolean isNotEmpty = ItemUtils.isNotEmpty(stack);
+
+// Compare items
+boolean sameType = ItemUtils.isSameItem(stack1, stack2);
+boolean exactMatch = ItemUtils.isExactMatch(stack1, stack2);</code></pre>
+
+                    <h3>Item Information</h3>
+                    <pre><code>// Get item information
+String itemId = ItemUtils.getItemId(stack); // "minecraft:diamond_sword"
+String displayName = ItemUtils.getDisplayName(stack); // "Diamond Sword"
+int maxStack = ItemUtils.getMaxStackSize(item); // 64
+boolean stackable = ItemUtils.isStackable(item); // true</code></pre>
+
+                    <h3>Durability Utilities</h3>
+                    <pre><code>// Check durability
+int durability = ItemUtils.getDurability(stack);
+int maxDurability = ItemUtils.getMaxDurability(stack);
+boolean damaged = ItemUtils.isDamaged(stack);
+double damagePercent = ItemUtils.getDamagePercentage(stack); // 0.0 to 1.0</code></pre>
+
+                    <h3>Stack Manipulation</h3>
+                    <pre><code>// Create a copy with different count
+ItemStack newStack = ItemUtils.copyWithCount(stack, 5);</code></pre>
+                </div>
+
+                <div class="card">
+                    <h2>🔧 General Utilities</h2>
+                    <p>General-purpose utilities available through the main ChosenLib class.</p>
+
+                    <h3>Math Utilities</h3>
+                    <pre><code>// Random number generation
+int random = ChosenLib.randomInt(1, 10); // Random int between 1 and 10
+
+// Value clamping
+int clamped = ChosenLib.clamp(15, 0, 10); // 10
+
+// Linear interpolation
+double interpolated = ChosenLib.lerp(0.0, 10.0, 0.5); // 5.0
+
+// Range checking
+boolean inRange = ChosenLib.isBetween(5, 1, 10); // true</code></pre>
+
+                    <h3>Utility Functions</h3>
+                    <pre><code>// Null-safe equality
+boolean equals = ChosenLib.safeEquals("a", "a"); // true
+
+// Debug logging
+ChosenLib.debugLog("Debug information");</code></pre>
+                </div>
+
+                <div class="card">
+                    <h2>🎯 Real-World Examples</h2>
+                    <p>Here are some practical examples of how to use ChosenLib in your mods:</p>
+
+                    <h3>Custom GUI Screen</h3>
+                    <pre><code>public class CustomScreen extends Screen {
+    @Override
+    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+        super.render(context, mouseX, mouseY, delta);
+        
+        // Center the GUI
+        int centerX = GuiUtils.centerX(200);
+        int centerY = GuiUtils.centerY(100);
+        
+        // Draw background
+        GuiUtils.drawRect(context, centerX, centerY, 200, 100, 
+                         GuiUtils.rgba(0, 0, 0, 200));
+        
+        // Draw border
+        GuiUtils.drawBorderedRect(context, centerX, centerY, 200, 100,
+                                 GuiUtils.rgba(0, 0, 0, 200),
+                                 GuiUtils.rgb(255, 255, 255), 2);
+        
+        // Check if mouse is hovering
+        if (GuiUtils.isPointInRect(mouseX, mouseY, centerX, centerY, 200, 100)) {
+            // Mouse is over the GUI
+        }
+    }
+}</code></pre>
+
+                    <h3>Item Processing System</h3>
+                    <pre><code>public void processItem(ItemStack input, ItemStack output) {
+    // Validate input
+    if (ItemUtils.isEmpty(input)) {
+        TextUtils.error("No input item provided!");
+        return;
+    }
+    
+    // Check if items are compatible
+    if (!ItemUtils.isSameItem(input, output)) {
+        TextUtils.error("Incompatible items!");
+        return;
+    }
+    
+    // Process the item
+    if (ItemUtils.isDamaged(input)) {
+        double damage = ItemUtils.getDamagePercentage(input);
+        TextUtils.info("Processing damaged item (" + 
+                      String.format("%.1f", damage * 100) + "% damaged)");
+    }
+    
+    // Success message
+    TextUtils.success("Item processed successfully!");
+}</code></pre>
+
+                    <h3>Command with Rich Text</h3>
+                    <pre><code>public class CustomCommand {
+    public static void execute(CommandContext<ServerCommandSource> context) {
+        ServerCommandSource source = context.getSource();
+        
+        // Send formatted messages
+        source.sendFeedback(() -> TextUtils.success("Command executed!"), false);
+        
+        // Send clickable links
+        source.sendFeedback(() -> 
+            TextUtils.clickable("Visit our website", "https://example.com"), false);
+        
+        // Send progress information
+        Text progressBar = TextUtils.progressBar(75, 100, 20);
+        source.sendFeedback(() -> progressBar, false);
+    }
+}</code></pre>
+                </div>
+
+                <div class="card">
+                    <h2>💡 Best Practices</h2>
+                    
+                    <h3>Performance Tips</h3>
+                    <ul>
+                        <li><strong>Cache frequently used values:</strong> Store color values and positions to avoid recalculating</li>
+                        <li><strong>Use appropriate utility methods:</strong> Choose the most efficient method for your use case</li>
+                        <li><strong>Validate inputs:</strong> Always check for null or empty values before processing</li>
+                    </ul>
+
+                    <h3>Code Organization</h3>
+                    <ul>
+                        <li><strong>Import only what you need:</strong> Don't import unused utilities</li>
+                        <li><strong>Separate client and server code:</strong> Keep GuiUtils usage in client-side code only</li>
+                        <li><strong>Use meaningful variable names:</strong> Make your code readable and maintainable</li>
+                    </ul>
+
+                    <h3>Error Handling</h3>
+                    <ul>
+                        <li><strong>Provide user feedback:</strong> Use TextUtils to inform users of errors and successes</li>
+                        <li><strong>Validate inputs:</strong> Check parameters before using utility methods</li>
+                        <li><strong>Handle edge cases:</strong> Consider what happens with null or invalid inputs</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>🔗 Next Steps</h2>
+                    <p>Now that you understand the basics, explore these resources:</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <h3>📚 API Reference</h3>
+                            <p>Detailed documentation for all utility methods and classes.</p>
+                            <a href="api.html" class="btn btn-primary">View API</a>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🚀 Getting Started</h3>
+                            <p>Learn how to set up ChosenLib in your project.</p>
+                            <a href="getting-started.html" class="btn btn-secondary">Get Started</a>
+                        </div>
+                        <div class="feature-card">
+                            <h3>📋 Changelog</h3>
+                            <p>See what's new and what's coming in future versions.</p>
+                            <a href="changelog.html" class="btn btn-secondary">View Changelog</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2025 ChosenTechies. Licensed under the MIT License. | ChosenLib v1.2.1</p>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib">CurseForge</a>
+                <a href="https://github.com/urmoit/ChosenLib">GitHub</a>
+                <a href="https://discord.gg/CFwkrnFD4P">Discord</a>
+                <a href="LICENSE">License</a>
+            </div>
+            <div class="footer-text">
+                <p>&copy; 2025 ChosenTechies. ChosenLib is licensed under the MIT License.</p>
+            </div>
+        </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

@@ -3,49 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Changelog - ChosenLib</title>
+    <title>Changelog - ChosenLib Documentation</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<body class="dark">
-    <nav class="topnav">
-        <div class="nav-left">
-            <span class="logo">ChosenLib</span>
-        </div>
-        <div class="nav-center">
-            <a href="index.html">Home</a>
-            <a href="getting-started.html">Getting Started</a>
-            <a href="installation.html">Installation</a>
-            <a href="usage.html">Usage</a>
-            <a href="api.html">API</a>
-            <a href="changelog.html" class="active">Changelog</a>
-            <a href="faq.html">FAQ</a>
-            <a href="community.html">Community</a>
-        </div>
-    </nav>
-    <main class="container">
-        <section class="hero glass">
-            <h1>Changelog</h1>
-            <p class="subtitle">See what's new in each version of ChosenLib.</p>
-        </section>
-        <section class="card glass">
-            <h2>v1.2.1</h2>
-            <ul>
-                <li>The <code>/chosenlib</code> command now displays version <strong>1.2.1</strong>.</li>
-                <li>Added a clickable Discord link to the command output.</li>
-                <li>All links (CurseForge, Modrinth, Source, Discord) are now clickable in chat.</li>
-                <li>License information (MIT) is shown in the command output.</li>
-                <li>Internal version updated to <strong>1.2.1</strong>.</li>
-                <li>Minor code and documentation improvements.</li>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">ChosenLib</a>
+            <ul class="nav-menu">
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="installation.html">Installation</a></li>
+                <li><a href="usage.html">Usage</a></li>
+                <li><a href="api.html">API Reference</a></li>
+                <li><a href="changelog.html">Changelog</a></li>
             </ul>
-        </section>
-        <section class="card glass">
-            <h2>Older Versions</h2>
-            <p>See <a href="https://github.com/yourusername/chosenlib/releases" target="_blank">GitHub Releases</a> for previous changelogs.</p>
-        </section>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>Changelog</h1>
+                <p>Track the evolution of ChosenLib with detailed release notes and feature updates.</p>
+            </section>
+
+            <section class="content">
+                <div class="card">
+                    <h2>🚀 Version 1.3.0 - Major Feature Release</h2>
+                    <p class="text-muted">Released: January 2025</p>
+                    
+                    <h3>✨ New Features</h3>
+                    
+                    <h4>🎨 GuiUtils - Client-side GUI Utilities</h4>
+                    <p>Complete client-side GUI utility class for creating beautiful Minecraft interfaces:</p>
+                    <ul>
+                        <li><strong>Screen Positioning:</strong> <code>centerX()</code>, <code>centerY()</code>, <code>center()</code></li>
+                        <li><strong>Color Utilities:</strong> <code>rgba()</code>, <code>rgb()</code>, <code>withAlpha()</code>, <code>hsvToRgb()</code>, <code>adjustBrightness()</code></li>
+                        <li><strong>Drawing Helpers:</strong> <code>drawRect()</code>, <code>drawBorderedRect()</code>, <code>drawGradient()</code>, <code>drawTexture()</code></li>
+                        <li><strong>UI Components:</strong> <code>drawProgressBar()</code>, <code>isPointInRect()</code></li>
+                    </ul>
+
+                    <h4>📝 Enhanced TextUtils</h4>
+                    <p>Major expansion of text manipulation capabilities:</p>
+                    <ul>
+                        <li><strong>Text Manipulation:</strong> <code>truncate()</code>, <code>toTitleCase()</code>, <code>reverse()</code>, <code>isPalindrome()</code>, <code>wordCount()</code></li>
+                        <li><strong>Text Validation:</strong> <code>isAlphanumeric()</code>, <code>isValidEmail()</code>, <code>removeSpecialChars()</code></li>
+                        <li><strong>Visual Elements:</strong> <code>progressBar()</code>, <code>centerText()</code>, <code>createTextBox()</code></li>
+                        <li><strong>Clickable Links:</strong> <code>clickable()</code> - Create clickable chat text with URLs</li>
+                    </ul>
+
+                    <h4>🎒 ItemUtils - Item Management</h4>
+                    <p>Comprehensive item management and manipulation utilities:</p>
+                    <ul>
+                        <li><strong>Item Validation:</strong> <code>isEmpty()</code>, <code>isNotEmpty()</code>, <code>isSameItem()</code>, <code>isExactMatch()</code></li>
+                        <li><strong>Item Information:</strong> <code>getItemId()</code>, <code>getDisplayName()</code>, <code>getMaxStackSize()</code>, <code>isStackable()</code></li>
+                        <li><strong>Durability Utilities:</strong> <code>getDurability()</code>, <code>getMaxDurability()</code>, <code>isDamaged()</code>, <code>getDamagePercentage()</code></li>
+                        <li><strong>Stack Manipulation:</strong> <code>copyWithCount()</code></li>
+                    </ul>
+
+                    <h3>🔧 Improvements</h3>
+                    <ul>
+                        <li><strong>API Compatibility:</strong> Fixed compatibility issues for Minecraft 1.21.1</li>
+                        <li><strong>Documentation:</strong> Comprehensive JavaDoc coverage for all new utilities</li>
+                        <li><strong>Code Organization:</strong> Proper client/server separation with GuiUtils in client source set</li>
+                        <li><strong>Performance:</strong> Optimized utility methods for better performance</li>
+                    </ul>
+
+                    <h3>🐛 Bug Fixes</h3>
+                    <ul>
+                        <li>Fixed compilation errors with client-side classes</li>
+                        <li>Resolved API compatibility issues with Minecraft 1.21.1</li>
+                        <li>Improved error handling in utility methods</li>
+                    </ul>
+
+                    <div class="text-center mt-4">
+                        <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" class="btn btn-primary">📥 Download v1.3.0</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📦 Version 1.2.1 - Bug Fixes & Improvements</h2>
+                    <p class="text-muted">Released: December 2024</p>
+                    
+                    <h3>🔧 Improvements</h3>
+                    <ul>
+                        <li>Enhanced <code>/chosenlib</code> command with Discord link</li>
+                        <li>Improved clickable link functionality in chat</li>
+                        <li>Better error handling and logging</li>
+                    </ul>
+
+                    <h3>🐛 Bug Fixes</h3>
+                    <ul>
+                        <li>Fixed version display in command output</li>
+                        <li>Resolved configuration loading issues</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>🎯 Version 1.2.0 - Configuration & Commands</h2>
+                    <p class="text-muted">Released: December 2024</p>
+                    
+                    <h3>✨ New Features</h3>
+                    <ul>
+                        <li><strong>Custom Command:</strong> <code>/chosenlib</code> with version info and clickable links</li>
+                        <li><strong>Configuration System:</strong> JSON-based config with auto-generation</li>
+                        <li><strong>Enhanced TextUtils:</strong> New text manipulation helpers</li>
+                    </ul>
+
+                    <h3>🔧 Improvements</h3>
+                    <ul>
+                        <li>Better documentation and examples</li>
+                        <li>Improved code organization</li>
+                        <li>Enhanced error handling</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>🚀 Version 1.1.0 - Foundation Release</h2>
+                    <p class="text-muted">Released: November 2024</p>
+                    
+                    <h3>✨ Initial Features</h3>
+                    <ul>
+                        <li><strong>TextUtils:</strong> Basic text formatting and manipulation</li>
+                        <li><strong>General Utilities:</strong> Math helpers, random functions, and utility methods</li>
+                        <li><strong>Fabric Integration:</strong> Proper Fabric mod setup and structure</li>
+                    </ul>
+
+                    <h3>🔧 Foundation</h3>
+                    <ul>
+                        <li>Modern Gradle setup with Fabric Loom</li>
+                        <li>Java 21 compatibility</li>
+                        <li>MIT License</li>
+                        <li>Basic documentation</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>📋 Version History Summary</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Version</th>
+                                <th>Release Date</th>
+                                <th>Key Features</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1.3.0</strong></td>
+                                <td>January 2025</td>
+                                <td>GuiUtils, ItemUtils, Enhanced TextUtils</td>
+                                <td><span style="color: var(--success-color);">✅ Current</span></td>
+                            </tr>
+                            <tr>
+                                <td>1.2.1</td>
+                                <td>December 2024</td>
+                                <td>Bug fixes, Discord integration</td>
+                                <td><span style="color: var(--text-muted);">📦 Stable</span></td>
+                            </tr>
+                            <tr>
+                                <td>1.2.0</td>
+                                <td>December 2024</td>
+                                <td>Configuration system, custom commands</td>
+                                <td><span style="color: var(--text-muted);">📦 Stable</span></td>
+                            </tr>
+                            <tr>
+                                <td>1.1.0</td>
+                                <td>November 2024</td>
+                                <td>Initial release, basic utilities</td>
+                                <td><span style="color: var(--text-muted);">📦 Stable</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h2>🔮 Upcoming Features</h2>
+                    <p>Here's what we're planning for future releases:</p>
+                    
+                    <h3>Version 1.4.0 (Planned)</h3>
+                    <ul>
+                        <li><strong>WorldUtils:</strong> World and block manipulation utilities</li>
+                        <li><strong>EntityUtils:</strong> Entity-related helper functions</li>
+                        <li><strong>NetworkUtils:</strong> Networking and packet utilities</li>
+                        <li><strong>Performance Optimizations:</strong> Further performance improvements</li>
+                    </ul>
+
+                    <h3>Version 2.0.0 (Future)</h3>
+                    <ul>
+                        <li><strong>Plugin System:</strong> Extensible plugin architecture</li>
+                        <li><strong>Advanced GUI Framework:</strong> Complete GUI building system</li>
+                        <li><strong>Database Integration:</strong> Built-in database utilities</li>
+                        <li><strong>Multi-language Support:</strong> Internationalization framework</li>
+                    </ul>
+
+                    <div class="text-center mt-4">
+                        <p class="text-muted">Have a feature request? Let us know on <a href="https://github.com/yourusername/chosenlib/issues">GitHub</a>!</p>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2025 ChosenTechies. Licensed under the MIT License. | ChosenLib v1.2.1</p>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib">CurseForge</a>
+                <a href="https://github.com/urmoit/ChosenLib">GitHub</a>
+                <a href="https://discord.gg/CFwkrnFD4P">Discord</a>
+                <a href="LICENSE">License</a>
+            </div>
+            <div class="footer-text">
+                <p>&copy; 2025 ChosenTechies. ChosenLib is licensed under the MIT License.</p>
+            </div>
+        </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

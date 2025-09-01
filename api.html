@@ -3,71 +3,512 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Reference - ChosenLib</title>
+    <title>API Reference - ChosenLib Documentation</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<body class="dark">
-    <nav class="topnav">
-        <div class="nav-left">
-            <span class="logo">ChosenLib</span>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">ChosenLib</a>
+            <ul class="nav-menu">
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="installation.html">Installation</a></li>
+                <li><a href="usage.html">Usage</a></li>
+                <li><a href="api.html">API Reference</a></li>
+                <li><a href="changelog.html">Changelog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>API Reference</h1>
+                <p>Comprehensive documentation for all ChosenLib utility classes and methods.</p>
+            </section>
+
+            <section class="content">
+                <div class="card">
+                    <h2>📝 TextUtils</h2>
+                    <p>Enhanced text manipulation and formatting utilities for Minecraft modding.</p>
+                    
+                    <h3>Basic Text Operations</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>success(String message)</code></td>
+                                <td>Creates a green success message</td>
+                                <td><code>TextUtils.success("Operation completed!")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>error(String message)</code></td>
+                                <td>Creates a red error message</td>
+                                <td><code>TextUtils.error("Something went wrong!")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>info(String message)</code></td>
+                                <td>Creates a blue info message</td>
+                                <td><code>TextUtils.info("Information here")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>capitalize(String input)</code></td>
+                                <td>Capitalizes first letter</td>
+                                <td><code>TextUtils.capitalize("hello") // "Hello"</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>repeat(String str, int times)</code></td>
+                                <td>Repeats a string</td>
+                                <td><code>TextUtils.repeat("abc", 3) // "abcabcabc"</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Advanced Text Manipulation</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>truncate(String str, int maxLength)</code></td>
+                                <td>Truncates string with ellipsis</td>
+                                <td><code>TextUtils.truncate("Very long text", 10) // "Very long..."</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>toTitleCase(String str)</code></td>
+                                <td>Converts to title case</td>
+                                <td><code>TextUtils.toTitleCase("hello world") // "Hello World"</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>reverse(String str)</code></td>
+                                <td>Reverses a string</td>
+                                <td><code>TextUtils.reverse("hello") // "olleh"</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>isPalindrome(String str)</code></td>
+                                <td>Checks if string is palindrome</td>
+                                <td><code>TextUtils.isPalindrome("racecar") // true</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>wordCount(String str)</code></td>
+                                <td>Counts words in string</td>
+                                <td><code>TextUtils.wordCount("Hello world") // 2</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Text Validation</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>isNullOrEmpty(String str)</code></td>
+                                <td>Checks if null or empty</td>
+                                <td><code>TextUtils.isNullOrEmpty("") // true</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>isAlphanumeric(String str)</code></td>
+                                <td>Checks if alphanumeric</td>
+                                <td><code>TextUtils.isAlphanumeric("abc123") // true</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>isValidEmail(String email)</code></td>
+                                <td>Validates email format</td>
+                                <td><code>TextUtils.isValidEmail("test@example.com") // true</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>removeSpecialChars(String str)</code></td>
+                                <td>Removes special characters</td>
+                                <td><code>TextUtils.removeSpecialChars("Hello@World!") // "HelloWorld"</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Visual Elements</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>progressBar(int current, int max, int length)</code></td>
+                                <td>Creates text-based progress bar</td>
+                                <td><code>TextUtils.progressBar(75, 100, 20)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>centerText(String text, int width)</code></td>
+                                <td>Centers text in given width</td>
+                                <td><code>TextUtils.centerText("Centered", 50)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>createTextBox(String text, int width)</code></td>
+                                <td>Creates bordered text box</td>
+                                <td><code>TextUtils.createTextBox("Text in box", 30)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>clickable(String message, String url)</code></td>
+                                <td>Creates clickable chat link</td>
+                                <td><code>TextUtils.clickable("Visit", "https://example.com")</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h2>🎨 GuiUtils (Client-side only)</h2>
+                    <p>GUI utilities for creating beautiful Minecraft interfaces. <strong>Note: This class is client-side only.</strong></p>
+                    
+                    <h3>Screen Positioning</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>center(int value, int range)</code></td>
+                                <td>Centers value within range</td>
+                                <td><code>GuiUtils.center(100, 200) // 50</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>centerX(int width)</code></td>
+                                <td>Centers horizontally on screen</td>
+                                <td><code>GuiUtils.centerX(200)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>centerY(int height)</code></td>
+                                <td>Centers vertically on screen</td>
+                                <td><code>GuiUtils.centerY(100)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Color Utilities</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>rgba(int r, int g, int b, int a)</code></td>
+                                <td>Creates RGBA color</td>
+                                <td><code>GuiUtils.rgba(255, 0, 0, 255) // Red</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>rgb(int r, int g, int b)</code></td>
+                                <td>Creates RGB color (opaque)</td>
+                                <td><code>GuiUtils.rgb(255, 0, 0) // Red</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>withAlpha(int rgb, int alpha)</code></td>
+                                <td>Adds alpha to RGB color</td>
+                                <td><code>GuiUtils.withAlpha(red, 128)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>hsvToRgb(float h, float s, float v)</code></td>
+                                <td>Converts HSV to RGB</td>
+                                <td><code>GuiUtils.hsvToRgb(120, 1.0f, 1.0f) // Green</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>adjustBrightness(int color, float brightness)</code></td>
+                                <td>Adjusts color brightness</td>
+                                <td><code>GuiUtils.adjustBrightness(red, 1.5f)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Drawing Methods</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>drawRect(DrawContext context, int x, int y, int width, int height, int color)</code></td>
+                                <td>Draws filled rectangle</td>
+                                <td><code>GuiUtils.drawRect(context, 10, 10, 100, 50, red)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>drawBorderedRect(DrawContext context, int x, int y, int width, int height, int fillColor, int borderColor, int borderWidth)</code></td>
+                                <td>Draws bordered rectangle</td>
+                                <td><code>GuiUtils.drawBorderedRect(context, 10, 10, 100, 50, fill, border, 2)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>drawGradient(DrawContext context, int x, int y, int width, int height, int startColor, int endColor, boolean horizontal)</code></td>
+                                <td>Draws gradient rectangle</td>
+                                <td><code>GuiUtils.drawGradient(context, 10, 10, 100, 50, start, end, true)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>drawTexture(DrawContext context, Identifier texture, int x, int y, int u, int v, int width, int height, int textureWidth, int textureHeight)</code></td>
+                                <td>Draws texture</td>
+                                <td><code>GuiUtils.drawTexture(context, texture, 10, 10, 0, 0, 32, 32, 64, 64)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>drawProgressBar(DrawContext context, int x, int y, int width, int height, double progress, int backgroundColor, int progressColor)</code></td>
+                                <td>Draws progress bar</td>
+                                <td><code>GuiUtils.drawProgressBar(context, 10, 10, 100, 20, 0.75, bg, progress)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Utility Methods</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>isPointInRect(int x, int y, int rectX, int rectY, int rectWidth, int rectHeight)</code></td>
+                                <td>Checks if point is in rectangle</td>
+                                <td><code>GuiUtils.isPointInRect(mouseX, mouseY, 10, 10, 100, 50)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h2>🎒 ItemUtils</h2>
+                    <p>Item management and manipulation utilities for Minecraft items and stacks.</p>
+                    
+                    <h3>Item Validation</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>isEmpty(ItemStack stack)</code></td>
+                                <td>Checks if stack is empty</td>
+                                <td><code>ItemUtils.isEmpty(stack) // true/false</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>isNotEmpty(ItemStack stack)</code></td>
+                                <td>Checks if stack is not empty</td>
+                                <td><code>ItemUtils.isNotEmpty(stack) // true/false</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>isSameItem(ItemStack stack1, ItemStack stack2)</code></td>
+                                <td>Compares item types</td>
+                                <td><code>ItemUtils.isSameItem(stack1, stack2) // true/false</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>isExactMatch(ItemStack stack1, ItemStack stack2)</code></td>
+                                <td>Compares everything including NBT</td>
+                                <td><code>ItemUtils.isExactMatch(stack1, stack2) // true/false</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Item Information</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>getItemId(Item item)</code></td>
+                                <td>Gets item registry ID</td>
+                                <td><code>ItemUtils.getItemId(item) // "minecraft:diamond_sword"</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>getItemId(ItemStack stack)</code></td>
+                                <td>Gets item registry ID from stack</td>
+                                <td><code>ItemUtils.getItemId(stack) // "minecraft:diamond_sword"</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>getDisplayName(ItemStack stack)</code></td>
+                                <td>Gets display name</td>
+                                <td><code>ItemUtils.getDisplayName(stack) // "Diamond Sword"</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>getMaxStackSize(Item item)</code></td>
+                                <td>Gets maximum stack size</td>
+                                <td><code>ItemUtils.getMaxStackSize(item) // 64</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>isStackable(Item item)</code></td>
+                                <td>Checks if item is stackable</td>
+                                <td><code>ItemUtils.isStackable(item) // true/false</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Durability Utilities</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>getDurability(ItemStack stack)</code></td>
+                                <td>Gets current durability</td>
+                                <td><code>ItemUtils.getDurability(stack) // 1500</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>getMaxDurability(ItemStack stack)</code></td>
+                                <td>Gets maximum durability</td>
+                                <td><code>ItemUtils.getMaxDurability(stack) // 2501</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>isDamaged(ItemStack stack)</code></td>
+                                <td>Checks if item is damaged</td>
+                                <td><code>ItemUtils.isDamaged(stack) // true/false</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>getDamagePercentage(ItemStack stack)</code></td>
+                                <td>Gets damage percentage (0.0 to 1.0)</td>
+                                <td><code>ItemUtils.getDamagePercentage(stack) // 0.4</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Stack Manipulation</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>copyWithCount(ItemStack stack, int count)</code></td>
+                                <td>Creates copy with different count</td>
+                                <td><code>ItemUtils.copyWithCount(stack, 5)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h2>🔧 General Utilities</h2>
+                    <p>General-purpose utilities available through the main ChosenLib class.</p>
+                    
+                    <h3>Math Utilities</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>randomInt(int min, int max)</code></td>
+                                <td>Random integer in range</td>
+                                <td><code>ChosenLib.randomInt(1, 10) // 1-10</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>clamp(int value, int min, int max)</code></td>
+                                <td>Clamps value between min and max</td>
+                                <td><code>ChosenLib.clamp(15, 0, 10) // 10</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>lerp(double a, double b, double t)</code></td>
+                                <td>Linear interpolation</td>
+                                <td><code>ChosenLib.lerp(0.0, 10.0, 0.5) // 5.0</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>isBetween(int value, int min, int max)</code></td>
+                                <td>Checks if value is in range</td>
+                                <td><code>ChosenLib.isBetween(5, 1, 10) // true</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Utility Functions</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>safeEquals(Object a, Object b)</code></td>
+                                <td>Null-safe equality check</td>
+                                <td><code>ChosenLib.safeEquals("a", "a") // true</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>debugLog(String message)</code></td>
+                                <td>Logs debug message with mod prefix</td>
+                                <td><code>ChosenLib.debugLog("Debug info")</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </div>
-        <div class="nav-center">
-            <a href="index.html">Home</a>
-            <a href="getting-started.html">Getting Started</a>
-            <a href="installation.html">Installation</a>
-            <a href="usage.html">Usage</a>
-            <a href="api.html" class="active">API</a>
-            <a href="changelog.html">Changelog</a>
-            <a href="faq.html">FAQ</a>
-            <a href="community.html">Community</a>
-        </div>
-    </nav>
-    <main class="container">
-        <section class="hero glass">
-            <h1>API Reference</h1>
-            <p class="subtitle">Explore the main classes and methods in ChosenLib.</p>
-        </section>
-        <section class="card glass">
-            <h2>Classes</h2>
-            <ul>
-                <li><strong>ChosenLib</strong> - Main entrypoint and general utilities</li>
-                <li><strong>TextUtils</strong> - Text formatting and helpers</li>
-                <li><strong>Config</strong> - Configuration system</li>
-            </ul>
-        </section>
-        <section class="card glass">
-            <h2>Key Methods</h2>
-            <h3>ChosenLib</h3>
-            <ul>
-                <li><code>randomInt(int min, int max)</code> - Get a random integer in a range</li>
-                <li><code>clamp(int value, int min, int max)</code> - Clamp a value between min and max</li>
-                <li><code>lerp(double a, double b, double t)</code> - Linear interpolation</li>
-                <li><code>isBetween(int value, int min, int max)</code> - Check if a value is within a range</li>
-                <li><code>safeEquals(Object a, Object b)</code> - Null-safe equality check</li>
-                <li><code>debugLog(String message)</code> - Log debug messages</li>
-            </ul>
-            <h3>TextUtils</h3>
-            <ul>
-                <li><code>success(String message)</code> - Green success text</li>
-                <li><code>error(String message)</code> - Red error text</li>
-                <li><code>capitalize(String input)</code> - Capitalize first letter</li>
-                <li><code>repeat(String str, int times)</code> - Repeat a string</li>
-                <li><code>isNullOrEmpty(String str)</code> - Check if null or empty</li>
-                <li><code>join(String separator, String... elements)</code> - Join strings</li>
-                <li><code>combine(Text... texts)</code> - Combine Text objects</li>
-                <li><code>stripFormatting(Text text)</code> - Get plain string</li>
-                <li><code>format(String message, Formatting... formattings)</code> - Format with multiple options</li>
-                <li><code>clickable(String label, String url)</code> - Create clickable chat text</li>
-            </ul>
-            <h3>Config</h3>
-            <ul>
-                <li>See <code>Config.java</code> for available fields and usage.</li>
-            </ul>
-        </section>
     </main>
-    <footer>
-        <p>&copy; 2025 ChosenTechies. Licensed under the MIT License. | ChosenLib v1.2.1</p>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib">CurseForge</a>
+                <a href="https://github.com/urmoit/ChosenLib">GitHub</a>
+                <a href="https://discord.gg/CFwkrnFD4P">Discord</a>
+                <a href="LICENSE">License</a>
+            </div>
+            <div class="footer-text">
+                <p>&copy; 2025 ChosenTechies. ChosenLib is licensed under the MIT License.</p>
+            </div>
+        </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

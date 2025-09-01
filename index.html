@@ -3,55 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChosenLib Documentation</title>
+    <title>ChosenLib - Modern Fabric Utility Library</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<body class="dark">
-    <nav class="topnav">
-        <div class="nav-left">
-            <span class="logo">ChosenLib</span>
-        </div>
-        <div class="nav-center">
-            <a href="index.html" class="active">Home</a>
-            <a href="getting-started.html">Getting Started</a>
-            <a href="installation.html">Installation</a>
-            <a href="usage.html">Usage</a>
-            <a href="api.html">API</a>
-            <a href="changelog.html">Changelog</a>
-            <a href="faq.html">FAQ</a>
-            <a href="community.html">Community</a>
-        </div>
-    </nav>
-    <main class="container">
-        <section class="hero glass">
-            <h1>ChosenLib</h1>
-            <p class="subtitle">A modern utility library for Fabric modding.<br>Helpers, utilities, and a solid foundation for your Minecraft mods.</p>
-            <div class="badges">
-                <span class="badge">v1.2.1</span>
-                <span class="badge">MIT License</span>
-                <span class="badge">Fabric</span>
-            </div>
-            <div class="quick-links">
-                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" target="_blank">CurseForge</a>
-                <a href="https://modrinth.com/mod/chosenlib" target="_blank">Modrinth</a>
-                <a href="https://github.com/yourusername/chosenlib" target="_blank">Source</a>
-                <a href="https://discord.gg/yourinvite" target="_blank">Discord</a>
-            </div>
-            <input type="text" id="searchBar" placeholder="Search documentation..." />
-        </section>
-        <section class="welcome glass">
-            <h2>Welcome</h2>
-            <ul>
-                <li>Easy-to-use API</li>
-                <li>Ready for client & server</li>
-                <li>Open-source, MIT licensed</li>
-                <li>Active community support</li>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">ChosenLib</a>
+            <ul class="nav-menu">
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="installation.html">Installation</a></li>
+                <li><a href="usage.html">Usage</a></li>
+                <li><a href="api.html">API Reference</a></li>
+                <li><a href="changelog.html">Changelog</a></li>
             </ul>
-        </section>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>ChosenLib v1.3.0</h1>
+                <p>A comprehensive utility library for Fabric that streamlines common modding tasks. Build better mods faster with our collection of GUI, text, and item utilities.</p>
+                <div class="hero-buttons">
+                    <a href="getting-started.html" class="btn btn-primary">🚀 Get Started</a>
+                    <a href="api.html" class="btn btn-secondary">📚 API Reference</a>
+                    <a href="https://github.com/yourusername/chosenlib" class="btn btn-secondary">💻 GitHub</a>
+                </div>
+            </section>
+
+            <section class="content">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>GuiUtils</h3>
+                        <p>Client-side GUI utilities for creating beautiful Minecraft interfaces. Screen positioning, color manipulation, drawing helpers, and more.</p>
+                        <ul>
+                            <li>Screen positioning helpers</li>
+                            <li>Color utilities and gradients</li>
+                            <li>Drawing primitives</li>
+                            <li>Progress bars and hit testing</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <h3>TextUtils</h3>
+                        <p>Enhanced text manipulation and formatting utilities. From basic string operations to advanced visual elements and clickable links.</p>
+                        <ul>
+                            <li>Text manipulation and validation</li>
+                            <li>Visual elements and formatting</li>
+                            <li>Clickable chat links</li>
+                            <li>Progress bars and text boxes</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🎒</div>
+                        <h3>ItemUtils</h3>
+                        <p>Comprehensive item management and manipulation utilities. Item validation, comparison, information retrieval, and durability handling.</p>
+                        <ul>
+                            <li>Item validation and comparison</li>
+                            <li>Item information retrieval</li>
+                            <li>Durability utilities</li>
+                            <li>Stack manipulation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>✨ Why Choose ChosenLib?</h2>
+                    <div class="features-grid">
+                        <div>
+                            <h3>🚀 Modern & Fast</h3>
+                            <p>Built with the latest Fabric toolchain, Java 21, and optimized for performance.</p>
+                        </div>
+                        <div>
+                            <h3>🔧 Well-Documented</h3>
+                            <p>Comprehensive JavaDoc coverage with practical examples and usage patterns.</p>
+                        </div>
+                        <div>
+                            <h3>🎯 Cross-Platform</h3>
+                            <p>Works seamlessly on both client and server (GuiUtils is client-side only).</p>
+                        </div>
+                        <div>
+                            <h3>📦 MIT Licensed</h3>
+                            <p>Open-source and free to use in any project, commercial or personal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>💻 Quick Start</h2>
+                    <p>Get up and running with ChosenLib in minutes:</p>
+                    
+                    <h3>1. Add as Dependency</h3>
+                    <pre><code>dependencies {
+    modImplementation "com.yourgroup:chosenlib:1.3.0"
+}</code></pre>
+
+                    <h3>2. Import Utilities</h3>
+                    <pre><code>import com.chosen.lib.util.TextUtils;
+import com.chosen.lib.util.GuiUtils; // Client-side only
+import com.chosen.lib.util.ItemUtils;</code></pre>
+
+                    <h3>3. Start Using</h3>
+                    <pre><code>// Text utilities
+TextUtils.success("Operation successful!");
+TextUtils.clickable("Visit website", "https://example.com");
+
+// GUI utilities (client-side)
+int centerX = GuiUtils.centerX(200);
+GuiUtils.drawRect(context, x, y, width, height, color);
+
+// Item utilities
+boolean isEmpty = ItemUtils.isEmpty(stack);
+String itemId = ItemUtils.getItemId(stack);</code></pre>
+                </div>
+
+                <div class="card">
+                    <h2>📊 What's New in v1.3.0</h2>
+                    <ul>
+                        <li><strong>GuiUtils</strong> - Complete client-side GUI utility class with positioning, colors, and drawing helpers</li>
+                        <li><strong>ItemUtils</strong> - Comprehensive item management utilities for validation, comparison, and information</li>
+                        <li><strong>Enhanced TextUtils</strong> - New text manipulation, validation, and visual element functions</li>
+                        <li><strong>API Compatibility</strong> - Fixed compatibility issues for Minecraft 1.21.1</li>
+                        <li><strong>Better Documentation</strong> - Improved JavaDoc coverage and usage examples</li>
+                    </ul>
+                    <p class="text-center mt-3">
+                        <a href="changelog.html" class="btn btn-primary">📋 View Full Changelog</a>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h2>🔗 Community & Resources</h2>
+                    <div class="features-grid">
+                        <div>
+                            <h3>📖 Documentation</h3>
+                            <p>Comprehensive guides and API reference for all utilities.</p>
+                            <a href="api.html" class="btn btn-secondary">View API</a>
+                        </div>
+                        <div>
+                            <h3>💬 Discord</h3>
+                            <p>Join our community for support, discussions, and updates.</p>
+                            <a href="https://discord.gg/yourinvite" class="btn btn-secondary">Join Discord</a>
+                        </div>
+                        <div>
+                            <h3>🐛 Issues</h3>
+                            <p>Found a bug or have a feature request? Let us know!</p>
+                            <a href="https://github.com/yourusername/chosenlib/issues" class="btn btn-secondary">Report Issue</a>
+                        </div>
+                        <div>
+                            <h3>⭐ Star on GitHub</h3>
+                            <p>Show your support by starring the repository.</p>
+                            <a href="https://github.com/yourusername/chosenlib" class="btn btn-secondary">Star Repo</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2025 ChosenTechies. Licensed under the MIT License. | ChosenLib v1.2.1</p>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib">CurseForge</a>
+                <a href="https://github.com/urmoit/ChosenLib">GitHub</a>
+                <a href="https://discord.gg/CFwkrnFD4P">Discord</a>
+                <a href="LICENSE">License</a>
+            </div>
+            <div class="footer-text">
+                <p>&copy; 2025 ChosenTechies. ChosenLib is licensed under the MIT License.</p>
+            </div>
+        </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
