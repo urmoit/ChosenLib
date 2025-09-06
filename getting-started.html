@@ -12,13 +12,18 @@
     <header class="header">
         <nav class="nav-container">
             <a href="index.html" class="logo">ChosenLib</a>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="getting-started.html">Getting Started</a></li>
                 <li><a href="installation.html">Installation</a></li>
                 <li><a href="usage.html">Usage</a></li>
                 <li><a href="api.html">API Reference</a></li>
                 <li><a href="changelog.html">Changelog</a></li>
             </ul>
+            <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </nav>
     </header>
 
@@ -36,16 +41,28 @@
                     
                     <div class="features-grid">
                         <div class="feature-card">
-                            <h3>📝 TextUtils</h3>
-                            <p>Enhanced text manipulation and formatting utilities for creating rich chat messages and user interfaces.</p>
+                            <h3>🌍 WorldUtils <span class="new-badge">NEW</span></h3>
+                            <p>World and block manipulation utilities with safe operations and area queries.</p>
                         </div>
                         <div class="feature-card">
-                            <h3>🎨 GuiUtils</h3>
-                            <p>Client-side GUI utilities for creating beautiful Minecraft interfaces with ease.</p>
+                            <h3>👤 EntityUtils <span class="new-badge">NEW</span></h3>
+                            <p>Entity-related helper functions for health, teleportation, and physics operations.</p>
                         </div>
                         <div class="feature-card">
-                            <h3>🎒 ItemUtils</h3>
-                            <p>Comprehensive item management and manipulation utilities for handling Minecraft items.</p>
+                            <h3>🌐 NetworkUtils <span class="new-badge">NEW</span></h3>
+                            <p>Networking and packet utilities for client-server communication.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>📝 TextUtils <span class="enhanced-badge">ENHANCED</span></h3>
+                            <p>Advanced text manipulation with interactive components and performance improvements.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🎨 GuiUtils <span class="enhanced-badge">ENHANCED</span></h3>
+                            <p>Now server-side compatible with client-side extensions for rendering operations.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🎒 ItemUtils <span class="enhanced-badge">ENHANCED</span></h3>
+                            <p>Comprehensive item management with inventory operations and performance optimizations.</p>
                         </div>
                     </div>
                 </div>
@@ -79,37 +96,52 @@
 
                 <div class="card">
                     <h2>🚀 Quick Overview</h2>
-                    <p>Here's what you can do with ChosenLib:</p>
+                    <p>Here's what you can do with ChosenLib v1.4.0:</p>
                     
-                    <h3>Text Utilities</h3>
-                    <pre><code>// Send formatted messages
-TextUtils.success("Operation completed!");
-TextUtils.error("Something went wrong!");
+                    <h3>🌍 World Utilities (NEW!)</h3>
+                    <pre><code>// Safe block operations
+WorldUtils.setBlockState(world, pos, newState);
+boolean loaded = WorldUtils.isPositionLoaded(world, pos);
 
-// Create clickable links
-TextUtils.clickable("Visit website", "https://example.com");
+// Area operations
+List&lt;BlockPos&gt; blocks = WorldUtils.getBlocksInSphere(center, 5.0);
+BlockPos nearest = WorldUtils.findNearestBlock(world, pos, 10, 
+    state -> state.isOf(Blocks.DIAMOND_ORE));</code></pre>
 
-// Text manipulation
-String capitalized = TextUtils.capitalize("hello world");
-boolean isEmail = TextUtils.isValidEmail("user@example.com");</code></pre>
+                    <h3>👤 Entity Utilities (NEW!)</h3>
+                    <pre><code>// Health management
+EntityUtils.heal(entity, 10.0f);
+EntityUtils.setHealth(entity, 20.0f);
 
-                    <h3>GUI Utilities (Client-side)</h3>
-                    <pre><code>// Center elements on screen
-int centerX = GuiUtils.centerX(200);
-int centerY = GuiUtils.centerY(100);
+// Teleportation and physics
+EntityUtils.teleport(entity, targetPos);
+EntityUtils.launchTowards(entity, target, 2.0);</code></pre>
 
-// Create colors and draw shapes
-int red = GuiUtils.rgb(255, 0, 0);
-GuiUtils.drawRect(context, x, y, width, height, red);</code></pre>
+                    <h3>🌐 Network Utilities (NEW!)</h3>
+                    <pre><code>// Easy packet creation
+PacketByteBuf buffer = NetworkUtils.createBuffer();
+NetworkUtils.writeString(buffer, "Hello World");
 
-                    <h3>Item Utilities</h3>
-                    <pre><code>// Validate and compare items
-boolean isEmpty = ItemUtils.isEmpty(stack);
-boolean sameType = ItemUtils.isSameItem(stack1, stack2);
+// Multi-target sending
+NetworkUtils.sendToPlayersInRadius(world, center, 50.0, channelId, buffer);</code></pre>
 
-// Get item information
-String itemId = ItemUtils.getItemId(stack);
-double damage = ItemUtils.getDamagePercentage(stack);</code></pre>
+                    <h3>📝 Enhanced Text Utilities</h3>
+                    <pre><code>// Interactive text components
+Text interactive = TextUtils.interactiveText("Click me", "Tooltip", "https://example.com");
+Text command = TextUtils.clickableCommand("Run", "/help");
+
+// Advanced formatting
+String duration = TextUtils.formatDuration(90000); // "1m 30s"
+List&lt;String&gt; wrapped = TextUtils.wrapText(longText, 40);</code></pre>
+
+                    <h3>🎒 Enhanced Item Utilities</h3>
+                    <pre><code>// Inventory operations
+ItemStack remaining = ItemUtils.insertStack(inventory, stack);
+int consumed = ItemUtils.consumeItem(inventory, Items.DIAMOND, 5);
+
+// Enhanced item operations
+boolean canMerge = ItemUtils.canMerge(stack1, stack2);
+ItemUtils.repairItem(stack, 100);</code></pre>
                 </div>
 
                 <div class="card">
@@ -152,6 +184,10 @@ double damage = ItemUtils.getDamagePercentage(stack);</code></pre>
                         <li><strong>Version Compatibility:</strong> Use the correct ChosenLib version for your Minecraft version</li>
                         <li><strong>Dependencies:</strong> Make sure Fabric API is included in your mod</li>
                     </ul>
+
+                    <div class="note note-warning">
+                        <p><strong>⚠️ Version Note:</strong> ChosenLib v1.4.0 is the current stable release. Future versions (1.5.0-1.9.0) may introduce API changes. Check our <a href="changelog.html">changelog</a> for the latest updates and migration guides.</p>
+                    </div>
                 </div>
 
                 <div class="card">
@@ -182,17 +218,124 @@ double damage = ItemUtils.getDamagePercentage(stack);</code></pre>
 
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib">CurseForge</a>
-                <a href="https://github.com/urmoit/ChosenLib">GitHub</a>
-                <a href="https://discord.gg/CFwkrnFD4P">Discord</a>
-                <a href="LICENSE">License</a>
+            <div class="footer-main">
+                <div class="footer-section">
+                    <h3>ChosenLib</h3>
+                    <p>A comprehensive utility library for Fabric modding that streamlines common development tasks.</p>
+                    <div class="footer-version">
+                        <span class="version-badge">v1.4.0</span>
+                        <span class="last-updated">Last updated: September 6 2025</span>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="installation.html">Installation</a>
+                        <a href="usage.html">Usage Guide</a>
+                        <a href="api.html">API Reference</a>
+                        <a href="changelog.html">Changelog</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Download</h4>
+                    <div class="footer-download-links">
+                        <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" class="download-link">
+                            <span class="icon">📥</span> CurseForge
+                        </a>
+                        <a href="https://modrinth.com/mod/chosenlib" class="download-link">
+                            <span class="icon">📦</span> Modrinth
+                        </a>
+                        <a href="https://github.com/urmoit/ChosenLib/releases" class="download-link">
+                            <span class="icon">💻</span> GitHub
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <div class="footer-social-links">
+                        <a href="https://github.com/urmoit/ChosenLib" class="social-link">
+                            <span class="icon">🐙</span> GitHub
+                        </a>
+                        <a href="https://discord.gg/CFwkrnFD4P" class="social-link">
+                            <span class="icon">💬</span> Discord
+                        </a>
+                        <a href="#" onclick="showLicensePopup(); return false;" class="social-link">
+                            <span class="icon">📄</span> MIT License
+                        </a>
+                        <a href="#" onclick="showModsPopup(); return false;" class="social-link">
+                            <span class="icon">🧩</span> Mods using ChosenLib
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="footer-text">
-                <p>&copy; 2025 ChosenTechies. ChosenLib is licensed under the MIT License.</p>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2025 ChosenTechies. All rights reserved.</p>
+                    <p>ChosenLib is licensed under the MIT License.</p>
+                </div>
+                <div class="footer-tech">
+                    <span>Built with ❤️ for the Minecraft community</span>
+                    <span>•</span>
+                    <span>Fabric • Java 21 • MIT License</span>
+                </div>
             </div>
         </div>
     </footer>
+
+    <!-- License Popup Modal -->
+    <div id="licenseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>MIT License</h2>
+                <span class="close" onclick="closeLicensePopup()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p><strong>Copyright (c) 2025 ChosenTechies</strong></p>
+                <p>Permission is hereby granted, free of charge, to any person obtaining a copy
+                of this software and associated documentation files (the "Software"), to deal
+                in the Software without restriction, including without limitation the rights
+                to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                copies of the Software, and to permit persons to whom the Software is
+                furnished to do so, subject to the following conditions:</p>
+                <p>The above copyright notice and this permission notice shall be included in all
+                copies or substantial portions of the Software.</p>
+                <p><strong>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+                SOFTWARE.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mods Using ChosenLib Modal -->
+    <div id="modsModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Mods using ChosenLib</h2>
+            <span class="close" onclick="closeModsPopup()">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="mod-list">
+              <div class="mod-entry">
+                <div class="mod-title">homy TP</div>
+                <div class="mod-links">
+                  <a href="https://www.curseforge.com/minecraft/mc-mods/homy-tp" class="download-link" target="_blank">CurseForge</a>
+                  <a href="https://modrinth.com/mod/homy-tp" class="download-link" target="_blank">Modrinth</a>
+                </div>
+              </div>
+              <!-- Add more mods here as needed -->
+            </div>
+          </div>
+        </div>
+      </div>
 
     <script src="script.js"></script>
 </body>

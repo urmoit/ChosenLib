@@ -12,29 +12,35 @@
     <header class="header">
         <nav class="nav-container">
             <a href="index.html" class="logo">ChosenLib</a>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="getting-started.html">Getting Started</a></li>
                 <li><a href="installation.html">Installation</a></li>
                 <li><a href="usage.html">Usage</a></li>
                 <li><a href="api.html">API Reference</a></li>
                 <li><a href="changelog.html">Changelog</a></li>
             </ul>
+            <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </nav>
     </header>
 
     <main>
         <div class="container">
             <section class="hero">
-                <h1>API Reference</h1>
+                <h1>API Reference v1.4.0</h1>
                 <p>Comprehensive documentation for all ChosenLib utility classes and methods.</p>
             </section>
 
             <section class="content">
+                <!-- NEW: WorldUtils -->
                 <div class="card">
-                    <h2>📝 TextUtils</h2>
-                    <p>Enhanced text manipulation and formatting utilities for Minecraft modding.</p>
+                    <h2>🌍 WorldUtils <span class="new-badge">NEW</span></h2>
+                    <p>World and block manipulation utilities with safe operations and area queries.</p>
                     
-                    <h3>Basic Text Operations</h3>
+                    <h3>Block Operations</h3>
                     <table>
                         <thead>
                             <tr>
@@ -45,34 +51,29 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>success(String message)</code></td>
-                                <td>Creates a green success message</td>
-                                <td><code>TextUtils.success("Operation completed!")</code></td>
+                                <td><code>getBlockState(World world, BlockPos pos)</code></td>
+                                <td>Safely gets block state with chunk loading check</td>
+                                <td><code>WorldUtils.getBlockState(world, pos)</code></td>
                             </tr>
                             <tr>
-                                <td><code>error(String message)</code></td>
-                                <td>Creates a red error message</td>
-                                <td><code>TextUtils.error("Something went wrong!")</code></td>
+                                <td><code>setBlockState(World world, BlockPos pos, BlockState state)</code></td>
+                                <td>Safely sets block state with validation</td>
+                                <td><code>WorldUtils.setBlockState(world, pos, newState)</code></td>
                             </tr>
                             <tr>
-                                <td><code>info(String message)</code></td>
-                                <td>Creates a blue info message</td>
-                                <td><code>TextUtils.info("Information here")</code></td>
+                                <td><code>isPositionLoaded(World world, BlockPos pos)</code></td>
+                                <td>Checks if position is loaded</td>
+                                <td><code>WorldUtils.isPositionLoaded(world, pos)</code></td>
                             </tr>
                             <tr>
-                                <td><code>capitalize(String input)</code></td>
-                                <td>Capitalizes first letter</td>
-                                <td><code>TextUtils.capitalize("hello") // "Hello"</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>repeat(String str, int times)</code></td>
-                                <td>Repeats a string</td>
-                                <td><code>TextUtils.repeat("abc", 3) // "abcabcabc"</code></td>
+                                <td><code>canPlaceBlock(World world, BlockPos pos, BlockState state)</code></td>
+                                <td>Checks if block can be placed</td>
+                                <td><code>WorldUtils.canPlaceBlock(world, pos, state)</code></td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <h3>Advanced Text Manipulation</h3>
+                    <h3>Area Operations</h3>
                     <table>
                         <thead>
                             <tr>
@@ -83,34 +84,29 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>truncate(String str, int maxLength)</code></td>
-                                <td>Truncates string with ellipsis</td>
-                                <td><code>TextUtils.truncate("Very long text", 10) // "Very long..."</code></td>
+                                <td><code>getBlocksInCube(BlockPos center, int radius)</code></td>
+                                <td>Gets all blocks in cubic area</td>
+                                <td><code>WorldUtils.getBlocksInCube(center, 5)</code></td>
                             </tr>
                             <tr>
-                                <td><code>toTitleCase(String str)</code></td>
-                                <td>Converts to title case</td>
-                                <td><code>TextUtils.toTitleCase("hello world") // "Hello World"</code></td>
+                                <td><code>getBlocksInSphere(BlockPos center, double radius)</code></td>
+                                <td>Gets all blocks in spherical area</td>
+                                <td><code>WorldUtils.getBlocksInSphere(center, 5.0)</code></td>
                             </tr>
                             <tr>
-                                <td><code>reverse(String str)</code></td>
-                                <td>Reverses a string</td>
-                                <td><code>TextUtils.reverse("hello") // "olleh"</code></td>
+                                <td><code>getBlocksInArea(BlockPos pos1, BlockPos pos2)</code></td>
+                                <td>Gets all blocks in rectangular area</td>
+                                <td><code>WorldUtils.getBlocksInArea(pos1, pos2)</code></td>
                             </tr>
                             <tr>
-                                <td><code>isPalindrome(String str)</code></td>
-                                <td>Checks if string is palindrome</td>
-                                <td><code>TextUtils.isPalindrome("racecar") // true</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>wordCount(String str)</code></td>
-                                <td>Counts words in string</td>
-                                <td><code>TextUtils.wordCount("Hello world") // 2</code></td>
+                                <td><code>findBlocks(World world, BlockPos center, int radius, Predicate&lt;BlockState&gt; predicate)</code></td>
+                                <td>Finds blocks matching predicate</td>
+                                <td><code>WorldUtils.findBlocks(world, center, 10, state -> state.isOf(Blocks.DIAMOND_ORE))</code></td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <h3>Text Validation</h3>
+                    <h3>World Properties</h3>
                     <table>
                         <thead>
                             <tr>
@@ -121,67 +117,35 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>isNullOrEmpty(String str)</code></td>
-                                <td>Checks if null or empty</td>
-                                <td><code>TextUtils.isNullOrEmpty("") // true</code></td>
+                                <td><code>getBiome(World world, BlockPos pos)</code></td>
+                                <td>Gets biome at position</td>
+                                <td><code>WorldUtils.getBiome(world, pos)</code></td>
                             </tr>
                             <tr>
-                                <td><code>isAlphanumeric(String str)</code></td>
-                                <td>Checks if alphanumeric</td>
-                                <td><code>TextUtils.isAlphanumeric("abc123") // true</code></td>
+                                <td><code>getLightLevel(World world, BlockPos pos)</code></td>
+                                <td>Gets total light level</td>
+                                <td><code>WorldUtils.getLightLevel(world, pos)</code></td>
                             </tr>
                             <tr>
-                                <td><code>isValidEmail(String email)</code></td>
-                                <td>Validates email format</td>
-                                <td><code>TextUtils.isValidEmail("test@example.com") // true</code></td>
+                                <td><code>canSeeSky(World world, BlockPos pos)</code></td>
+                                <td>Checks if position can see sky</td>
+                                <td><code>WorldUtils.canSeeSky(world, pos)</code></td>
                             </tr>
                             <tr>
-                                <td><code>removeSpecialChars(String str)</code></td>
-                                <td>Removes special characters</td>
-                                <td><code>TextUtils.removeSpecialChars("Hello@World!") // "HelloWorld"</code></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <h3>Visual Elements</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Method</th>
-                                <th>Description</th>
-                                <th>Example</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>progressBar(int current, int max, int length)</code></td>
-                                <td>Creates text-based progress bar</td>
-                                <td><code>TextUtils.progressBar(75, 100, 20)</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>centerText(String text, int width)</code></td>
-                                <td>Centers text in given width</td>
-                                <td><code>TextUtils.centerText("Centered", 50)</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>createTextBox(String text, int width)</code></td>
-                                <td>Creates bordered text box</td>
-                                <td><code>TextUtils.createTextBox("Text in box", 30)</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>clickable(String message, String url)</code></td>
-                                <td>Creates clickable chat link</td>
-                                <td><code>TextUtils.clickable("Visit", "https://example.com")</code></td>
+                                <td><code>getHighestBlock(World world, int x, int z)</code></td>
+                                <td>Finds highest solid block</td>
+                                <td><code>WorldUtils.getHighestBlock(world, x, z)</code></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
+                <!-- NEW: EntityUtils -->
                 <div class="card">
-                    <h2>🎨 GuiUtils (Client-side only)</h2>
-                    <p>GUI utilities for creating beautiful Minecraft interfaces. <strong>Note: This class is client-side only.</strong></p>
+                    <h2>👤 EntityUtils <span class="new-badge">NEW</span></h2>
+                    <p>Entity-related helper functions for health, teleportation, and physics operations.</p>
                     
-                    <h3>Screen Positioning</h3>
+                    <h3>Health Management</h3>
                     <table>
                         <thead>
                             <tr>
@@ -192,24 +156,219 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>center(int value, int range)</code></td>
-                                <td>Centers value within range</td>
-                                <td><code>GuiUtils.center(100, 200) // 50</code></td>
+                                <td><code>getHealth(Entity entity)</code></td>
+                                <td>Gets entity's current health</td>
+                                <td><code>EntityUtils.getHealth(entity)</code></td>
                             </tr>
                             <tr>
-                                <td><code>centerX(int width)</code></td>
-                                <td>Centers horizontally on screen</td>
-                                <td><code>GuiUtils.centerX(200)</code></td>
+                                <td><code>setHealth(Entity entity, float health)</code></td>
+                                <td>Sets entity's health safely</td>
+                                <td><code>EntityUtils.setHealth(entity, 20.0f)</code></td>
                             </tr>
                             <tr>
-                                <td><code>centerY(int height)</code></td>
-                                <td>Centers vertically on screen</td>
-                                <td><code>GuiUtils.centerY(100)</code></td>
+                                <td><code>heal(Entity entity, float amount)</code></td>
+                                <td>Heals entity by amount</td>
+                                <td><code>EntityUtils.heal(entity, 10.0f)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>damage(Entity entity, DamageSource source, float amount)</code></td>
+                                <td>Damages entity with source</td>
+                                <td><code>EntityUtils.damage(entity, damageSource, 5.0f)</code></td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <h3>Color Utilities</h3>
+                    <h3>Teleportation</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>teleport(Entity entity, Vec3d pos)</code></td>
+                                <td>Teleports entity to position</td>
+                                <td><code>EntityUtils.teleport(entity, targetPos)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>teleport(Entity entity, BlockPos pos)</code></td>
+                                <td>Teleports entity to block position</td>
+                                <td><code>EntityUtils.teleport(entity, blockPos)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>teleportToEntity(Entity entity, Entity target)</code></td>
+                                <td>Teleports entity to another entity</td>
+                                <td><code>EntityUtils.teleportToEntity(entity, target)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Entity Finding</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>getEntitiesInRadius(World world, Vec3d center, double radius, Predicate&lt;Entity&gt; predicate)</code></td>
+                                <td>Gets entities in radius with filter</td>
+                                <td><code>EntityUtils.getEntitiesInRadius(world, center, 10.0, null)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>getPlayersInRadius(World world, Vec3d center, double radius)</code></td>
+                                <td>Gets players in radius</td>
+                                <td><code>EntityUtils.getPlayersInRadius(world, center, 20.0)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>findNearestPlayer(World world, Vec3d center, double radius)</code></td>
+                                <td>Finds nearest player</td>
+                                <td><code>EntityUtils.findNearestPlayer(world, center, 50.0)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Physics Operations</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>setVelocity(Entity entity, Vec3d velocity)</code></td>
+                                <td>Sets entity velocity</td>
+                                <td><code>EntityUtils.setVelocity(entity, new Vec3d(0, 1, 0))</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>launchTowards(Entity entity, Vec3d target, double force)</code></td>
+                                <td>Launches entity towards target</td>
+                                <td><code>EntityUtils.launchTowards(entity, target, 2.0)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>knockback(Entity entity, Vec3d source, double force)</code></td>
+                                <td>Knocks back entity from source</td>
+                                <td><code>EntityUtils.knockback(entity, source, 1.5)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- NEW: NetworkUtils -->
+                <div class="card">
+                    <h2>🌐 NetworkUtils <span class="new-badge">NEW</span></h2>
+                    <p>Networking and packet utilities for client-server communication.</p>
+                    
+                    <h3>Packet Creation</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>createBuffer()</code></td>
+                                <td>Creates new packet buffer</td>
+                                <td><code>NetworkUtils.createBuffer()</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>createBuffer(Consumer&lt;PacketByteBuf&gt; writer)</code></td>
+                                <td>Creates buffer with pre-written data</td>
+                                <td><code>NetworkUtils.createBuffer(buf -> buf.writeString("hello"))</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>createSimplePacket(String message)</code></td>
+                                <td>Creates simple string packet</td>
+                                <td><code>NetworkUtils.createSimplePacket("test message")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>createPositionPacket(BlockPos pos)</code></td>
+                                <td>Creates position packet</td>
+                                <td><code>NetworkUtils.createPositionPacket(blockPos)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Packet Sending</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>sendToPlayer(ServerPlayerEntity player, Identifier channelId, PacketByteBuf buffer)</code></td>
+                                <td>Sends packet to specific player</td>
+                                <td><code>NetworkUtils.sendToPlayer(player, channelId, buffer)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>sendToWorld(ServerWorld world, Identifier channelId, PacketByteBuf buffer)</code></td>
+                                <td>Sends packet to all players in world</td>
+                                <td><code>NetworkUtils.sendToWorld(world, channelId, buffer)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>sendToPlayersInRadius(ServerWorld world, Vec3d center, double radius, Identifier channelId, PacketByteBuf buffer)</code></td>
+                                <td>Sends packet to players in radius</td>
+                                <td><code>NetworkUtils.sendToPlayersInRadius(world, center, 50.0, channelId, buffer)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Data Serialization</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>writeString(PacketByteBuf buffer, String string)</code></td>
+                                <td>Safely writes string to buffer</td>
+                                <td><code>NetworkUtils.writeString(buffer, "hello")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>writeBlockPos(PacketByteBuf buffer, BlockPos pos)</code></td>
+                                <td>Writes block position to buffer</td>
+                                <td><code>NetworkUtils.writeBlockPos(buffer, pos)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>writeVec3d(PacketByteBuf buffer, Vec3d vec)</code></td>
+                                <td>Writes vector to buffer</td>
+                                <td><code>NetworkUtils.writeVec3d(buffer, vec)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>writeIntArray(PacketByteBuf buffer, int[] array)</code></td>
+                                <td>Writes integer array to buffer</td>
+                                <td><code>NetworkUtils.writeIntArray(buffer, new int[]{1,2,3})</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ENHANCED: GuiUtils -->
+                <div class="card">
+                    <h2>🎨 GuiUtils <span class="enhanced-badge">ENHANCED</span></h2>
+                    <p>GUI utilities now server-side compatible with client-side extensions (ClientGuiUtils).</p>
+                    
+                    <h3>Server-Side Color Utilities</h3>
                     <table>
                         <thead>
                             <tr>
@@ -222,32 +381,60 @@
                             <tr>
                                 <td><code>rgba(int r, int g, int b, int a)</code></td>
                                 <td>Creates RGBA color</td>
-                                <td><code>GuiUtils.rgba(255, 0, 0, 255) // Red</code></td>
+                                <td><code>GuiUtils.rgba(255, 0, 0, 255)</code></td>
                             </tr>
                             <tr>
                                 <td><code>rgb(int r, int g, int b)</code></td>
                                 <td>Creates RGB color (opaque)</td>
-                                <td><code>GuiUtils.rgb(255, 0, 0) // Red</code></td>
+                                <td><code>GuiUtils.rgb(255, 0, 0)</code></td>
                             </tr>
                             <tr>
-                                <td><code>withAlpha(int rgb, int alpha)</code></td>
-                                <td>Adds alpha to RGB color</td>
-                                <td><code>GuiUtils.withAlpha(red, 128)</code></td>
+                                <td><code>getRed(int color)</code></td>
+                                <td>Extracts red component</td>
+                                <td><code>GuiUtils.getRed(color)</code></td>
                             </tr>
                             <tr>
-                                <td><code>hsvToRgb(float h, float s, float v)</code></td>
-                                <td>Converts HSV to RGB</td>
-                                <td><code>GuiUtils.hsvToRgb(120, 1.0f, 1.0f) // Green</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>adjustBrightness(int color, float brightness)</code></td>
-                                <td>Adjusts color brightness</td>
-                                <td><code>GuiUtils.adjustBrightness(red, 1.5f)</code></td>
+                                <td><code>interpolateColor(int color1, int color2, float factor)</code></td>
+                                <td>Interpolates between colors</td>
+                                <td><code>GuiUtils.interpolateColor(red, blue, 0.5f)</code></td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <h3>Drawing Methods</h3>
+                    <h3>Mathematical Operations</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>centerX(int elementWidth, int containerWidth)</code></td>
+                                <td>Centers element horizontally</td>
+                                <td><code>GuiUtils.centerX(100, 200)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>isPointInRect(int x, int y, int rectX, int rectY, int rectWidth, int rectHeight)</code></td>
+                                <td>Checks if point is in rectangle</td>
+                                <td><code>GuiUtils.isPointInRect(mouseX, mouseY, 10, 10, 100, 50)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>rectanglesOverlap(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)</code></td>
+                                <td>Checks if rectangles overlap</td>
+                                <td><code>GuiUtils.rectanglesOverlap(x1, y1, w1, h1, x2, y2, w2, h2)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>distance(double x1, double y1, double x2, double y2)</code></td>
+                                <td>Calculates distance between points</td>
+                                <td><code>GuiUtils.distance(x1, y1, x2, y2)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>ClientGuiUtils (Client-side only)</h3>
                     <table>
                         <thead>
                             <tr>
@@ -260,55 +447,28 @@
                             <tr>
                                 <td><code>drawRect(DrawContext context, int x, int y, int width, int height, int color)</code></td>
                                 <td>Draws filled rectangle</td>
-                                <td><code>GuiUtils.drawRect(context, 10, 10, 100, 50, red)</code></td>
+                                <td><code>ClientGuiUtils.drawRect(context, 10, 10, 100, 50, color)</code></td>
                             </tr>
                             <tr>
-                                <td><code>drawBorderedRect(DrawContext context, int x, int y, int width, int height, int fillColor, int borderColor, int borderWidth)</code></td>
-                                <td>Draws bordered rectangle</td>
-                                <td><code>GuiUtils.drawBorderedRect(context, 10, 10, 100, 50, fill, border, 2)</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>drawGradient(DrawContext context, int x, int y, int width, int height, int startColor, int endColor, boolean horizontal)</code></td>
-                                <td>Draws gradient rectangle</td>
-                                <td><code>GuiUtils.drawGradient(context, 10, 10, 100, 50, start, end, true)</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>drawTexture(DrawContext context, Identifier texture, int x, int y, int u, int v, int width, int height, int textureWidth, int textureHeight)</code></td>
-                                <td>Draws texture</td>
-                                <td><code>GuiUtils.drawTexture(context, texture, 10, 10, 0, 0, 32, 32, 64, 64)</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>drawProgressBar(DrawContext context, int x, int y, int width, int height, double progress, int backgroundColor, int progressColor)</code></td>
+                                <td><code>drawProgressBar(DrawContext context, int x, int y, int width, int height, double progress, int bgColor, int fgColor)</code></td>
                                 <td>Draws progress bar</td>
-                                <td><code>GuiUtils.drawProgressBar(context, 10, 10, 100, 20, 0.75, bg, progress)</code></td>
+                                <td><code>ClientGuiUtils.drawProgressBar(context, x, y, w, h, 0.75, bg, fg)</code></td>
                             </tr>
-                        </tbody>
-                    </table>
-
-                    <h3>Utility Methods</h3>
-                    <table>
-                        <thead>
                             <tr>
-                                <th>Method</th>
-                                <th>Description</th>
-                                <th>Example</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>isPointInRect(int x, int y, int rectX, int rectY, int rectWidth, int rectHeight)</code></td>
-                                <td>Checks if point is in rectangle</td>
-                                <td><code>GuiUtils.isPointInRect(mouseX, mouseY, 10, 10, 100, 50)</code></td>
+                                <td><code>drawCenteredText(DrawContext context, String text, int centerX, int y, int color)</code></td>
+                                <td>Draws centered text</td>
+                                <td><code>ClientGuiUtils.drawCenteredText(context, "Hello", centerX, y, color)</code></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
+                <!-- ENHANCED: TextUtils -->
                 <div class="card">
-                    <h2>🎒 ItemUtils</h2>
-                    <p>Item management and manipulation utilities for Minecraft items and stacks.</p>
+                    <h2>📝 TextUtils <span class="enhanced-badge">ENHANCED</span></h2>
+                    <p>Advanced text operations with performance improvements and interactive components.</p>
                     
-                    <h3>Item Validation</h3>
+                    <h3>Interactive Text Components</h3>
                     <table>
                         <thead>
                             <tr>
@@ -319,29 +479,29 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>isEmpty(ItemStack stack)</code></td>
-                                <td>Checks if stack is empty</td>
-                                <td><code>ItemUtils.isEmpty(stack) // true/false</code></td>
+                                <td><code>clickable(String label, String url)</code></td>
+                                <td>Creates clickable URL text</td>
+                                <td><code>TextUtils.clickable("Visit", "https://example.com")</code></td>
                             </tr>
                             <tr>
-                                <td><code>isNotEmpty(ItemStack stack)</code></td>
-                                <td>Checks if stack is not empty</td>
-                                <td><code>ItemUtils.isNotEmpty(stack) // true/false</code></td>
+                                <td><code>clickableCommand(String label, String command)</code></td>
+                                <td>Creates clickable command text</td>
+                                <td><code>TextUtils.clickableCommand("Run", "/help")</code></td>
                             </tr>
                             <tr>
-                                <td><code>isSameItem(ItemStack stack1, ItemStack stack2)</code></td>
-                                <td>Compares item types</td>
-                                <td><code>ItemUtils.isSameItem(stack1, stack2) // true/false</code></td>
+                                <td><code>withTooltip(String label, String tooltip)</code></td>
+                                <td>Creates text with hover tooltip</td>
+                                <td><code>TextUtils.withTooltip("Hover me", "Tooltip text")</code></td>
                             </tr>
                             <tr>
-                                <td><code>isExactMatch(ItemStack stack1, ItemStack stack2)</code></td>
-                                <td>Compares everything including NBT</td>
-                                <td><code>ItemUtils.isExactMatch(stack1, stack2) // true/false</code></td>
+                                <td><code>interactiveText(String label, String tooltip, String url)</code></td>
+                                <td>Creates text with hover and click</td>
+                                <td><code>TextUtils.interactiveText("Click", "Tooltip", "https://example.com")</code></td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <h3>Item Information</h3>
+                    <h3>Text Wrapping and Formatting</h3>
                     <table>
                         <thead>
                             <tr>
@@ -352,34 +512,29 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>getItemId(Item item)</code></td>
-                                <td>Gets item registry ID</td>
-                                <td><code>ItemUtils.getItemId(item) // "minecraft:diamond_sword"</code></td>
+                                <td><code>wrapText(String text, int width)</code></td>
+                                <td>Wraps text to fit width</td>
+                                <td><code>TextUtils.wrapText(longText, 40)</code></td>
                             </tr>
                             <tr>
-                                <td><code>getItemId(ItemStack stack)</code></td>
-                                <td>Gets item registry ID from stack</td>
-                                <td><code>ItemUtils.getItemId(stack) // "minecraft:diamond_sword"</code></td>
+                                <td><code>createMultiLineTextBox(List&lt;String&gt; lines, int width)</code></td>
+                                <td>Creates multi-line text box</td>
+                                <td><code>TextUtils.createMultiLineTextBox(lines, 50)</code></td>
                             </tr>
                             <tr>
-                                <td><code>getDisplayName(ItemStack stack)</code></td>
-                                <td>Gets display name</td>
-                                <td><code>ItemUtils.getDisplayName(stack) // "Diamond Sword"</code></td>
+                                <td><code>formatNumber(long number)</code></td>
+                                <td>Formats number with separators</td>
+                                <td><code>TextUtils.formatNumber(1234567) // "1,234,567"</code></td>
                             </tr>
                             <tr>
-                                <td><code>getMaxStackSize(Item item)</code></td>
-                                <td>Gets maximum stack size</td>
-                                <td><code>ItemUtils.getMaxStackSize(item) // 64</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>isStackable(Item item)</code></td>
-                                <td>Checks if item is stackable</td>
-                                <td><code>ItemUtils.isStackable(item) // true/false</code></td>
+                                <td><code>formatDuration(long milliseconds)</code></td>
+                                <td>Formats duration as human-readable</td>
+                                <td><code>TextUtils.formatDuration(90000) // "1m 30s"</code></td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <h3>Durability Utilities</h3>
+                    <h3>Enhanced Validation (with caching)</h3>
                     <table>
                         <thead>
                             <tr>
@@ -390,47 +545,130 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>getDurability(ItemStack stack)</code></td>
-                                <td>Gets current durability</td>
-                                <td><code>ItemUtils.getDurability(stack) // 1500</code></td>
+                                <td><code>isBlank(String str)</code></td>
+                                <td>Checks if null, empty, or whitespace</td>
+                                <td><code>TextUtils.isBlank("   ") // true</code></td>
                             </tr>
                             <tr>
-                                <td><code>getMaxDurability(ItemStack stack)</code></td>
-                                <td>Gets maximum durability</td>
-                                <td><code>ItemUtils.getMaxDurability(stack) // 2501</code></td>
+                                <td><code>matches(String str, String regex)</code></td>
+                                <td>Validates with cached regex patterns</td>
+                                <td><code>TextUtils.matches("abc123", "[a-z0-9]+")</code></td>
                             </tr>
                             <tr>
-                                <td><code>isDamaged(ItemStack stack)</code></td>
-                                <td>Checks if item is damaged</td>
-                                <td><code>ItemUtils.isDamaged(stack) // true/false</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>getDamagePercentage(ItemStack stack)</code></td>
-                                <td>Gets damage percentage (0.0 to 1.0)</td>
-                                <td><code>ItemUtils.getDamagePercentage(stack) // 0.4</code></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <h3>Stack Manipulation</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Method</th>
-                                <th>Description</th>
-                                <th>Example</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>copyWithCount(ItemStack stack, int count)</code></td>
-                                <td>Creates copy with different count</td>
-                                <td><code>ItemUtils.copyWithCount(stack, 5)</code></td>
+                                <td><code>progressBar(double percentage, int length)</code></td>
+                                <td>Creates percentage-based progress bar</td>
+                                <td><code>TextUtils.progressBar(0.75, 20)</code></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
+                <!-- ENHANCED: ItemUtils -->
+                <div class="card">
+                    <h2>🎒 ItemUtils <span class="enhanced-badge">ENHANCED</span></h2>
+                    <p>Comprehensive item management with performance optimizations and inventory operations.</p>
+                    
+                    <h3>Enhanced Item Operations</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>getItemById(String id)</code></td>
+                                <td>Gets item by string identifier</td>
+                                <td><code>ItemUtils.getItemById("minecraft:diamond_sword")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>canMerge(ItemStack stack1, ItemStack stack2)</code></td>
+                                <td>Checks if stacks can be merged</td>
+                                <td><code>ItemUtils.canMerge(stack1, stack2)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>isDamageable(ItemStack stack)</code></td>
+                                <td>Checks if item is damageable</td>
+                                <td><code>ItemUtils.isDamageable(stack)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>getDurabilityPercentage(ItemStack stack)</code></td>
+                                <td>Gets durability percentage</td>
+                                <td><code>ItemUtils.getDurabilityPercentage(stack)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Inventory Management</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>insertStack(Inventory inventory, ItemStack stack)</code></td>
+                                <td>Inserts stack into inventory</td>
+                                <td><code>ItemUtils.insertStack(inventory, stack)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>consumeItem(Inventory inventory, Item item, int amount)</code></td>
+                                <td>Consumes items from inventory</td>
+                                <td><code>ItemUtils.consumeItem(inventory, Items.DIAMOND, 5)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>countItem(Inventory inventory, Item item)</code></td>
+                                <td>Counts total items in inventory</td>
+                                <td><code>ItemUtils.countItem(inventory, Items.DIAMOND)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>findFirst(Inventory inventory, Predicate&lt;ItemStack&gt; predicate)</code></td>
+                                <td>Finds first matching stack</td>
+                                <td><code>ItemUtils.findFirst(inventory, stack -> stack.isEnchanted())</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>NBT and Enchantments</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>getNbt(ItemStack stack)</code></td>
+                                <td>Gets NBT data from stack</td>
+                                <td><code>ItemUtils.getNbt(stack)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>setNbt(ItemStack stack, NbtCompound nbt)</code></td>
+                                <td>Sets NBT data on stack</td>
+                                <td><code>ItemUtils.setNbt(stack, nbtData)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>getEnchantmentLevel(ItemStack stack, RegistryEntry&lt;Enchantment&gt; enchantment)</code></td>
+                                <td>Gets enchantment level</td>
+                                <td><code>ItemUtils.getEnchantmentLevel(stack, enchantment)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>isEnchanted(ItemStack stack)</code></td>
+                                <td>Checks if stack is enchanted</td>
+                                <td><code>ItemUtils.isEnchanted(stack)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- General Utilities -->
                 <div class="card">
                     <h2>🔧 General Utilities</h2>
                     <p>General-purpose utilities available through the main ChosenLib class.</p>
@@ -448,7 +686,7 @@
                             <tr>
                                 <td><code>randomInt(int min, int max)</code></td>
                                 <td>Random integer in range</td>
-                                <td><code>ChosenLib.randomInt(1, 10) // 1-10</code></td>
+                                <td><code>ChosenLib.randomInt(1, 10)</code></td>
                             </tr>
                             <tr>
                                 <td><code>clamp(int value, int min, int max)</code></td>
@@ -491,23 +729,181 @@
                         </tbody>
                     </table>
                 </div>
+
+                <!-- Performance and Caching -->
+                <div class="card">
+                    <h2>⚡ Performance and Caching</h2>
+                    <p>ChosenLib v1.4.0 includes comprehensive caching systems for optimal performance.</p>
+                    
+                    <h3>Cache Management</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>ItemUtils.getCacheStats()</code></td>
+                                <td>Gets ItemUtils cache statistics</td>
+                                <td><code>ItemUtils.getCacheStats()</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>TextUtils.getCacheStats()</code></td>
+                                <td>Gets TextUtils cache statistics</td>
+                                <td><code>TextUtils.getCacheStats()</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>ItemUtils.clearCache()</code></td>
+                                <td>Clears ItemUtils caches</td>
+                                <td><code>ItemUtils.clearCache()</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>TextUtils.clearCache()</code></td>
+                                <td>Clears TextUtils caches</td>
+                                <td><code>TextUtils.clearCache()</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Cached Operations</h3>
+                    <ul>
+                        <li><strong>ItemUtils:</strong> Item IDs and max stack sizes are cached for better performance</li>
+                        <li><strong>TextUtils:</strong> Compiled regex patterns and formatting styles are cached</li>
+                        <li><strong>Thread Safety:</strong> All caches use concurrent hash maps for thread-safe operations</li>
+                        <li><strong>Memory Efficient:</strong> Lazy initialization and efficient data structures</li>
+                    </ul>
+
+                    <div class="note note-neutral">
+                        <p><strong>📋 API Versioning:</strong> This API reference is for v1.4.0. Future versions (1.5.0-1.9.0) may add new methods or deprecate existing ones. We maintain backward compatibility within major versions. Check our <a href="changelog.html">changelog</a> for detailed version information.</p>
+                    </div>
+                </div>
             </section>
         </div>
     </main>
 
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib">CurseForge</a>
-                <a href="https://github.com/urmoit/ChosenLib">GitHub</a>
-                <a href="https://discord.gg/CFwkrnFD4P">Discord</a>
-                <a href="LICENSE">License</a>
+            <div class="footer-main">
+                <div class="footer-section">
+                    <h3>ChosenLib</h3>
+                    <p>A comprehensive utility library for Fabric modding that streamlines common development tasks.</p>
+                    <div class="footer-version">
+                        <span class="version-badge">v1.4.0</span>
+                        <span class="last-updated">Last updated: September 6 2025</span>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="installation.html">Installation</a>
+                        <a href="usage.html">Usage Guide</a>
+                        <a href="api.html">API Reference</a>
+                        <a href="changelog.html">Changelog</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Download</h4>
+                    <div class="footer-download-links">
+                        <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" class="download-link">
+                            <span class="icon">📥</span> CurseForge
+                        </a>
+                        <a href="https://modrinth.com/mod/chosenlib" class="download-link">
+                            <span class="icon">📦</span> Modrinth
+                        </a>
+                        <a href="https://github.com/urmoit/ChosenLib/releases" class="download-link">
+                            <span class="icon">💻</span> GitHub
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <div class="footer-social-links">
+                        <a href="https://github.com/urmoit/ChosenLib" class="social-link">
+                            <span class="icon">🐙</span> GitHub
+                        </a>
+                        <a href="https://discord.gg/CFwkrnFD4P" class="social-link">
+                            <span class="icon">💬</span> Discord
+                        </a>
+                        <a href="#" onclick="showLicensePopup(); return false;" class="social-link">
+                            <span class="icon">📄</span> MIT License
+                        </a>
+                        <a href="#" onclick="showModsPopup(); return false;" class="social-link">
+                            <span class="icon">🧩</span> Mods using ChosenLib
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="footer-text">
-                <p>&copy; 2025 ChosenTechies. ChosenLib is licensed under the MIT License.</p>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2025 ChosenTechies. All rights reserved.</p>
+                    <p>ChosenLib is licensed under the MIT License.</p>
+                </div>
+                <div class="footer-tech">
+                    <span>Built with ❤️ for the Minecraft community</span>
+                    <span>•</span>
+                    <span>Fabric • Java 21 • MIT License</span>
+                </div>
             </div>
         </div>
     </footer>
+
+    <!-- License Popup Modal -->
+    <div id="licenseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>MIT License</h2>
+                <span class="close" onclick="closeLicensePopup()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p><strong>Copyright (c) 2025 ChosenTechies</strong></p>
+                <p>Permission is hereby granted, free of charge, to any person obtaining a copy
+                of this software and associated documentation files (the "Software"), to deal
+                in the Software without restriction, including without limitation the rights
+                to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                copies of the Software, and to permit persons to whom the Software is
+                furnished to do so, subject to the following conditions:</p>
+                <p>The above copyright notice and this permission notice shall be included in all
+                copies or substantial portions of the Software.</p>
+                <p><strong>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+                SOFTWARE.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mods Using ChosenLib Modal -->
+    <div id="modsModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Mods using ChosenLib</h2>
+            <span class="close" onclick="closeModsPopup()">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="mod-list">
+              <div class="mod-entry">
+                <div class="mod-title">homy TP</div>
+                <div class="mod-links">
+                  <a href="https://www.curseforge.com/minecraft/mc-mods/homy-tp" class="download-link" target="_blank">CurseForge</a>
+                  <a href="https://modrinth.com/mod/homy-tp" class="download-link" target="_blank">Modrinth</a>
+                </div>
+              </div>
+              <!-- Add more mods here as needed -->
+            </div>
+          </div>
+        </div>
+      </div>
 
     <script src="script.js"></script>
 </body>

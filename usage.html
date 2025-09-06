@@ -12,264 +12,506 @@
     <header class="header">
         <nav class="nav-container">
             <a href="index.html" class="logo">ChosenLib</a>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="getting-started.html">Getting Started</a></li>
                 <li><a href="installation.html">Installation</a></li>
                 <li><a href="usage.html">Usage</a></li>
                 <li><a href="api.html">API Reference</a></li>
                 <li><a href="changelog.html">Changelog</a></li>
             </ul>
+            <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </nav>
     </header>
 
     <main>
         <div class="container">
             <section class="hero">
-                <h1>Usage Guide</h1>
+                <h1>Usage Guide v1.4.0</h1>
                 <p>Learn how to use ChosenLib utilities effectively in your Fabric mods with practical examples and best practices.</p>
             </section>
 
             <section class="content">
                 <div class="card">
                     <h2>🚀 Quick Start</h2>
-                    <p>Get started with ChosenLib in just a few steps:</p>
+                    <p>Get started with ChosenLib v1.4.0 in just a few steps:</p>
                     
                     <h3>1. Import the Utilities</h3>
-                    <pre><code>import com.chosen.lib.util.TextUtils;
-import com.chosen.lib.util.GuiUtils; // Client-side only
+                    <pre><code>// New in v1.4.0
+import com.chosen.lib.util.WorldUtils;
+import com.chosen.lib.util.EntityUtils;
+import com.chosen.lib.util.NetworkUtils;
+
+// Enhanced existing utilities
+import com.chosen.lib.util.TextUtils;
+import com.chosen.lib.util.GuiUtils; // Now server-side compatible!
 import com.chosen.lib.util.ItemUtils;</code></pre>
 
                     <h3>2. Use Basic Functions</h3>
-                    <pre><code>// Send a success message to chat
-TextUtils.success("Operation completed successfully!");
+                    <pre><code>// World operations (NEW!)
+WorldUtils.setBlockState(world, pos, newState);
 
-// Check if an item stack is empty
-boolean isEmpty = ItemUtils.isEmpty(player.getMainHandStack());
+// Entity operations (NEW!)
+EntityUtils.heal(entity, 10.0f);
 
-// Center a GUI element (client-side)
-int centerX = GuiUtils.centerX(200);</code></pre>
+// Network operations (NEW!)
+PacketByteBuf buffer = NetworkUtils.createBuffer();
+
+// Enhanced text operations
+Text interactive = TextUtils.interactiveText("Click me", "Tooltip", "https://example.com");
+
+// Enhanced item operations
+ItemUtils.insertStack(inventory, stack);</code></pre>
                 </div>
 
+                <!-- NEW: WorldUtils Examples -->
                 <div class="card">
-                    <h2>📝 TextUtils Examples</h2>
-                    <p>TextUtils provides comprehensive text manipulation and formatting capabilities.</p>
+                    <h2>🌍 WorldUtils Examples <span class="new-badge">NEW</span></h2>
+                    <p>WorldUtils provides safe world and block manipulation utilities.</p>
 
-                    <h3>Basic Text Messages</h3>
-                    <pre><code>// Send different types of messages
-TextUtils.success("Task completed!");
+                    <h3>Block Operations</h3>
+                    <pre><code>// Safe block operations with validation
+BlockState state = WorldUtils.getBlockState(world, pos);
+boolean success = WorldUtils.setBlockState(world, pos, newState);
+
+// Check if position is loaded
+if (WorldUtils.isPositionLoaded(world, pos)) {
+    // Safe to operate on this position
+}
+
+// Check if block can be placed
+if (WorldUtils.canPlaceBlock(world, pos, state)) {
+    WorldUtils.setBlockState(world, pos, state);
+}</code></pre>
+
+                    <h3>Area Operations</h3>
+                    <pre><code>// Get blocks in different shapes
+List&lt;BlockPos&gt; cubeBlocks = WorldUtils.getBlocksInCube(center, 5);
+List&lt;BlockPos&gt; sphereBlocks = WorldUtils.getBlocksInSphere(center, 5.0);
+List&lt;BlockPos&gt; areaBlocks = WorldUtils.getBlocksInArea(pos1, pos2);
+
+// Find specific blocks
+List&lt;BlockPos&gt; ores = WorldUtils.findBlocks(world, center, 10, 
+    state -> state.isOf(Blocks.DIAMOND_ORE));
+
+// Find nearest block
+BlockPos nearest = WorldUtils.findNearestBlock(world, center, 20,
+    state -> state.isOf(Blocks.WATER));
+
+// Replace blocks in area
+int replaced = WorldUtils.replaceBlocks(world, center, 5,
+    Blocks.STONE.getDefaultState(), Blocks.COBBLESTONE.getDefaultState());</code></pre>
+
+                    <h3>World Properties</h3>
+                    <pre><code>// Get world information
+RegistryEntry&lt;Biome&gt; biome = WorldUtils.getBiome(world, pos);
+int lightLevel = WorldUtils.getLightLevel(world, pos);
+boolean canSeeSky = WorldUtils.canSeeSky(world, pos);
+BlockPos highest = WorldUtils.getHighestBlock(world, x, z);
+
+// Chunk operations
+Chunk chunk = WorldUtils.getChunk(world, pos);
+boolean loaded = WorldUtils.isChunkLoaded(world, pos);
+ChunkPos chunkPos = WorldUtils.getChunkPos(pos);
+
+// Fluid operations
+FluidState fluidState = WorldUtils.getFluidState(world, pos);
+boolean hasFluid = WorldUtils.hasFluid(world, pos, Fluids.WATER);</code></pre>
+                </div>
+
+                <!-- NEW: EntityUtils Examples -->
+                <div class="card">
+                    <h2>👤 EntityUtils Examples <span class="new-badge">NEW</span></h2>
+                    <p>EntityUtils provides comprehensive entity management utilities.</p>
+
+                    <h3>Health Management</h3>
+                    <pre><code>// Health operations
+float health = EntityUtils.getHealth(entity);
+EntityUtils.setHealth(entity, 20.0f);
+EntityUtils.heal(entity, 10.0f);
+EntityUtils.damage(entity, damageSource, 5.0f);
+
+// Health validation
+float maxHealth = EntityUtils.getMaxHealth(entity);
+boolean isAlive = EntityUtils.isAlive(entity);
+boolean isFullHealth = EntityUtils.isFullHealth(entity);</code></pre>
+
+                    <h3>Status Effects</h3>
+                    <pre><code>// Status effect management
+boolean hasEffect = EntityUtils.hasStatusEffect(entity, StatusEffects.SPEED);
+EntityUtils.addStatusEffect(entity, new StatusEffectInstance(StatusEffects.SPEED, 200, 1));
+EntityUtils.removeStatusEffect(entity, StatusEffects.POISON);
+EntityUtils.clearStatusEffects(entity);
+
+// Get effect information
+StatusEffectInstance effect = EntityUtils.getStatusEffect(entity, StatusEffects.SPEED);
+int duration = EntityUtils.getStatusEffectDuration(entity, StatusEffects.SPEED);</code></pre>
+
+                    <h3>Teleportation</h3>
+                    <pre><code>// Teleportation methods
+EntityUtils.teleport(entity, new Vec3d(100, 64, 100));
+EntityUtils.teleport(entity, new BlockPos(100, 64, 100));
+EntityUtils.teleportToEntity(entity, targetEntity);
+
+// Safe teleportation with validation
+boolean success = EntityUtils.safeTeleport(entity, targetPos);</code></pre>
+
+                    <h3>Entity Finding</h3>
+                    <pre><code>// Find entities in area
+List&lt;Entity&gt; nearbyEntities = EntityUtils.getEntitiesInRadius(world, center, 10.0, null);
+List&lt;PlayerEntity&gt; players = EntityUtils.getPlayersInRadius(world, center, 20.0);
+PlayerEntity nearest = EntityUtils.findNearestPlayer(world, center, 50.0);
+
+// Find specific entity types
+List&lt;MobEntity&gt; mobs = EntityUtils.getEntitiesOfType(world, center, 15.0, MobEntity.class);
+List&lt;ItemEntity&gt; items = EntityUtils.getEntitiesOfType(world, center, 5.0, ItemEntity.class);</code></pre>
+
+                    <h3>Physics Operations</h3>
+                    <pre><code>// Velocity and movement
+EntityUtils.setVelocity(entity, new Vec3d(0, 1, 0));
+EntityUtils.launchTowards(entity, targetPos, 2.0);
+EntityUtils.knockback(entity, sourcePos, 1.5);
+
+// Launch entity upward
+EntityUtils.launchUp(entity, 1.0);</code></pre>
+                </div>
+
+                <!-- NEW: NetworkUtils Examples -->
+                <div class="card">
+                    <h2>🌐 NetworkUtils Examples <span class="new-badge">NEW</span></h2>
+                    <p>NetworkUtils provides easy networking and packet utilities.</p>
+
+                    <h3>Packet Creation</h3>
+                    <pre><code>// Create empty buffer
+PacketByteBuf buffer = NetworkUtils.createBuffer();
+
+// Create buffer with data
+PacketByteBuf buffer = NetworkUtils.createBuffer(buf -> {
+    buf.writeString("Hello World");
+    buf.writeInt(42);
+});
+
+// Create simple packets
+PacketByteBuf simplePacket = NetworkUtils.createSimplePacket("test message");
+PacketByteBuf posPacket = NetworkUtils.createPositionPacket(blockPos);</code></pre>
+
+                    <h3>Data Serialization</h3>
+                    <pre><code>// Write different data types
+NetworkUtils.writeString(buffer, "Hello World");
+NetworkUtils.writeBlockPos(buffer, new BlockPos(100, 64, 100));
+NetworkUtils.writeVec3d(buffer, new Vec3d(1.0, 2.0, 3.0));
+NetworkUtils.writeUuid(buffer, player.getUuid());
+
+// Write arrays
+NetworkUtils.writeBooleanArray(buffer, new boolean[]{true, false, true});
+NetworkUtils.writeIntArray(buffer, new int[]{1, 2, 3, 4, 5});
+NetworkUtils.writeStringArray(buffer, new String[]{"hello", "world"});
+
+// Write collections
+NetworkUtils.writeStringList(buffer, Arrays.asList("item1", "item2", "item3"));</code></pre>
+
+                    <h3>Packet Sending</h3>
+                    <pre><code>// Send to specific player
+NetworkUtils.sendToPlayer(player, channelId, buffer);
+
+// Send to multiple players
+List&lt;ServerPlayerEntity&gt; players = Arrays.asList(player1, player2);
+NetworkUtils.sendToPlayers(players, channelId, buffer);
+
+// Send to all players in world
+NetworkUtils.sendToWorld(world, channelId, buffer);
+
+// Send to players in radius
+NetworkUtils.sendToPlayersInRadius(world, center, 50.0, channelId, buffer);</code></pre>
+
+                    <h3>Safe Operations</h3>
+                    <pre><code>// Safe buffer operations with error handling
+boolean success = NetworkUtils.safeBufferOperation(buffer, buf -> {
+    buf.writeString("data");
+    buf.writeInt(123);
+    return true;
+});
+
+// Check buffer state
+boolean hasData = NetworkUtils.hasReadableBytes(buffer, 4);
+int remaining = NetworkUtils.getRemainingBytes(buffer);</code></pre>
+                </div>
+
+                <!-- ENHANCED: TextUtils Examples -->
+                <div class="card">
+                    <h2>📝 Enhanced TextUtils Examples <span class="enhanced-badge">ENHANCED</span></h2>
+                    <p>TextUtils now includes interactive components and performance improvements.</p>
+
+                    <h3>Interactive Text Components</h3>
+                    <pre><code>// Create interactive text
+Text clickableUrl = TextUtils.clickable("Visit website", "https://example.com");
+Text clickableCommand = TextUtils.clickableCommand("Run help", "/help");
+Text withTooltip = TextUtils.withTooltip("Hover me", "This is a tooltip");
+
+// Combined interactive text
+Text interactive = TextUtils.interactiveText("Click me", "Tooltip text", "https://example.com");</code></pre>
+
+                    <h3>Text Wrapping and Formatting</h3>
+                    <pre><code>// Text wrapping
+List&lt;String&gt; wrapped = TextUtils.wrapText(longText, 40);
+Text multiLineBox = TextUtils.createMultiLineTextBox(lines, 50);
+
+// Number and duration formatting
+String formatted = TextUtils.formatNumber(1234567); // "1,234,567"
+String decimal = TextUtils.formatDecimal(123.456, 2); // "123.46"
+String duration = TextUtils.formatDuration(90000); // "1m 30s"</code></pre>
+
+                    <h3>Enhanced Validation (with caching)</h3>
+                    <pre><code>// Cached pattern matching for better performance
+boolean isBlank = TextUtils.isBlank("   "); // true
+boolean matches = TextUtils.matches("abc123", "[a-z0-9]+"); // Cached regex
+
+// Progress bars with percentages
+Text progressBar = TextUtils.progressBar(0.75, 20); // 75% progress</code></pre>
+
+                    <h3>Legacy Text Operations</h3>
+                    <pre><code>// Basic text operations (still available)
+TextUtils.success("Operation completed!");
 TextUtils.error("Something went wrong!");
-TextUtils.info("Here's some information");
-
-// Create clickable links
-TextUtils.clickable("Visit our website", "https://example.com");</code></pre>
-
-                    <h3>Text Manipulation</h3>
-                    <pre><code>// String manipulation
-String capitalized = TextUtils.capitalize("hello world"); // "Hello world"
-String repeated = TextUtils.repeat("abc", 3); // "abcabcabc"
-String truncated = TextUtils.truncate("Very long text", 10); // "Very long..."
-String reversed = TextUtils.reverse("hello"); // "olleh"
-
-// Text validation
-boolean isEmail = TextUtils.isValidEmail("user@example.com"); // true
-boolean isAlpha = TextUtils.isAlphanumeric("abc123"); // true
-String clean = TextUtils.removeSpecialChars("Hello@World!"); // "HelloWorld"</code></pre>
-
-                    <h3>Visual Elements</h3>
-                    <pre><code>// Create a progress bar
-Text progressBar = TextUtils.progressBar(75, 100, 20);
-
-// Center text in a specific width
-String centered = TextUtils.centerText("Centered", 50);
-
-// Create a text box
-String textBox = TextUtils.createTextBox("Important message", 30);</code></pre>
-
-                    <h3>Advanced Text Operations</h3>
-                    <pre><code>// Check if text is palindrome
-boolean isPal = TextUtils.isPalindrome("racecar"); // true
-
-// Count words
-int wordCount = TextUtils.wordCount("Hello world"); // 2
-
-// Convert to title case
-String title = TextUtils.toTitleCase("hello world"); // "Hello World"</code></pre>
+String capitalized = TextUtils.capitalize("hello world");
+boolean isEmail = TextUtils.isValidEmail("user@example.com");</code></pre>
                 </div>
 
+                <!-- ENHANCED: ItemUtils Examples -->
                 <div class="card">
-                    <h2>🎨 GuiUtils Examples (Client-side only)</h2>
-                    <p>GuiUtils provides GUI utilities for creating beautiful Minecraft interfaces.</p>
+                    <h2>🎒 Enhanced ItemUtils Examples <span class="enhanced-badge">ENHANCED</span></h2>
+                    <p>ItemUtils now includes inventory operations and performance optimizations.</p>
 
-                    <h3>Screen Positioning</h3>
-                    <pre><code>// Center elements on screen
-int centerX = GuiUtils.centerX(200); // Center 200px wide element
-int centerY = GuiUtils.centerY(100); // Center 100px tall element
+                    <h3>Enhanced Item Operations</h3>
+                    <pre><code>// Enhanced validation
+boolean canMerge = ItemUtils.canMerge(stack1, stack2);
+boolean isDamageable = ItemUtils.isDamageable(stack);
+boolean isEnchanted = ItemUtils.isEnchanted(stack);
 
-// Center within a specific range
-int centered = GuiUtils.center(50, 200); // Center 50px in 200px range</code></pre>
+// Item lookup by ID
+Item item = ItemUtils.getItemById("minecraft:diamond_sword");
+Item item2 = ItemUtils.getItemById(new Identifier("minecraft", "diamond_sword"));
 
-                    <h3>Color Utilities</h3>
-                    <pre><code>// Create colors
+// Enhanced durability operations
+double durabilityPercent = ItemUtils.getDurabilityPercentage(stack);
+ItemUtils.damageItem(stack, 10);
+ItemUtils.repairItem(stack, 50);
+ItemUtils.fullyRepairItem(stack);</code></pre>
+
+                    <h3>Inventory Management</h3>
+                    <pre><code>// Insert items into inventory
+ItemStack remaining = ItemUtils.insertStack(inventory, stack);
+
+// Consume items from inventory
+int consumed = ItemUtils.consumeItem(inventory, Items.DIAMOND, 5);
+
+// Count items in inventory
+int total = ItemUtils.countItem(inventory, Items.DIAMOND);
+
+// Find items in inventory
+Optional&lt;ItemStack&gt; found = ItemUtils.findFirst(inventory, 
+    stack -> stack.isEnchanted());
+List&lt;ItemStack&gt; enchanted = ItemUtils.findAll(inventory,
+    stack -> stack.isEnchanted());</code></pre>
+
+                    <h3>NBT and Enchantments</h3>
+                    <pre><code>// NBT operations
+NbtCompound nbt = ItemUtils.getNbt(stack);
+ItemUtils.setNbt(stack, nbtData);
+boolean hasNbt = ItemUtils.hasNbt(stack);
+
+// Enchantment operations
+int level = ItemUtils.getEnchantmentLevel(stack, enchantment);
+boolean hasEnchant = ItemUtils.hasEnchantment(stack, enchantment);
+
+// Get all enchantments
+Map&lt;RegistryEntry&lt;Enchantment&gt;, Integer&gt; enchantments = ItemUtils.getEnchantments(stack);</code></pre>
+
+                    <h3>Performance Features</h3>
+                    <pre><code>// Cached operations for better performance
+String itemId = ItemUtils.getItemId(stack); // Cached
+int maxStack = ItemUtils.getMaxStackSize(item); // Cached
+
+// Cache management
+String stats = ItemUtils.getCacheStats();
+ItemUtils.clearCache();</code></pre>
+                </div>
+
+                <!-- ENHANCED: GuiUtils Examples -->
+                <div class="card">
+                    <h2>🎨 Enhanced GuiUtils Examples <span class="enhanced-badge">ENHANCED</span></h2>
+                    <p>GuiUtils is now server-side compatible with client-side extensions.</p>
+
+                    <h3>Server-Side Color Operations</h3>
+                    <pre><code>// Color creation (works on both client and server)
 int red = GuiUtils.rgb(255, 0, 0);
 int transparent = GuiUtils.rgba(255, 0, 0, 128);
-int withAlpha = GuiUtils.withAlpha(red, 128);
 
-// Convert HSV to RGB
-int green = GuiUtils.hsvToRgb(120, 1.0f, 1.0f);
+// Color component extraction
+int redComponent = GuiUtils.getRed(color);
+int greenComponent = GuiUtils.getGreen(color);
+int blueComponent = GuiUtils.getBlue(color);
+int alphaComponent = GuiUtils.getAlpha(color);
 
-// Adjust brightness
-int brighter = GuiUtils.adjustBrightness(red, 1.5f);</code></pre>
+// Color interpolation
+int interpolated = GuiUtils.interpolateColor(red, blue, 0.5f);</code></pre>
 
-                    <h3>Drawing Shapes</h3>
-                    <pre><code>// Draw a filled rectangle
-GuiUtils.drawRect(context, 10, 10, 100, 50, red);
+                    <h3>Mathematical Operations</h3>
+                    <pre><code>// Positioning (server-side compatible)
+int centerX = GuiUtils.centerX(elementWidth, containerWidth);
+int centerY = GuiUtils.centerY(elementHeight, containerHeight);
 
-// Draw a bordered rectangle
-GuiUtils.drawBorderedRect(context, 10, 10, 100, 50, fillColor, borderColor, 2);
+// Collision detection
+boolean overlaps = GuiUtils.rectanglesOverlap(x1, y1, w1, h1, x2, y2, w2, h2);
+boolean pointInRect = GuiUtils.isPointInRect(x, y, rectX, rectY, rectW, rectH);
 
-// Draw a gradient
-GuiUtils.drawGradient(context, 10, 10, 100, 50, startColor, endColor, true);
+// Distance calculation
+double distance = GuiUtils.distance(x1, y1, x2, y2);</code></pre>
 
-// Draw a texture
-GuiUtils.drawTexture(context, texture, 10, 10, 0, 0, 32, 32, 64, 64);</code></pre>
+                    <h3>Client-Side Rendering (ClientGuiUtils)</h3>
+                    <pre><code>// Import client-side utilities
+import com.chosen.lib.util.client.ClientGuiUtils;
 
-                    <h3>UI Components</h3>
-                    <pre><code>// Draw a progress bar
-GuiUtils.drawProgressBar(context, 10, 10, 100, 20, 0.75, bgColor, progressColor);
+// Drawing operations (client-side only)
+ClientGuiUtils.drawRect(context, x, y, width, height, color);
+ClientGuiUtils.drawProgressBar(context, x, y, width, height, 0.75, bgColor, fgColor);
+ClientGuiUtils.drawCenteredText(context, "Hello", centerX, y, color);
 
-// Check if mouse is over a rectangle
-boolean isHovering = GuiUtils.isPointInRect(mouseX, mouseY, 10, 10, 100, 50);</code></pre>
-                </div>
-
-                <div class="card">
-                    <h2>🎒 ItemUtils Examples</h2>
-                    <p>ItemUtils provides comprehensive item management and manipulation utilities.</p>
-
-                    <h3>Item Validation</h3>
-                    <pre><code>// Check if item stacks are empty
-boolean isEmpty = ItemUtils.isEmpty(stack);
-boolean isNotEmpty = ItemUtils.isNotEmpty(stack);
-
-// Compare items
-boolean sameType = ItemUtils.isSameItem(stack1, stack2);
-boolean exactMatch = ItemUtils.isExactMatch(stack1, stack2);</code></pre>
-
-                    <h3>Item Information</h3>
-                    <pre><code>// Get item information
-String itemId = ItemUtils.getItemId(stack); // "minecraft:diamond_sword"
-String displayName = ItemUtils.getDisplayName(stack); // "Diamond Sword"
-int maxStack = ItemUtils.getMaxStackSize(item); // 64
-boolean stackable = ItemUtils.isStackable(item); // true</code></pre>
-
-                    <h3>Durability Utilities</h3>
-                    <pre><code>// Check durability
-int durability = ItemUtils.getDurability(stack);
-int maxDurability = ItemUtils.getMaxDurability(stack);
-boolean damaged = ItemUtils.isDamaged(stack);
-double damagePercent = ItemUtils.getDamagePercentage(stack); // 0.0 to 1.0</code></pre>
-
-                    <h3>Stack Manipulation</h3>
-                    <pre><code>// Create a copy with different count
-ItemStack newStack = ItemUtils.copyWithCount(stack, 5);</code></pre>
-                </div>
-
-                <div class="card">
-                    <h2>🔧 General Utilities</h2>
-                    <p>General-purpose utilities available through the main ChosenLib class.</p>
-
-                    <h3>Math Utilities</h3>
-                    <pre><code>// Random number generation
-int random = ChosenLib.randomInt(1, 10); // Random int between 1 and 10
-
-// Value clamping
-int clamped = ChosenLib.clamp(15, 0, 10); // 10
-
-// Linear interpolation
-double interpolated = ChosenLib.lerp(0.0, 10.0, 0.5); // 5.0
-
-// Range checking
-boolean inRange = ChosenLib.isBetween(5, 1, 10); // true</code></pre>
-
-                    <h3>Utility Functions</h3>
-                    <pre><code>// Null-safe equality
-boolean equals = ChosenLib.safeEquals("a", "a"); // true
-
-// Debug logging
-ChosenLib.debugLog("Debug information");</code></pre>
+// Advanced drawing
+ClientGuiUtils.drawBorderedRect(context, x, y, w, h, fillColor, borderColor, borderWidth);
+ClientGuiUtils.drawGradient(context, x, y, w, h, startColor, endColor, horizontal);</code></pre>
                 </div>
 
                 <div class="card">
                     <h2>🎯 Real-World Examples</h2>
-                    <p>Here are some practical examples of how to use ChosenLib in your mods:</p>
+                    <p>Here are some practical examples using v1.4.0 features:</p>
 
-                    <h3>Custom GUI Screen</h3>
-                    <pre><code>public class CustomScreen extends Screen {
-    @Override
-    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        super.render(context, mouseX, mouseY, delta);
+                    <h3>World Modification Tool</h3>
+                    <pre><code>public class WorldTool {
+    public void replaceOresInArea(ServerWorld world, BlockPos center, int radius) {
+        // Find all diamond ores in area
+        List&lt;BlockPos&gt; ores = WorldUtils.findBlocks(world, center, radius,
+            state -> state.isOf(Blocks.DIAMOND_ORE));
         
-        // Center the GUI
-        int centerX = GuiUtils.centerX(200);
-        int centerY = GuiUtils.centerY(100);
+        // Replace with emerald ore
+        for (BlockPos pos : ores) {
+            if (WorldUtils.canPlaceBlock(world, pos, Blocks.EMERALD_ORE.getDefaultState())) {
+                WorldUtils.setBlockState(world, pos, Blocks.EMERALD_ORE.getDefaultState());
+            }
+        }
         
-        // Draw background
-        GuiUtils.drawRect(context, centerX, centerY, 200, 100, 
-                         GuiUtils.rgba(0, 0, 0, 200));
+        TextUtils.success("Replaced " + ores.size() + " diamond ores with emerald ore!");
+    }
+}</code></pre>
+
+                    <h3>Entity Management System</h3>
+                    <pre><code>public class EntityManager {
+    public void healNearbyPlayers(ServerWorld world, Vec3d center, double radius) {
+        List&lt;PlayerEntity&gt; players = EntityUtils.getPlayersInRadius(world, center, radius);
         
-        // Draw border
-        GuiUtils.drawBorderedRect(context, centerX, centerY, 200, 100,
-                                 GuiUtils.rgba(0, 0, 0, 200),
-                                 GuiUtils.rgb(255, 255, 255), 2);
+        for (PlayerEntity player : players) {
+            if (!EntityUtils.isFullHealth(player)) {
+                EntityUtils.heal(player, 10.0f);
+                
+                // Send feedback
+                Text message = TextUtils.success("You have been healed!");
+                player.sendMessage(message, false);
+            }
+        }
+    }
+    
+    public void teleportToSafety(Entity entity) {
+        BlockPos safePos = WorldUtils.getHighestBlock(entity.getWorld(), 
+            (int)entity.getX(), (int)entity.getZ());
         
-        // Check if mouse is hovering
-        if (GuiUtils.isPointInRect(mouseX, mouseY, centerX, centerY, 200, 100)) {
-            // Mouse is over the GUI
+        if (EntityUtils.safeTeleport(entity, safePos.up())) {
+            TextUtils.success("Teleported to safety!");
+        } else {
+            TextUtils.error("Could not find safe location!");
         }
     }
 }</code></pre>
 
-                    <h3>Item Processing System</h3>
-                    <pre><code>public void processItem(ItemStack input, ItemStack output) {
-    // Validate input
-    if (ItemUtils.isEmpty(input)) {
-        TextUtils.error("No input item provided!");
-        return;
+                    <h3>Network Communication System</h3>
+                    <pre><code>public class NetworkManager {
+    public static final Identifier CHANNEL_ID = new Identifier("mymod", "data");
+    
+    public void sendPlayerData(ServerPlayerEntity player, String data, int value) {
+        PacketByteBuf buffer = NetworkUtils.createBuffer(buf -> {
+            NetworkUtils.writeString(buf, data);
+            buf.writeInt(value);
+            NetworkUtils.writeBlockPos(buf, player.getBlockPos());
+        });
+        
+        NetworkUtils.sendToPlayer(player, CHANNEL_ID, buffer);
     }
     
-    // Check if items are compatible
-    if (!ItemUtils.isSameItem(input, output)) {
-        TextUtils.error("Incompatible items!");
-        return;
+    public void broadcastToArea(ServerWorld world, Vec3d center, String message) {
+        PacketByteBuf buffer = NetworkUtils.createSimplePacket(message);
+        NetworkUtils.sendToPlayersInRadius(world, center, 100.0, CHANNEL_ID, buffer);
     }
-    
-    // Process the item
-    if (ItemUtils.isDamaged(input)) {
-        double damage = ItemUtils.getDamagePercentage(input);
-        TextUtils.info("Processing damaged item (" + 
-                      String.format("%.1f", damage * 100) + "% damaged)");
-    }
-    
-    // Success message
-    TextUtils.success("Item processed successfully!");
 }</code></pre>
 
-                    <h3>Command with Rich Text</h3>
-                    <pre><code>public class CustomCommand {
-    public static void execute(CommandContext<ServerCommandSource> context) {
-        ServerCommandSource source = context.getSource();
+                    <h3>Advanced Inventory System</h3>
+                    <pre><code>public class InventoryManager {
+    public boolean processRecipe(Inventory inventory, Item input, Item output, int count) {
+        // Check if we have enough input items
+        int available = ItemUtils.countItem(inventory, input);
+        if (available < count) {
+            TextUtils.error("Not enough " + ItemUtils.getItemId(input.getDefaultStack()));
+            return false;
+        }
         
-        // Send formatted messages
-        source.sendFeedback(() -> TextUtils.success("Command executed!"), false);
+        // Consume input items
+        int consumed = ItemUtils.consumeItem(inventory, input, count);
         
-        // Send clickable links
-        source.sendFeedback(() -> 
-            TextUtils.clickable("Visit our website", "https://example.com"), false);
+        // Create output stack
+        ItemStack outputStack = new ItemStack(output, consumed);
         
-        // Send progress information
-        Text progressBar = TextUtils.progressBar(75, 100, 20);
-        source.sendFeedback(() -> progressBar, false);
+        // Try to insert output
+        ItemStack remaining = ItemUtils.insertStack(inventory, outputStack);
+        
+        if (remaining.isEmpty()) {
+            TextUtils.success("Recipe processed successfully!");
+            return true;
+        } else {
+            TextUtils.error("Not enough space for output!");
+            return false;
+        }
     }
 }</code></pre>
+                </div>
+
+                <div class="card">
+                    <h2>⚡ Performance Features</h2>
+                    <p>ChosenLib v1.4.0 includes comprehensive performance optimizations:</p>
+
+                    <h3>Caching Systems</h3>
+                    <pre><code>// ItemUtils caching
+String itemId = ItemUtils.getItemId(stack); // Cached for performance
+int maxStack = ItemUtils.getMaxStackSize(item); // Cached
+
+// TextUtils caching
+boolean matches = TextUtils.matches(text, regex); // Regex patterns cached
+String formatted = TextUtils.formatNumber(123456); // Formatters cached
+
+// Cache management
+String itemStats = ItemUtils.getCacheStats();
+String textStats = TextUtils.getCacheStats();
+
+// Clear caches if needed
+ItemUtils.clearCache();
+TextUtils.clearCache();</code></pre>
+
+                    <h3>Thread Safety</h3>
+                    <ul>
+                        <li>All caches use <code>ConcurrentHashMap</code> for thread-safe operations</li>
+                        <li>Utility methods are designed to be thread-safe</li>
+                        <li>No shared mutable state between method calls</li>
+                    </ul>
                 </div>
 
                 <div class="card">
@@ -277,45 +519,52 @@ ChosenLib.debugLog("Debug information");</code></pre>
                     
                     <h3>Performance Tips</h3>
                     <ul>
-                        <li><strong>Cache frequently used values:</strong> Store color values and positions to avoid recalculating</li>
-                        <li><strong>Use appropriate utility methods:</strong> Choose the most efficient method for your use case</li>
-                        <li><strong>Validate inputs:</strong> Always check for null or empty values before processing</li>
+                        <li><strong>Use caching features:</strong> ItemUtils and TextUtils cache frequently used data</li>
+                        <li><strong>Batch operations:</strong> Use area operations instead of individual block operations</li>
+                        <li><strong>Validate before processing:</strong> Check if positions are loaded before world operations</li>
+                        <li><strong>Use appropriate radius:</strong> Don't use unnecessarily large search radii</li>
                     </ul>
 
                     <h3>Code Organization</h3>
                     <ul>
-                        <li><strong>Import only what you need:</strong> Don't import unused utilities</li>
-                        <li><strong>Separate client and server code:</strong> Keep GuiUtils usage in client-side code only</li>
-                        <li><strong>Use meaningful variable names:</strong> Make your code readable and maintainable</li>
+                        <li><strong>Separate client and server:</strong> Use ClientGuiUtils for client-side rendering</li>
+                        <li><strong>Handle errors gracefully:</strong> Always check return values and handle failures</li>
+                        <li><strong>Use meaningful feedback:</strong> Provide clear messages to users</li>
+                        <li><strong>Validate inputs:</strong> Check for null values and valid ranges</li>
                     </ul>
 
-                    <h3>Error Handling</h3>
+                    <h3>Network Best Practices</h3>
                     <ul>
-                        <li><strong>Provide user feedback:</strong> Use TextUtils to inform users of errors and successes</li>
-                        <li><strong>Validate inputs:</strong> Check parameters before using utility methods</li>
-                        <li><strong>Handle edge cases:</strong> Consider what happens with null or invalid inputs</li>
+                        <li><strong>Minimize packet size:</strong> Only send necessary data</li>
+                        <li><strong>Use appropriate targeting:</strong> Don't broadcast when you can send to specific players</li>
+                        <li><strong>Handle packet failures:</strong> Use safe operations when possible</li>
+                        <li><strong>Validate packet data:</strong> Always validate received data</li>
                     </ul>
+
+                    <div class="note note-success">
+                        <p><strong>📚 API Stability:</strong> The current API (v1.4.0) is stable for production use. While we plan new features for v1.5.0-1.9.0, we maintain backward compatibility. See our <a href="changelog.html">changelog</a> for detailed migration information.</p>
+                    </div>
                 </div>
 
                 <div class="card">
                     <h2>🔗 Next Steps</h2>
-                    <p>Now that you understand the basics, explore these resources:</p>
+                    <p>Now that you understand the v1.4.0 features, explore these resources:</p>
                     
                     <div class="features-grid">
                         <div class="feature-card">
                             <h3>📚 API Reference</h3>
-                            <p>Detailed documentation for all utility methods and classes.</p>
+                            <p>Complete documentation for all v1.4.0 methods and classes.</p>
                             <a href="api.html" class="btn btn-primary">View API</a>
                         </div>
                         <div class="feature-card">
-                            <h3>🚀 Getting Started</h3>
-                            <p>Learn how to set up ChosenLib in your project.</p>
-                            <a href="getting-started.html" class="btn btn-secondary">Get Started</a>
+                            <h3>📋 Changelog</h3>
+                            <p>See detailed information about v1.4.0 changes and improvements.</p>
+                            <a href="changelog.html" class="btn btn-secondary">View Changelog</a>
                         </div>
                         <div class="feature-card">
-                            <h3>📋 Changelog</h3>
-                            <p>See what's new and what's coming in future versions.</p>
-                            <a href="changelog.html" class="btn btn-secondary">View Changelog</a>
+                            <h3>🚀 Getting Started</h3>
+                            <p>Learn how to set up ChosenLib v1.4.0 in your project.</p>
+                            <a href="getting-started.html" class="btn btn-secondary">Get Started</a>
                         </div>
                     </div>
                 </div>
@@ -325,17 +574,124 @@ ChosenLib.debugLog("Debug information");</code></pre>
 
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib">CurseForge</a>
-                <a href="https://github.com/urmoit/ChosenLib">GitHub</a>
-                <a href="https://discord.gg/CFwkrnFD4P">Discord</a>
-                <a href="LICENSE">License</a>
+            <div class="footer-main">
+                <div class="footer-section">
+                    <h3>ChosenLib</h3>
+                    <p>A comprehensive utility library for Fabric modding that streamlines common development tasks.</p>
+                    <div class="footer-version">
+                        <span class="version-badge">v1.4.0</span>
+                        <span class="last-updated">Last updated: September 6 2025</span>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="installation.html">Installation</a>
+                        <a href="usage.html">Usage Guide</a>
+                        <a href="api.html">API Reference</a>
+                        <a href="changelog.html">Changelog</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Download</h4>
+                    <div class="footer-download-links">
+                        <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" class="download-link">
+                            <span class="icon">📥</span> CurseForge
+                        </a>
+                        <a href="https://modrinth.com/mod/chosenlib" class="download-link">
+                            <span class="icon">📦</span> Modrinth
+                        </a>
+                        <a href="https://github.com/urmoit/ChosenLib/releases" class="download-link">
+                            <span class="icon">💻</span> GitHub
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <div class="footer-social-links">
+                        <a href="https://github.com/urmoit/ChosenLib" class="social-link">
+                            <span class="icon">🐙</span> GitHub
+                        </a>
+                        <a href="https://discord.gg/CFwkrnFD4P" class="social-link">
+                            <span class="icon">💬</span> Discord
+                        </a>
+                        <a href="#" onclick="showLicensePopup(); return false;" class="social-link">
+                            <span class="icon">📄</span> MIT License
+                        </a>
+                        <a href="#" onclick="showModsPopup(); return false;" class="social-link">
+                            <span class="icon">🧩</span> Mods using ChosenLib
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="footer-text">
-                <p>&copy; 2025 ChosenTechies. ChosenLib is licensed under the MIT License.</p>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2025 ChosenTechies. All rights reserved.</p>
+                    <p>ChosenLib is licensed under the MIT License.</p>
+                </div>
+                <div class="footer-tech">
+                    <span>Built with ❤️ for the Minecraft community</span>
+                    <span>•</span>
+                    <span>Fabric • Java 21 • MIT License</span>
+                </div>
             </div>
         </div>
     </footer>
+
+    <!-- License Popup Modal -->
+    <div id="licenseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>MIT License</h2>
+                <span class="close" onclick="closeLicensePopup()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p><strong>Copyright (c) 2025 ChosenTechies</strong></p>
+                <p>Permission is hereby granted, free of charge, to any person obtaining a copy
+                of this software and associated documentation files (the "Software"), to deal
+                in the Software without restriction, including without limitation the rights
+                to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                copies of the Software, and to permit persons to whom the Software is
+                furnished to do so, subject to the following conditions:</p>
+                <p>The above copyright notice and this permission notice shall be included in all
+                copies or substantial portions of the Software.</p>
+                <p><strong>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+                SOFTWARE.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mods Using ChosenLib Modal -->
+    <div id="modsModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Mods using ChosenLib</h2>
+            <span class="close" onclick="closeModsPopup()">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="mod-list">
+              <div class="mod-entry">
+                <div class="mod-title">homy TP</div>
+                <div class="mod-links">
+                  <a href="https://www.curseforge.com/minecraft/mc-mods/homy-tp" class="download-link" target="_blank">CurseForge</a>
+                  <a href="https://modrinth.com/mod/homy-tp" class="download-link" target="_blank">Modrinth</a>
+                </div>
+              </div>
+              <!-- Add more mods here as needed -->
+            </div>
+          </div>
+        </div>
+      </div>
 
     <script src="script.js"></script>
 </body>
