@@ -70,8 +70,9 @@ ChosenLib.debugLog("Debug message");
 ./gradlew clean build
 ```
 Artifacts are in `build/libs/`:
-- `<name>-1.2.0.jar` (use this)
-- `<name>-1.2.0-sources.jar` (sources)
+- `<name>-1.4.0.jar` (use this)
+- `<name>-1.4.0-sources.jar` (sources)
 
 ## Publishing (manual)
+
 - Upload the remapped JAR (no `-dev`/`
