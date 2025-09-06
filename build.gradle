@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version "1.6.+"
+    id 'fabric-loom' version "1.6.12"
     id 'maven-publish'
     id 'java-library'
     id 'com.modrinth.minotaur' version '2.+'
@@ -72,6 +72,10 @@ processResources {
 }
 
 tasks.withType(ProcessResources).configureEach {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+tasks.withType(Jar).configureEach {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 

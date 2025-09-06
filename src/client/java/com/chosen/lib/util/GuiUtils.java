@@ -24,23 +24,23 @@ public class GuiUtils {
     }
     
     /**
-     * Centers a value horizontally on screen.
-     * @param width The width of the element.
+     * Centers a value horizontally within a given width.
+     * @param elementWidth The width of the element.
+     * @param containerWidth The width of the container.
      * @return The centered X position.
      */
-    public static int centerX(int width) {
-        MinecraftClient client = MinecraftClient.getInstance();
-        return center(width, client != null ? client.getWindow().getScaledWidth() : 854);
+    public static int centerX(int elementWidth, int containerWidth) {
+        return center(elementWidth, containerWidth);
     }
     
     /**
-     * Centers a value vertically on screen.
-     * @param height The height of the element.
+     * Centers a value vertically within a given height.
+     * @param elementHeight The height of the element.
+     * @param containerHeight The height of the container.
      * @return The centered Y position.
      */
-    public static int centerY(int height) {
-        MinecraftClient client = MinecraftClient.getInstance();
-        return center(height, client != null ? client.getWindow().getScaledHeight() : 480);
+    public static int centerY(int elementHeight, int containerHeight) {
+        return center(elementHeight, containerHeight);
     }
     
     /**
@@ -158,6 +158,16 @@ public class GuiUtils {
      */
     public static boolean isPointInRect(int x, int y, int rectX, int rectY, int rectWidth, int rectHeight) {
         return x >= rectX && x < rectX + rectWidth && y >= rectY && y < rectY + rectHeight;
+    }
+    
+    /**
+     * Calculates progress bar width based on progress value.
+     * @param totalWidth The total width of the progress bar.
+     * @param progress The progress (0.0 to 1.0).
+     * @return The width of the progress portion.
+     */
+    public static int calculateProgressWidth(int totalWidth, double progress) {
+        return (int) (totalWidth * Math.max(0.0, Math.min(1.0, progress)));
     }
     
     /**

@@ -36,8 +36,14 @@ public class ChosenLib implements ModInitializer {
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             dispatcher.register(CommandManager.literal("chosenlib")
                 .executes(context -> {
-                    String version = "1.3.1";
-                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("ChosenLib v" + version), false);
+                    String version = "1.4.0";
+                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("ChosenLib v" + version + " - Comprehensive Utility Library"), false);
+                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.success("New in v1.4.0:"), false);
+                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("• WorldUtils - World and block manipulation"), false);
+                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("• EntityUtils - Entity-related operations"), false);
+                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("• NetworkUtils - Networking and packet utilities"), false);
+                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("• GuiUtils - Now server-side compatible"), false);
+                    context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.info("• Performance optimizations with caching"), false);
                     context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.clickable("CurseForge: https://www.curseforge.com/minecraft/mc-mods/chosenlib", "https://www.curseforge.com/minecraft/mc-mods/chosenlib"), false);
                     context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.clickable("Modrinth: https://modrinth.com/mod/chosenlib", "https://modrinth.com/mod/chosenlib"), false);
                     context.getSource().sendFeedback(() -> com.chosen.lib.util.TextUtils.clickable("Source: https://www.curseforge.com/minecraft/mc-mods/chosenlib", "https://www.curseforge.com/minecraft/mc-mods/chosenlib"), false);
