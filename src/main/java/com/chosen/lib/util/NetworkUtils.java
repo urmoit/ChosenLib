@@ -40,7 +40,17 @@ public class NetworkUtils {
         try {
             // TODO: Fix this method for the current Fabric API version
             // The ServerPlayNetworking.send method signature has changed
-            // and now requires a CustomPayload instead of Identifier + PacketByteBuf
+            // and now requires a CustomPayload instead of Identifier + PacketByteBuf.
+            // You need to create a CustomPayload implementation for your packet type.
+            // For example:
+            // public record MyPacketPayload(int someData) implements CustomPayload { ... }
+            // Then you would create an instance of it and send it:
+            // MyPacketPayload payload = new MyPacketPayload(42);
+            // ServerPlayNetworking.send(player, payload);
+            
+            // Since this is a generic utility method, we cannot know the specific payload type.
+            // The caller of this method should be updated to use the new API.
+            // As a temporary measure, this method is disabled.
             return false;
         } catch (Exception e) {
             // Log error if needed

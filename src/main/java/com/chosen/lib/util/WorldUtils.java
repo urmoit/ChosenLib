@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
@@ -16,7 +15,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.chunk.ChunkStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -265,6 +263,111 @@ public class WorldUtils {
         }
         
         return replaced;
+    }
+
+    /**
+     * Result of a transactional block replacement operation.
+     */
+    public static final class TransactionResult {
+        public final int replaced;
+        public final boolean rolledBack;
+
+        public TransactionResult(int replaced, boolean rolledBack) {
+            this.replaced = replaced;
+            this.rolledBack = rolledBack;
+        }
+    }
+
+    /**
+     * Replaces blocks matching a predicate in an area. If any placement fails, rolls back all changes.
+     * @param world The world
+     * @param area Positions to attempt replacement in
+     * @param predicate Predicate to match existing block states
+     * @param replacement Replacement state to set
+     * @param flags Update flags
+     * @return TransactionResult with count and rollback flag
+     */
+    public static TransactionResult replaceBlocksTransactional(
+            World world,
+            List<BlockPos> area,
+            Predicate<BlockState> predicate,
+            BlockState replacement,
+            int flags
+    ) {
+        List<BlockPos> changedPositions = new ArrayList<>();
+        List<BlockState> previousStates = new ArrayList<>();
+
+        for (BlockPos pos : area) {
+            if (!isPositionLoaded(world, pos)) {
+                // rollback if a required chunk is not loaded
+                rollback(world, changedPositions, previousStates, flags);
+                return new TransactionResult(0, true);
+            }
+
+            BlockState current = getBlockState(world, pos);
+            if (predicate.test(current)) {
+                previousStates.add(current);
+                changedPositions.add(pos);
+                boolean ok = setBlockState(world, pos, replacement, flags);
+                if (!ok) {
+                    // rollback everything
+                    rollback(world, changedPositions, previousStates, flags);
+                    return new TransactionResult(0, true);
+                }
+            }
+        }
+
+        return new TransactionResult(changedPositions.size(), false);
+    }
+
+    private static void rollback(World world, List<BlockPos> positions, List<BlockState> previousStates, int flags) {
+        for (int i = 0; i < positions.size(); i++) {
+            BlockPos pos = positions.get(i);
+            BlockState prev = previousStates.get(i);
+            setBlockState(world, pos, prev, flags);
+        }
+    }
+
+    /**
+     * Applies a batch of exact edits transactionally. If any edit fails, reverts all applied edits.
+     * @param world The world
+     * @param edits Pairs of position and desired state
+     * @param flags Update flags
+     * @return TransactionResult
+     */
+    public static TransactionResult applyBatchEditsTransactional(World world, List<PositionEdit> edits, int flags) {
+        List<BlockPos> changedPositions = new ArrayList<>();
+        List<BlockState> previousStates = new ArrayList<>();
+
+        for (PositionEdit edit : edits) {
+            if (!isPositionLoaded(world, edit.position)) {
+                rollback(world, changedPositions, previousStates, flags);
+                return new TransactionResult(0, true);
+            }
+
+            BlockState prev = getBlockState(world, edit.position);
+            previousStates.add(prev);
+            changedPositions.add(edit.position);
+            if (!setBlockState(world, edit.position, edit.state, flags)) {
+                rollback(world, changedPositions, previousStates, flags);
+                return new TransactionResult(0, true);
+            }
+        }
+
+        return new TransactionResult(changedPositions.size(), false);
+    }
+
+    /**
+     * Represents a single positional edit of a block state.
+     */
+    public static final class PositionEdit {
+        public final BlockPos position;
+        public final BlockState state;
+
+        public PositionEdit(BlockPos position, BlockState state) {
+            this.position = position;
+            this.state = state;
+        }
     }
     
     /**
