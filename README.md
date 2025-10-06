@@ -31,6 +31,8 @@ A comprehensive utility library for Fabric that streamlines common modding tasks
 - **Batch operations** for blocks, entities, packets, and items
 - **Smart object pooling** and memory leak detection
 
+Read Full Changelog here: https://urmoit.github.io/ChosenLib/changelog.html or https://github.com/urmoit/ChosenLib/blob/main/Changelogs/CHANGELOG_v1.5.0.md
+
 ## Requirements
 - Fabric Loader
 - Fabric API
