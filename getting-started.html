@@ -41,29 +41,41 @@
                     
                     <div class="features-grid">
                         <div class="feature-card">
-                            <h3>🌍 WorldUtils <span class="new-badge">NEW</span></h3>
-                            <p>World and block manipulation utilities with safe operations and area queries.</p>
+                            <h3>🔧 AdvancedBlockOps <span class="new-badge">NEW v1.5.0</span></h3>
+                            <p>Enhanced block manipulation with safety checks, transactional editing, and undo systems.</p>
                         </div>
                         <div class="feature-card">
-                            <h3>👤 EntityUtils <span class="new-badge">NEW</span></h3>
-                            <p>Entity-related helper functions for health, teleportation, and physics operations.</p>
+                            <h3>🤖 EntityAIUtils <span class="new-badge">NEW v1.5.0</span></h3>
+                            <p>AI utilities for custom mobs and behavior management with goal systems and pathfinding.</p>
                         </div>
                         <div class="feature-card">
-                            <h3>🌐 NetworkUtils <span class="new-badge">NEW</span></h3>
-                            <p>Networking and packet utilities for client-server communication.</p>
+                            <h3>💾 DataPersistence <span class="new-badge">NEW v1.5.0</span></h3>
+                            <p>World, player, and global data storage with compression and migration support.</p>
                         </div>
                         <div class="feature-card">
-                            <h3>📝 TextUtils <span class="enhanced-badge">ENHANCED</span></h3>
-                            <p>Advanced text manipulation with interactive components and performance improvements.</p>
+                            <h3>✨ EffectsUtils <span class="new-badge">NEW v1.5.0</span></h3>
+                            <p>Sound and particle effect utilities with timing control and combinations.</p>
                         </div>
                         <div class="feature-card">
-                            <h3>🎨 GuiUtils <span class="enhanced-badge">ENHANCED</span></h3>
-                            <p>Now server-side compatible with client-side extensions for rendering operations.</p>
+                            <h3>🌐 AdvancedNetworking <span class="new-badge">NEW v1.5.0</span></h3>
+                            <p>Sophisticated packet handling with routing, synchronization, compression, and encryption.</p>
                         </div>
                         <div class="feature-card">
-                            <h3>🎒 ItemUtils <span class="enhanced-badge">ENHANCED</span></h3>
-                            <p>Comprehensive item management with inventory operations and performance optimizations.</p>
+                            <h3>🌍 DimensionUtils <span class="new-badge">NEW v1.5.0</span></h3>
+                            <p>Custom dimension management with teleportation and portal systems.</p>
                         </div>
+                        <div class="feature-card">
+                            <h3>🔴 RedstoneUtils <span class="new-badge">NEW v1.5.0</span></h3>
+                            <p>Redstone circuit analysis and automation with signal manipulation and logic gates.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>📊 PerformanceMonitor <span class="new-badge">NEW v1.5.0</span></h3>
+                            <p>Built-in performance profiling with memory monitoring, tick analysis, and reporting.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="note note-info">
+                        <p><strong>🚀 Enhanced Existing Utilities:</strong> All existing utilities (WorldUtils, EntityUtils, NetworkUtils, TextUtils, GuiUtils, ItemUtils) have been significantly enhanced in v1.5.0 with new features, performance improvements, and additional functionality.</p>
                     </div>
                 </div>
 
@@ -96,52 +108,89 @@
 
                 <div class="card">
                     <h2>🚀 Quick Overview</h2>
-                    <p>Here's what you can do with ChosenLib v1.4.0:</p>
+                    <p>Here's what you can do with ChosenLib v1.5.0:</p>
                     
-                    <h3>🌍 World Utilities (NEW!)</h3>
-                    <pre><code>// Safe block operations
+                    <h3>🔧 Advanced Block Operations (NEW v1.5.0!)</h3>
+                    <pre><code>// Transactional block operations with safety
+TransactionId transaction = AdvancedBlockOps.startTransaction(world);
+AdvancedBlockOps.safeSetBlock(world, pos, newState);
+AdvancedBlockOps.commitTransaction(transaction);
+
+// Area operations with undo support
+AdvancedBlockOps.fillArea(world, pos1, pos2, blockState);
+AdvancedBlockOps.replaceInArea(world, pos1, pos2, fromState, toState);</code></pre>
+
+                    <h3>🤖 Entity AI Utilities (NEW v1.5.0!)</h3>
+                    <pre><code>// AI goal management
+EntityAIUtils.addGoal(mob, new FollowPlayerGoal(), 1);
+EntityAIUtils.setBehaviorState(mob, "aggressive");
+EntityAIUtils.addMemory(mob, "lastPlayer", player);
+
+// Custom behavior states
+String state = EntityAIUtils.getBehaviorState(mob);
+EntityAIUtils.clearGoals(mob);</code></pre>
+
+                    <h3>💾 Data Persistence (NEW v1.5.0!)</h3>
+                    <pre><code>// World and player data storage
+DataPersistence.saveWorldData(world, "config", configData);
+DataPersistence.savePlayerData(player, "stats", statsData);
+
+// Data migration support
+DataPersistence.migratePlayerData(playerId, "oldKey", "newKey");</code></pre>
+
+                    <h3>✨ Effects &amp; Particles (NEW v1.5.0!)</h3>
+                    <pre><code>// Sound and particle effects
+EffectsUtils.playSound(world, pos, sound, 1.0f, 1.0f);
+EffectsUtils.spawnParticleSphere(world, particle, center, 2.0, 20);
+
+// Delayed effects and sequences
+EffectsUtils.playDelayedSound(world, pos, sound, 20);
+EffectsUtils.createSoundSequence(sounds, delays);</code></pre>
+
+                    <h3>🌐 Advanced Networking (NEW v1.5.0!)</h3>
+                    <pre><code>// Sophisticated packet handling
+AdvancedNetworking.createPacket("data", dataObject);
+AdvancedNetworking.routePacket(channel, buffer, customRoute);
+
+// Compression and encryption
+AdvancedNetworking.compressPacket(buffer);
+AdvancedNetworking.encryptPacket(buffer, "secret");</code></pre>
+
+                    <h3>🌍 Custom Dimensions (NEW v1.5.0!)</h3>
+                    <pre><code>// Dimension management
+DimensionUtils.createDimension(dimensionId, dimensionType);
+DimensionUtils.teleportToDimension(entity, dimensionId, pos);
+
+// Portal systems
+DimensionUtils.createPortal(world, pos, destination);
+DimensionUtils.findPortal(world, dimensionId);</code></pre>
+
+                    <h3>🔴 Redstone Automation (NEW v1.5.0!)</h3>
+                    <pre><code>// Circuit analysis and logic gates
+RedstoneUtils.analyzeCircuit(world, pos, 10);
+RedstoneUtils.createANDGate(world, pos, inputs);
+RedstoneUtils.simulateLogicGate(LogicGateType.OR, inputs);</code></pre>
+
+                    <h3>📊 Performance Monitoring (NEW v1.5.0!)</h3>
+                    <pre><code>// Built-in performance profiling
+PerformanceMonitor.startProfiling("myOperation");
+PerformanceMonitor.getMemoryUsage();
+PerformanceMonitor.getTPSData(world);
+PerformanceMonitor.generatePerformanceReport(world);</code></pre>
+
+                    <h3>📝 Enhanced Existing Utilities</h3>
+                    <pre><code>// Enhanced WorldUtils with transactional editing
+WorldUtils.startTransaction(world);
 WorldUtils.setBlockState(world, pos, newState);
-boolean loaded = WorldUtils.isPositionLoaded(world, pos);
+WorldUtils.commitTransaction(transactionId);
 
-// Area operations
-List&lt;BlockPos&gt; blocks = WorldUtils.getBlocksInSphere(center, 5.0);
-BlockPos nearest = WorldUtils.findNearestBlock(world, pos, 10, 
-    state -> state.isOf(Blocks.DIAMOND_ORE));</code></pre>
+// Enhanced EntityUtils with AI integration
+EntityUtils.setAIEnabled(entity, true);
+EntityUtils.addPathfindingGoal(entity, goal);
 
-                    <h3>👤 Entity Utilities (NEW!)</h3>
-                    <pre><code>// Health management
-EntityUtils.heal(entity, 10.0f);
-EntityUtils.setHealth(entity, 20.0f);
-
-// Teleportation and physics
-EntityUtils.teleport(entity, targetPos);
-EntityUtils.launchTowards(entity, target, 2.0);</code></pre>
-
-                    <h3>🌐 Network Utilities (NEW!)</h3>
-                    <pre><code>// Easy packet creation
-PacketByteBuf buffer = NetworkUtils.createBuffer();
-NetworkUtils.writeString(buffer, "Hello World");
-
-// Multi-target sending
-NetworkUtils.sendToPlayersInRadius(world, center, 50.0, channelId, buffer);</code></pre>
-
-                    <h3>📝 Enhanced Text Utilities</h3>
-                    <pre><code>// Interactive text components
-Text interactive = TextUtils.interactiveText("Click me", "Tooltip", "https://example.com");
-Text command = TextUtils.clickableCommand("Run", "/help");
-
-// Advanced formatting
-String duration = TextUtils.formatDuration(90000); // "1m 30s"
-List&lt;String&gt; wrapped = TextUtils.wrapText(longText, 40);</code></pre>
-
-                    <h3>🎒 Enhanced Item Utilities</h3>
-                    <pre><code>// Inventory operations
-ItemStack remaining = ItemUtils.insertStack(inventory, stack);
-int consumed = ItemUtils.consumeItem(inventory, Items.DIAMOND, 5);
-
-// Enhanced item operations
-boolean canMerge = ItemUtils.canMerge(stack1, stack2);
-ItemUtils.repairItem(stack, 100);</code></pre>
+// Enhanced NetworkUtils with reliability
+NetworkUtils.sendReliablePacket(player, channel, buffer);
+NetworkUtils.enableCompression(channel);</code></pre>
                 </div>
 
                 <div class="card">
@@ -151,18 +200,23 @@ ItemUtils.repairItem(stack, 100);</code></pre>
                     <div class="features-grid">
                         <div class="feature-card">
                             <h3>1️⃣ Installation</h3>
-                            <p>Set up ChosenLib in your project and configure your development environment.</p>
+                            <p>Set up ChosenLib v1.5.0 in your project and configure your development environment.</p>
                             <a href="installation.html" class="btn btn-primary">Install ChosenLib</a>
                         </div>
                         <div class="feature-card">
                             <h3>2️⃣ Usage Examples</h3>
-                            <p>Learn how to use the utilities with practical examples and real-world scenarios.</p>
+                            <p>Learn how to use the v1.5.0 utilities with practical examples and real-world scenarios.</p>
                             <a href="usage.html" class="btn btn-primary">View Examples</a>
                         </div>
                         <div class="feature-card">
                             <h3>3️⃣ API Reference</h3>
-                            <p>Explore the complete API documentation for all utility methods and classes.</p>
+                            <p>Explore the complete API documentation for all v1.5.0 utility methods and classes.</p>
                             <a href="api.html" class="btn btn-primary">Browse API</a>
+                        </div>
+                        <div class="feature-card">
+                            <h3>4️⃣ New Features</h3>
+                            <p>Discover the 8 new utility classes and enhanced existing utilities in v1.5.0.</p>
+                            <a href="changelog.html" class="btn btn-secondary">View Changelog</a>
                         </div>
                     </div>
                 </div>
@@ -185,8 +239,8 @@ ItemUtils.repairItem(stack, 100);</code></pre>
                         <li><strong>Dependencies:</strong> Make sure Fabric API is included in your mod</li>
                     </ul>
 
-                    <div class="note note-warning">
-                        <p><strong>⚠️ Version Note:</strong> ChosenLib v1.4.0 is the current stable release. Future versions (1.5.0-1.9.0) may introduce API changes. Check our <a href="changelog.html">changelog</a> for the latest updates and migration guides.</p>
+                    <div class="note note-success">
+                        <p><strong>🎉 Version Note:</strong> ChosenLib v1.5.0 is the current stable release with 8 new utility classes and significant enhancements to existing utilities. All features are production-ready with comprehensive documentation and examples. Check our <a href="changelog.html">changelog</a> for detailed information about all new features.</p>
                     </div>
                 </div>
 
@@ -223,8 +277,8 @@ ItemUtils.repairItem(stack, 100);</code></pre>
                     <h3>ChosenLib</h3>
                     <p>A comprehensive utility library for Fabric modding that streamlines common development tasks.</p>
                     <div class="footer-version">
-                        <span class="version-badge">v1.4.0</span>
-                        <span class="last-updated">Last updated: September 6 2025</span>
+                        <span class="version-badge">v1.5.0</span>
+                        <span class="last-updated">Last updated: October 6 2025</span>
                     </div>
                 </div>
                 

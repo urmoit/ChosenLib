@@ -35,158 +35,333 @@
             </section>
 
             <section class="content">
-                <!-- Newest Release -->
+                <!-- Version History Table -->
                 <div class="card">
-                    <h2>🚀 Version 1.4.0 - Major Feature Release</h2>
-                    <p class="text-muted">Released: September 6 2025</p>
-    
+                    <h2>📋 Version History Summary</h2>
+                    <div class="version-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Version</th>
+                                    <th>Release Date</th>
+                                    <th>Key Features</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="current-version" onclick="toggleVersion('v1-5-0')">
+                                    <td><strong>1.5.0</strong></td>
+                                    <td>October 6 2025</td>
+                                    <td>Advanced Block Operations, Entity AI Utilities, Data Persistence, Sound & Particle Effects, Advanced Networking, Custom Dimensions, Redstone Integration, Performance Monitoring</td>
+                                    <td><span class="status current">Current</span></td>
+                                </tr>
+                                <tr class="version-details" id="v1-5-0" style="display: none;">
+                                    <td colspan="4">
+                                        <div class="version-changelog">
+                                            <h3>✨ Major New Utility Classes</h3>
+                                            <h4>🔧 AdvancedBlockOps - Enhanced Block Manipulation</h4>
+                                            <ul>Enhanced block manipulation with safety checks and transactional editing:</ul>
+                                            <ul>
+                                                <li><strong>Transactional Operations:</strong> replaceBlocksTransactional(), applyBatchEditsTransactional()</li>
+                                                <li><strong>Safety Validation:</strong> validateBlockPlacement(), checkBlockIntegrity(), verifyAreaAccess()</li>
+                                                <li><strong>Undo System:</strong> createUndoPoint(), restoreUndoPoint(), clearUndoHistory()</li>
+                                                <li><strong>Area Operations:</strong> fillAreaSafely(), replaceAreaSafely(), cloneAreaSafely()</li>
+                                                <li><strong>Block Analysis:</strong> analyzeBlockPattern(), detectBlockStructures(), findBlockBoundaries()</li>
+                                                <li><strong>Performance Monitoring:</strong> measureOperationTime(), getOperationStats()</li>
+                                            </ul>
+                                            <h4>🤖 EntityAIUtils - AI-Related Helper Functions</h4>
+                                            <ul>AI utilities for custom mobs and behavior management:</ul>
+                                            <ul>
+                                                <li><strong>Goal Management:</strong> addGoal(), removeGoal(), clearGoals(), setGoalPriority()</li>
+                                                <li><strong>Pathfinding:</strong> findPathTo(), findPathAround(), isPathClear(), optimizePath()</li>
+                                                <li><strong>Behavior States:</strong> setBehaviorState(), getBehaviorState(), triggerBehavior()</li>
+                                                <li><strong>Target Selection:</strong> selectNearestTarget(), selectRandomTarget(), evaluateTarget()</li>
+                                                <li><strong>Movement Control:</strong> moveTowards(), stopMovement(), setMovementSpeed()</li>
+                                                <li><strong>Sensory Systems:</strong> canSeeTarget(), canHearTarget(), detectNearbyEntities()</li>
+                                                <li><strong>Memory System:</strong> storeMemory(), retrieveMemory(), clearMemory()</li>
+                                            </ul>
+                                            <h4>💾 DataPersistence - Data Storage and Retrieval</h4>
+                                            <ul>World, player, and global data storage with compression and migration:</ul>
+                                            <ul>
+                                                <li><strong>World Data:</strong> saveWorldData(), loadWorldData(), deleteWorldData()</li>
+                                                <li><strong>Player Data:</strong> savePlayerData(), loadPlayerData(), deletePlayerData()</li>
+                                                <li><strong>Global Data:</strong> saveGlobalData(), loadGlobalData(), deleteGlobalData()</li>
+                                                <li><strong>Data Validation:</strong> validateData(), backupData(), restoreData()</li>
+                                                <li><strong>Compression:</strong> compressData(), decompressData(), isCompressed()</li>
+                                                <li><strong>Migration:</strong> migrateData(), checkDataVersion(), updateDataFormat()</li>
+                                            </ul>
+                                            <h4>✨ EffectsUtils - Sound & Particle Effect Utilities</h4>
+                                            <ul>Sound and particle effect utilities with timing control and combinations:</ul>
+                                            <ul>
+                                                <li><strong>Sound Effects:</strong> playSound(), playSoundAt(), stopSound(), setSoundVolume()</li>
+                                                <li><strong>Particle Systems:</strong> spawnParticle(), spawnParticleLine(), spawnParticleSphere()</li>
+                                                <li><strong>Effect Combinations:</strong> createExplosionEffect(), createMagicEffect(), createTrailEffect()</li>
+                                                <li><strong>Timing Control:</strong> scheduleEffect(), repeatEffect(), stopEffectLoop()</li>
+                                                <li><strong>Custom Effects:</strong> registerCustomEffect(), createCustomParticle(), playCustomSound()</li>
+                                                <li><strong>Performance:</strong> optimizeEffectRendering(), limitEffectCount(), cleanupEffects()</li>
+                                            </ul>
+                                            <h4>🌐 AdvancedNetworking - Sophisticated Packet Handling</h4>
+                                            <ul>Advanced networking with routing, synchronization, compression, and encryption:</ul>
+                                            <ul>
+                                                <li><strong>Packet Types:</strong> CustomPacket, SyncPacket, EventPacket, RequestPacket</li>
+                                                <li><strong>Packet Routing:</strong> routePacket(), broadcastPacket(), sendReliablePacket()</li>
+                                                <li><strong>Synchronization:</strong> syncEntityData(), syncBlockData(), syncPlayerData()</li>
+                                                <li><strong>Compression:</strong> compressPacket(), decompressPacket(), isPacketCompressed()</li>
+                                                <li><strong>Encryption:</strong> encryptPacket(), decryptPacket(), setEncryptionKey()</li>
+                                                <li><strong>Packet Queuing:</strong> queuePacket(), processPacketQueue(), clearPacketQueue()</li>
+                                                <li><strong>Error Handling:</strong> handlePacketError(), retryFailedPacket(), logPacketStats()</li>
+                                            </ul>
+                                            <h4>🌍 DimensionUtils - Custom Dimension Management</h4>
+                                            <ul>Utilities for working with custom dimensions and portal systems:</ul>
+                                            <ul>
+                                                <li><strong>Dimension Management:</strong> createDimension(), deleteDimension(), getDimensionInfo()</li>
+                                                <li><strong>Teleportation:</strong> teleportToDimension(), teleportFromDimension(), validateTeleport()</li>
+                                                <li><strong>Dimension Properties:</strong> setDimensionGravity(), setDimensionTime(), setDimensionWeather()</li>
+                                                <li><strong>Chunk Management:</strong> generateChunks(), unloadChunks(), getChunkStatus()</li>
+                                                <li><strong>Spawn Points:</strong> setDimensionSpawn(), getDimensionSpawn(), resetSpawnPoint()</li>
+                                                <li><strong>Portal Creation:</strong> createPortal(), linkPortals(), destroyPortal()</li>
+                                            </ul>
+                                            <h4>🔴 RedstoneUtils - Circuit and Automation Helpers</h4>
+                                            <ul>Redstone circuit analysis and automation with signal manipulation:</ul>
+                                            <ul>
+                                                <li><strong>Circuit Analysis:</strong> analyzeRedstoneCircuit(), findRedstoneSources(), traceRedstonePath()</li>
+                                                <li><strong>Signal Manipulation:</strong> setRedstoneSignal(), getRedstoneSignal(), invertSignal()</li>
+                                                <li><strong>Timing Control:</strong> createTimer(), createPulseGenerator(), createSequencer()</li>
+                                                <li><strong>Logic Gates:</strong> createANDGate(), createORGate(), createNOTGate(), createXORGate()</li>
+                                                <li><strong>Automation:</strong> createAutoFarm(), createItemSorter(), createElevatorSystem()</li>
+                                                <li><strong>Debugging:</strong> highlightRedstoneBlocks(), showSignalStrength(), traceCircuitFlow()</li>
+                                            </ul>
+                                            <h4>📊 PerformanceMonitor - Built-in Performance Profiling</h4>
+                                            <ul>Comprehensive performance monitoring and optimization tools:</ul>
+                                            <ul>
+                                                <li><strong>Profiling:</strong> startProfiling(), stopProfiling(), getProfileData()</li>
+                                                <li><strong>Memory Monitoring:</strong> getMemoryUsage(), getGCStats(), monitorMemoryLeaks()</li>
+                                                <li><strong>Tick Analysis:</strong> measureTickTime(), getTPSData(), analyzeLagSpikes()</li>
+                                                <li><strong>Entity Performance:</strong> countEntities(), getEntityStats(), optimizeEntityUpdates()</li>
+                                                <li><strong>Chunk Performance:</strong> getChunkStats(), analyzeChunkLoading(), optimizeChunkGeneration()</li>
+                                                <li><strong>Reporting:</strong> generatePerformanceReport(), exportPerformanceData(), createPerformanceGraph()</li>
+                                            </ul>
+                                            <h3>🔧 Enhanced Existing Utilities</h3>
+                                            <h4>🌍 WorldUtils - Advanced Block Operations</h4>
+                                            <ul>
+                                                <li><strong>Transactional Editing:</strong> replaceBlocksTransactional(), applyBatchEditsTransactional()</li>
+                                                <li><strong>Safety Checks:</strong> validateBlockPlacement(), checkAreaIntegrity(), verifyChunkAccess()</li>
+                                                <li><strong>Undo System:</strong> createUndoPoint(), restoreUndoPoint(), getUndoHistory()</li>
+                                                <li><strong>Performance:</strong> optimizeBlockOperations(), batchBlockUpdates(), cacheBlockStates()</li>
+                                                <li><strong>Advanced Queries:</strong> findBlockStructures(), analyzeBlockPatterns(), detectBlockBoundaries()</li>
+                                            </ul>
+                                            <h4>👤 EntityUtils - AI Integration</h4>
+                                            <ul>
+                                                <li><strong>AI Utilities:</strong> setAIEnabled(), getAIState(), triggerAIBehavior()</li>
+                                                <li><strong>Enhanced Pathfinding:</strong> findOptimalPath(), avoidObstacles(), calculatePathCost()</li>
+                                                <li><strong>Memory System:</strong> storeEntityMemory(), retrieveEntityMemory(), clearEntityMemory()</li>
+                                                <li><strong>Behavior States:</strong> setEntityBehavior(), getEntityBehavior(), triggerEntityAction()</li>
+                                                <li><strong>Performance:</strong> optimizeEntityUpdates(), batchEntityOperations(), cacheEntityData()</li>
+                                            </ul>
+                                            <h4>🌐 NetworkUtils - Advanced Networking</h4>
+                                            <ul>
+                                                <li><strong>Reliable Packets:</strong> sendReliablePacket(), acknowledgePacket(), retryFailedPackets()</li>
+                                                <li><strong>Compression:</strong> compressPacketData(), decompressPacketData(), getCompressionRatio()</li>
+                                                <li><strong>Packet Queuing:</strong> queuePacketForSending(), processPacketQueue(), getQueueStatus()</li>
+                                                <li><strong>Error Recovery:</strong> handleNetworkError(), recoverFromDisconnect(), validatePacketIntegrity()</li>
+                                                <li><strong>Performance:</strong> optimizePacketSending(), batchPacketOperations(), monitorNetworkStats()</li>
+                                            </ul>
+                                            <h4>🎒 ItemUtils - Enhanced Item Management</h4>
+                                            <ul>
+                                                <li><strong>Data Persistence:</strong> saveItemData(), loadItemData(), syncItemData()</li>
+                                                <li><strong>Advanced Validation:</strong> validateItemStack(), checkItemIntegrity(), repairCorruptedItems()</li>
+                                                <li><strong>Performance:</strong> optimizeItemOperations(), batchItemUpdates(), cacheItemProperties()</li>
+                                                <li><strong>Custom Items:</strong> registerCustomItem(), createItemVariants(), manageItemMetadata()</li>
+                                            </ul>
+                                            <h4>📝 TextUtils - Advanced Formatting</h4>
+                                            <ul>
+                                                <li><strong>Rich Formatting:</strong> createRichText(), applyTextStyles(), animateText()</li>
+                                                <li><strong>Performance:</strong> optimizeTextRendering(), cacheTextComponents(), batchTextOperations()</li>
+                                                <li><strong>Localization:</strong> translateText(), loadLanguagePack(), getSupportedLanguages()</li>
+                                                <li><strong>Accessibility:</strong> createAccessibleText(), addScreenReaderSupport(), optimizeForAccessibility()</li>
+                                            </ul>
+                                            <h3>⚡ Performance Optimizations</h3>
+                                            <ul>
+                                                <li><strong>Advanced Caching Systems:</strong> Multi-level caching (L1/L2/L3) with intelligent invalidation</li>
+                                                <li><strong>Batch Operations:</strong> Batch block updates, entity operations, packet operations, and item operations</li>
+                                                <li><strong>Memory Management:</strong> Smart object pooling, automatic GC optimization, memory leak detection</li>
+                                                <li><strong>Thread Safety:</strong> All operations are thread-safe with concurrent data structures</li>
+                                                <li><strong>Performance Monitoring:</strong> Built-in profiling and optimization tools</li>
+                                            </ul>
+                                            <h3>🔧 Command Improvements</h3>
+                                            <ul>
+                                                <li><strong>/chosenlib Command Enhancements:</strong> Interactive feature showcase with demonstrations</li>
+                                                <li><strong>Real-time Performance Monitoring:</strong> Built-in performance display and analysis</li>
+                                                <li><strong>Advanced Configuration:</strong> Comprehensive configuration options and settings</li>
+                                                <li><strong>Plugin System:</strong> Extensible functionality for custom integrations</li>
+                                                <li><strong>Enhanced Help System:</strong> Detailed examples and usage guides</li>
+                                            </ul>
+                                            <h3>🔧 General</h3>
+                                            <ul>
+                                                <li><strong>Internal version updated to:</strong> 1.5.0</li>
+                                                <li><strong>Comprehensive documentation:</strong> with code examples for all new utilities</li>
+                                                <li><strong>Extensive error handling:</strong> and recovery mechanisms</li>
+                                                <li><strong>Thread-safe operations:</strong> across all utilities</li>
+                                                <li><strong>Backward compatibility maintained:</strong> no breaking changes</li>
+                                                <li><strong>Performance monitoring:</strong> and optimization tools built-in</li>
+                                                <li><strong>Advanced debugging:</strong> and profiling capabilities</li>
+                                            </ul>
+                                            <div class="text-center mt-4">
+                                                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" class="btn btn-primary">📥 Download v1.5.0</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="version-row" onclick="toggleVersion('v1-4-0')">
+                                    <td><strong>1.4.0</strong></td>
+                                    <td>September 6 2025</td>
+                                    <td>WorldUtils, EntityUtils, NetworkUtils, Performance optimizations</td>
+                                    <td><span class="status stable">Stable</span></td>
+                                </tr>
+                                <tr class="version-details" id="v1-4-0" style="display: none;">
+                                    <td colspan="4">
+                                        <div class="version-changelog">
                     <h3>✨ Major New Utility Classes</h3>
-                    
                     <h4>🌍 WorldUtils - World and Block Manipulation</h4>
-                    <p>Complete world and block manipulation utilities with safe operations:</p>
-                    <ul>
-                        <li><strong>Block Operations:</strong> <code>getBlockState()</code>, <code>setBlockState()</code>, <code>isPositionLoaded()</code></li>
-                        <li><strong>Area Queries:</strong> <code>getBlocksInCube()</code>, <code>getBlocksInSphere()</code>, <code>getBlocksInArea()</code></li>
-                        <li><strong>Block Finding:</strong> <code>findBlocks()</code>, <code>findNearestBlock()</code>, <code>replaceBlocks()</code></li>
-                        <li><strong>World Properties:</strong> <code>getBiome()</code>, <code>getLightLevel()</code>, <code>canSeeSky()</code></li>
-                        <li><strong>Chunk Utilities:</strong> <code>getChunk()</code>, <code>isChunkLoaded()</code>, <code>getChunkPos()</code></li>
-                        <li><strong>Fluid Operations:</strong> <code>getFluidState()</code>, <code>hasFluid()</code></li>
-                        <li><strong>Entity Queries:</strong> <code>getEntitiesInBox()</code>, <code>getEntitiesAround()</code>, <code>getNearestEntity()</code></li>
+                                            <ul>Complete world and block manipulation utilities with safe operations:</ul>
+                                            <ul>
+                                                <li><strong>Block Operations:</strong> getBlockState(), setBlockState(), isPositionLoaded()</li>
+                                                <li><strong>Area Queries:</strong> getBlocksInCube(), getBlocksInSphere(), getBlocksInArea()</li>
+                                                <li><strong>Block Finding:</strong> findBlocks(), findNearestBlock(), replaceBlocks()</li>
+                                                <li><strong>World Properties:</strong> getBiome(), getLightLevel(), canSeeSky()</li>
+                                                <li><strong>Chunk Utilities:</strong> getChunk(), isChunkLoaded(), getChunkPos()</li>
+                                                <li><strong>Fluid Operations:</strong> getFluidState(), hasFluid()</li>
+                                                <li><strong>Entity Queries:</strong> getEntitiesInBox(), getEntitiesAround(), getNearestEntity()</li>
                     </ul>
-
                     <h4>👤 EntityUtils - Entity-Related Operations</h4>
-                    <p>Comprehensive entity management and manipulation utilities:</p>
-                    <ul>
-                        <li><strong>Health Management:</strong> <code>getHealth()</code>, <code>setHealth()</code>, <code>heal()</code>, <code>damage()</code></li>
-                        <li><strong>Status Effects:</strong> <code>hasStatusEffect()</code>, <code>addStatusEffect()</code>, <code>removeStatusEffect()</code></li>
-                        <li><strong>Attributes:</strong> <code>getAttributeValue()</code>, <code>setAttributeBaseValue()</code></li>
-                        <li><strong>Teleportation:</strong> <code>teleport()</code>, <code>teleportToEntity()</code></li>
-                        <li><strong>Distance Utilities:</strong> <code>getDistance()</code>, <code>isWithinDistance()</code></li>
-                        <li><strong>Entity Finding:</strong> <code>getEntitiesInRadius()</code>, <code>findNearestPlayer()</code></li>
-                        <li><strong>Physics:</strong> <code>setVelocity()</code>, <code>launchTowards()</code>, <code>knockback()</code></li>
-                        <li><strong>Player Operations:</strong> <code>sendMessage()</code>, <code>giveItem()</code></li>
+                                            <ul>Comprehensive entity management and manipulation utilities:</ul>
+                                            <ul>
+                                                <li><strong>Block Operations:</strong> getBlockState(), setBlockState(), isPositionLoaded()</li>
+                                                <li><strong>Area Queries:</strong> getBlocksInCube(), getBlocksInSphere(), getBlocksInArea()</li>
+                                                <li><strong>Block Finding:</strong> findBlocks(), findNearestBlock(), replaceBlocks()</li>
+                                                <li><strong>World Properties:</strong> getBiome(), getLightLevel(), canSeeSky()</li>
+                                                <li><strong>Chunk Utilities:</strong> getChunk(), isChunkLoaded(), getChunkPos()</li>
+                                                <li><strong>Fluid Operations:</strong> getFluidState(), hasFluid()</li>
+                                                <li><strong>Entity Queries:</strong> getEntitiesInBox(), getEntitiesAround(), getNearestEntity()</li>
+                                                <li><strong>Physics:</strong> setVelocity(), launchTowards(), knockback()</li>
+                                                <li><strong>Player Operations:</strong> sendMessage(), giveItem()</li>
                     </ul>
-
                     <h4>🌐 NetworkUtils - Networking and Packet Utilities</h4>
-                    <p>Advanced networking utilities for packet creation and communication:</p>
-                    <ul>
-                        <li><strong>Packet Creation:</strong> <code>createBuffer()</code>, <code>createSimplePacket()</code>, <code>createPositionPacket()</code></li>
-                        <li><strong>Player Targeting:</strong> <code>sendToPlayer()</code>, <code>sendToPlayers()</code>, <code>sendToWorld()</code></li>
-                        <li><strong>Radius Sending:</strong> <code>sendToPlayersInRadius()</code></li>
-                        <li><strong>Data Serialization:</strong> <code>writeString()</code>, <code>writeBlockPos()</code>, <code>writeVec3d()</code>, <code>writeUuid()</code></li>
-                        <li><strong>Array Support:</strong> <code>writeBooleanArray()</code>, <code>writeIntArray()</code>, <code>writeStringArray()</code></li>
-                        <li><strong>Safe Operations:</strong> <code>safeBufferOperation()</code>, <code>hasReadableBytes()</code></li>
+                                            <ul>Advanced networking utilities for packet creation and communication:</ul>
+                                            <ul>
+                                                <li><strong>Packet Creation:</strong> createBuffer(), createSimplePacket(), createPositionPacket()</li>
+                                                <li><strong>Player Targeting:</strong> sendToPlayer(), sendToPlayers(), sendToWorld()</li>
+                                                <li><strong>Radius Sending:</strong> sendToPlayersInRadius()</li>
+                                                <li><strong>Data Serialization:</strong> writeString(), writeBlockPos(), writeVec3d(), writeUuid()</li>
+                                                <li><strong>Array Support:</strong> writeBooleanArray(), writeIntArray(), writeStringArray()</li>
+                                                <li><strong>Safe Operations:</strong> safeBufferOperation(), hasReadableBytes()</li>
                     </ul>
-
                     <h3>🔧 Enhanced Existing Utilities</h3>
-                    
                     <h4>🎨 GuiUtils - Server-Side Compatibility</h4>
                     <ul>
                         <li><strong>Server-Side Compatible:</strong> Core GuiUtils now works on both client and server</li>
                         <li><strong>ClientGuiUtils:</strong> Extended client-side functionality for rendering operations</li>
-                        <li><strong>Color Operations:</strong> <code>getRed()</code>, <code>getGreen()</code>, <code>getBlue()</code>, <code>getAlpha()</code></li>
-                        <li><strong>Mathematical:</strong> <code>rectanglesOverlap()</code>, <code>distance()</code>, <code>interpolateColor()</code></li>
+                                                <li><strong>Color Operations:</strong> getRed(), getGreen(), getBlue(), getAlpha()</li>
+                                                <li><strong>Mathematical:</strong> rectanglesOverlap(), distance(), interpolateColor()</li>
                         <li><strong>Performance:</strong> Cached operations for better performance</li>
                     </ul>
-
                     <h4>📝 TextUtils - Advanced Operations</h4>
                     <ul>
-                        <li><strong>Interactive Text:</strong> <code>clickableCommand()</code>, <code>withTooltip()</code>, <code>interactiveText()</code></li>
-                        <li><strong>Text Wrapping:</strong> <code>wrapText()</code>, <code>createMultiLineTextBox()</code></li>
-                        <li><strong>Validation:</strong> <code>isBlank()</code>, <code>matches()</code> with pattern caching</li>
-                        <li><strong>Formatting:</strong> <code>formatNumber()</code>, <code>formatDecimal()</code>, <code>formatDuration()</code></li>
+                                                <li><strong>Interactive Text:</strong> clickableCommand(), withTooltip(), interactiveText()</li>
+                                                <li><strong>Text Wrapping:</strong> wrapText(), createMultiLineTextBox()</li>
+                                                <li><strong>Validation:</strong> isBlank(), matches() with pattern caching</li>
+                                                <li><strong>Formatting:</strong> formatNumber(), formatDecimal(), formatDuration()</li>
                         <li><strong>Performance:</strong> Cached regex patterns and formatting styles</li>
                     </ul>
-
                     <h4>🎒 ItemUtils - Performance and Features</h4>
                     <ul>
-                        <li><strong>Enhanced Validation:</strong> <code>canMerge()</code>, <code>isDamageable()</code>, <code>isEnchanted()</code></li>
-                        <li><strong>Item Lookup:</strong> <code>getItemById()</code> for Identifier and String</li>
-                        <li><strong>Durability:</strong> <code>getDurabilityPercentage()</code>, <code>damageItem()</code>, <code>repairItem()</code>, <code>fullyRepairItem()</code></li>
-                        <li><strong>NBT Operations:</strong> <code>getNbt()</code>, <code>setNbt()</code>, <code>hasNbt()</code></li>
-                        <li><strong>Enchantments:</strong> <code>getEnchantmentLevel()</code>, <code>hasEnchantment()</code></li>
-                        <li><strong>Inventory:</strong> <code>findFirst()</code>, <code>findAll()</code>, <code>countItem()</code>, <code>consumeItem()</code>, <code>insertStack()</code></li>
-                        <li><strong>Performance:</strong> Caching for <code>getItemId()</code> and <code>getMaxStackSize()</code></li>
+                                                <li><strong>Enhanced Validation:</strong> canMerge(), isDamageable(), isEnchanted()</li>
+                                                <li><strong>Item Lookup:</strong> getItemById() for Identifier and String</li>
+                                                <li><strong>Durability:</strong> getDurabilityPercentage(), damageItem(), repairItem(), fullyRepairItem()</li>
+                                                <li><strong>NBT Operations:</strong> getNbt(), setNbt(), hasNbt()</li>
+                                                <li><strong>Enchantments:</strong> getEnchantmentLevel(), hasEnchantment()</li>
+                                                <li><strong>Inventory:</strong> findFirst(), findAll(), countItem(), consumeItem(), insertStack()</li>
+                                                <li><strong>Performance:</strong> Caching for getItemId() and getMaxStackSize()</li>
                     </ul>
-
                     <h3>⚡ Performance Optimizations</h3>
                     <ul>
                         <li><strong>Caching Systems:</strong> Concurrent caching for item IDs, stack sizes, regex patterns, and formatting styles</li>
                         <li><strong>Thread Safety:</strong> All caches use concurrent hash maps for thread-safe operations</li>
                         <li><strong>Memory Efficiency:</strong> Lazy initialization and efficient data structures</li>
-                        <li><strong>Cache Management:</strong> <code>getCacheStats()</code> and <code>clearCache()</code> methods for debugging</li>
+                                                <li><strong>Cache Management:</strong> getCacheStats() and clearCache() methods for debugging</li>
                     </ul>
-
                     <h3>🔧 General Improvements</h3>
                     <ul>
-                        <li>Internal version updated to <strong>1.4.0</strong></li>
-                        <li>Comprehensive JavaDoc documentation for all new utilities</li>
-                        <li>Extensive null safety checks and error handling</li>
-                        <li>Thread-safe operations across all utilities</li>
-                        <li>Enhanced <code>/chosenlib</code> command showcasing new features</li>
-                        <li>Backward compatibility maintained - no breaking changes</li>
+                                                <li><strong>Internal version updated to:</strong> 1.5.0</li>
+                                                <li><strong>Comprehensive JavaDoc documentation:</strong> for all new utilities</li>
+                                                <li><strong>Extensive null safety checks and error handling:</strong></li>
+                                                <li><strong>Thread-safe operations across all utilities:</strong></li>
+                                                <li><strong>Enhanced /chosenlib command:</strong> showcasing new features</li>
+                                                <li><strong>Backward compatibility maintained:</strong> no breaking changes</li>
                     </ul>
-
-                    <div class="text-center mt-4">
-                        <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" class="btn btn-primary">📥 Download v1.4.0</a>
                     </div>
-                </div>
-                
-                <div class="card">
-                    <h2>🚀 Version 1.3.1 - Command Improvements</h2>
-                    <p class="text-muted">Released: September 4 2025</p>
-    
-                    <h3>✨ New Features</h3>
+                                    </td>
+                                </tr>
+                                <tr class="version-row" onclick="toggleVersion('v1-3-1')">
+                                    <td><strong>1.3.1</strong></td>
+                                    <td>September 6, 2025</td>
+                                    <td>/chosenlib command, Modrinth link</td>
+                                    <td><span class="status stable"> Stable</span></td>
+                                </tr>
+                                <tr class="version-details" id="v1-3-1" style="display: none;">
+                                    <td colspan="4">
+                                        <div class="version-changelog">
+                                            <h4>✨ New Features:</h4>
                     <ul>
                         <li><strong>/chosenlib Command Improvements:</strong> Added a clickable Modrinth link to the command output.</li>
                         <li>Provides an easy way for players and developers to quickly access the Modrinth page directly from in-game chat.</li>
                     </ul>
-
-                    <h3>🔧 Improvements</h3>
+                                            <h4>🔧 Improvements:</h4>
                     <ul>
                         <li>Minor enhancements to command feedback for a smoother user experience.</li>
                         <li>Internal version bumped to <strong>1.3.1</strong>.</li>
                     </ul>
-
-                    <h3>🐛 Bug Fixes</h3>
+                                            <h4>🐛 Bug Fixes:</h4>
                     <ul>
                         <li>No bug fixes in this release.</li>
                     </ul>
                 </div>
-                
-                <div class="card">
-                    <h2>🚀 Version 1.3.0 - Major Feature Release</h2>
-                    <p class="text-muted">Released: September 1 2025</p>
-                    
+                                    </td>
+                                </tr>
+                                <tr class="version-row" onclick="toggleVersion('v1-3-0')">
+                                    <td><strong>1.3.0</strong></td>
+                                    <td>September 1, 2025</td>
+                                    <td>GuiUtils, ItemUtils, Enhanced TextUtils</td>
+                                    <td><span class="status stable"> Stable</span></td>
+                                </tr>
+                                <tr class="version-details" id="v1-3-0" style="display: none;">
+                                    <td colspan="4">
+                                        <div class="version-changelog">
                     <h3>✨ New Features</h3>
-                    
                     <h4>🎨 GuiUtils - Client-side GUI Utilities</h4>
-                    <p>Complete client-side GUI utility class for creating beautiful Minecraft interfaces:</p>
-                    <ul>
-                        <li><strong>Screen Positioning:</strong> <code>centerX()</code>, <code>centerY()</code>, <code>center()</code></li>
-                        <li><strong>Color Utilities:</strong> <code>rgba()</code>, <code>rgb()</code>, <code>withAlpha()</code>, <code>hsvToRgb()</code>, <code>adjustBrightness()</code></li>
-                        <li><strong>Drawing Helpers:</strong> <code>drawRect()</code>, <code>drawBorderedRect()</code>, <code>drawGradient()</code>, <code>drawTexture()</code></li>
-                        <li><strong>UI Components:</strong> <code>drawProgressBar()</code>, <code>isPointInRect()</code></li>
+                                            <ul>Complete client-side GUI utility class for creating beautiful Minecraft interfaces:</ul>
+                                            <ul>
+                                                <li><strong>Screen Positioning:</strong> centerX(), centerY(), center()</li>
+                                                <li><strong>Color Utilities:</strong> rgba(), rgb(), withAlpha(), hsvToRgb(), adjustBrightness()</li>
+                                                <li><strong>Drawing Helpers:</strong> drawRect(), drawBorderedRect(), drawGradient(), drawTexture()</li>
+                                                <li><strong>UI Components:</strong> drawProgressBar(), isPointInRect()</li>
                     </ul>
-
                     <h4>📝 Enhanced TextUtils</h4>
-                    <p>Major expansion of text manipulation capabilities:</p>
-                    <ul>
-                        <li><strong>Text Manipulation:</strong> <code>truncate()</code>, <code>toTitleCase()</code>, <code>reverse()</code>, <code>isPalindrome()</code>, <code>wordCount()</code></li>
-                        <li><strong>Text Validation:</strong> <code>isAlphanumeric()</code>, <code>isValidEmail()</code>, <code>removeSpecialChars()</code></li>
-                        <li><strong>Visual Elements:</strong> <code>progressBar()</code>, <code>centerText()</code>, <code>createTextBox()</code></li>
-                        <li><strong>Clickable Links:</strong> <code>clickable()</code> - Create clickable chat text with URLs</li>
+                                            <ul>Major expansion of text manipulation capabilities:</ul>
+                                            <ul>
+                                                <li><strong>Text Manipulation:</strong> truncate(), toTitleCase(), reverse(), isPalindrome(), wordCount()</li>
+                                                <li><strong>Text Validation:</strong> isAlphanumeric(), isValidEmail(), removeSpecialChars()</li>
+                                                <li><strong>Visual Elements:</strong> progressBar(), centerText(), createTextBox()</li>
+                                                <li><strong>Clickable Links:</strong> clickable() - Create clickable chat text with URLs</li>
                     </ul>
-
                     <h4>🎒 ItemUtils - Item Management</h4>
-                    <p>Comprehensive item management and manipulation utilities:</p>
-                    <ul>
-                        <li><strong>Item Validation:</strong> <code>isEmpty()</code>, <code>isNotEmpty()</code>, <code>isSameItem()</code>, <code>isExactMatch()</code></li>
-                        <li><strong>Item Information:</strong> <code>getItemId()</code>, <code>getDisplayName()</code>, <code>getMaxStackSize()</code>, <code>isStackable()</code></li>
-                        <li><strong>Durability Utilities:</strong> <code>getDurability()</code>, <code>getMaxDurability()</code>, <code>isDamaged()</code>, <code>getDamagePercentage()</code></li>
-                        <li><strong>Stack Manipulation:</strong> <code>copyWithCount()</code></li>
+                                            <ul>Comprehensive item management and manipulation utilities:</ul>
+                                            <ul>
+                                                <li><strong>Item Validation:</strong> isEmpty(), isNotEmpty(), isSameItem(), isExactMatch()</li>
+                                                <li><strong>Item Information:</strong> getItemId(), getDisplayName(), getMaxStackSize(), isStackable()</li>
+                                                <li><strong>Durability Utilities:</strong> getDurability(), getMaxDurability(), isDamaged(), getDamagePercentage()</li>
+                                                <li><strong>Stack Manipulation:</strong> copyWithCount()</li>
                     </ul>
-
                     <h3>🔧 Improvements</h3>
                     <ul>
                         <li><strong>API Compatibility:</strong> Fixed compatibility issues for Minecraft 1.21.1</li>
@@ -194,7 +369,6 @@
                         <li><strong>Code Organization:</strong> Proper client/server separation with GuiUtils in client source set</li>
                         <li><strong>Performance:</strong> Optimized utility methods for better performance</li>
                     </ul>
-
                     <h3>🐛 Bug Fixes</h3>
                     <ul>
                         <li>Fixed compilation errors with client-side classes</li>
@@ -202,56 +376,71 @@
                         <li>Improved error handling in utility methods</li>
                     </ul>
                 </div>
-
-                <div class="card">
-                    <h2>📦 Version 1.2.1 - Bug Fixes & Improvements</h2>
-                    <p class="text-muted">Released: August 30 2025</p>
-                    
-                    <h3>🔧 Improvements</h3>
-                    <ul>
-                        <li>Enhanced <code>/chosenlib</code> command with Discord link</li>
-                        <li>Improved clickable link functionality in chat</li>
-                        <li>Better error handling and logging</li>
+                                    </td>
+                                </tr>
+                                <tr class="version-row" onclick="toggleVersion('v1-2-1')">
+                                    <td><strong>1.2.1</strong></td>
+                                    <td>August 30, 2025</td>
+                                    <td>Bug fixes, Discord integration</td>
+                                    <td><span class="status stable"> Stable</span></td>
+                                </tr>
+                                <tr class="version-details" id="v1-2-1" style="display: none;">
+                                    <td colspan="4">
+                                        <div class="version-changelog">
+                                            <h4>🔧 Improvements</h4>
+                                            <ul>
+                                                <li><strong>Enhanced:</strong> /chosenlib with version info and clickable links</li>
+                                                <li><strong>Improved:</strong>  clickable link functionality in chat</li>
+                                                <li><strong>Better error:</strong> handling and logging</li>
                     </ul>
-
-                    <h3>🐛 Bug Fixes</h3>
+                                            <h4>🐛 Bug Fixes</h4>
                     <ul>
                         <li>Fixed version display in command output</li>
                         <li>Resolved configuration loading issues</li>
                     </ul>
                 </div>
-
-                <div class="card">
-                    <h2>🎯 Version 1.2.0 - Configuration & Commands</h2>
-                    <p class="text-muted">Released: August 30 2025</p>
-                    
-                    <h3>✨ New Features</h3>
-                    <ul>
-                        <li><strong>Custom Command:</strong> <code>/chosenlib</code> with version info and clickable links</li>
+                                    </td>
+                                </tr>
+                                <tr class="version-row" onclick="toggleVersion('v1-2-0')">
+                                    <td><strong>1.2.0</strong></td>
+                                    <td>August 30, 2025</td>
+                                    <td>Configuration system, custom commands</td>
+                                    <td><span class="status stable"> Stable</span></td>
+                                </tr>
+                                <tr class="version-details" id="v1-2-0" style="display: none;">
+                                    <td colspan="4">
+                                        <div class="version-changelog">
+                                            <h4>✨ New Features:</h4>
+                                            <ul>
+                                                <li><strong>Custom Command:</strong> /chosenlib with version info and clickable links</li>
                         <li><strong>Configuration System:</strong> JSON-based config with auto-generation</li>
                         <li><strong>Enhanced TextUtils:</strong> New text manipulation helpers</li>
                     </ul>
-
-                    <h3>🔧 Improvements</h3>
+                                            <h4>🔧 Improvements:</h4>
                     <ul>
                         <li>Better documentation and examples</li>
                         <li>Improved code organization</li>
                         <li>Enhanced error handling</li>
                     </ul>
                 </div>
-
-                <div class="card">
-                    <h2>🚀 Version 1.1.0 - Foundation Release</h2>
-                    <p class="text-muted">Released: August 29 2025</p>
-                    
-                    <h3>✨ Initial Features</h3>
+                                    </td>
+                                </tr>
+                                <tr class="version-row" onclick="toggleVersion('v1-1-0')">
+                                    <td><strong>1.1.0</strong></td>
+                                    <td>August 29, 2025</td>
+                                    <td>Initial release, basic utilities</td>
+                                    <td><span class="status stable"> Stable</span></td>
+                                </tr>
+                                <tr class="version-details" id="v1-1-0" style="display: none;">
+                                    <td colspan="4">
+                                        <div class="version-changelog">
+                                            <h4>✨ Initial Features:</h4>
                     <ul>
                         <li><strong>TextUtils:</strong> Basic text formatting and manipulation</li>
                         <li><strong>General Utilities:</strong> Math helpers, random functions, and utility methods</li>
                         <li><strong>Fabric Integration:</strong> Proper Fabric mod setup and structure</li>
                     </ul>
-
-                    <h3>🔧 Foundation</h3>
+                                            <h4>🔧 Foundation:</h4>
                     <ul>
                         <li>Modern Gradle setup with Fabric Loom</li>
                         <li>Java 21 compatibility</li>
@@ -259,57 +448,11 @@
                         <li>Basic documentation</li>
                     </ul>
                 </div>
-
-                <div class="card">
-                    <h2>📋 Version History Summary</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Version</th>
-                                <th>Release Date</th>
-                                <th>Key Features</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>1.4.0</strong></td>
-                                <td>January 2025</td>
-                                <td>WorldUtils, EntityUtils, NetworkUtils, Performance</td>
-                                <td><span style="color: var(--success-color);">✅ Current</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>1.3.1</strong></td>
-                                <td>September 6 2025</td>
-                                <td>/chosenlib command Modrinth link</td>
-                                <td><span style="color: var(--text-muted);">📦 Stable</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>1.3.0</strong></td>
-                                <td>September 1 2025</td>
-                                <td>GuiUtils, ItemUtils, Enhanced TextUtils</td>
-                                <td><span style="color: var(--text-muted);">📦 Stable</span></td>
-                            </tr>
-                            <tr>
-                                <td>1.2.1</td>
-                                <td>August 30 2025</td>
-                                <td>Bug fixes, Discord integration</td>
-                                <td><span style="color: var(--text-muted);">📦 Stable</span></td>
-                            </tr>
-                            <tr>
-                                <td>1.2.0</td>
-                                <td>August 30 2025</td>
-                                <td>Configuration system, custom commands</td>
-                                <td><span style="color: var(--text-muted);">📦 Stable</span></td>
-                            </tr>
-                            <tr>
-                                <td>1.1.0</td>
-                                <td>August 29 2025</td>
-                                <td>Initial release, basic utilities</td>
-                                <td><span style="color: var(--text-muted);">📦 Stable</span></td>
+                                    </td>
                             </tr>
                         </tbody>
                     </table>
+                    </div>
                 </div>
 
                 <div class="card">
@@ -319,23 +462,8 @@
                         <p><strong>📝 Note:</strong> These planned features may change based on community feedback, technical requirements, and development priorities.</p>
                     </div>
                     
-                    <h3>Version 1.5.0 (Planned)</h3>
-                    <ul>
-                        <li><strong>Advanced Block Operations:</strong> Enhanced block manipulation with more safety checks</li>
-                        <li><strong>Entity AI Utilities:</strong> AI-related helper functions for custom mobs</li>
-                        <li><strong>Data Persistence:</strong> Simple data storage and retrieval utilities</li>
-                        <li><strong>Sound & Particle Effects:</strong> Easy-to-use effect utilities</li>
-                    </ul>
 
-                    <h3>Version 1.6.0 (Future)</h3>
-                    <ul>
-                        <li><strong>Advanced Networking:</strong> More sophisticated packet handling and synchronization</li>
-                        <li><strong>Custom Dimensions:</strong> Utilities for working with custom dimensions</li>
-                        <li><strong>Redstone Integration:</strong> Redstone circuit and automation helpers</li>
-                        <li><strong>Performance Monitoring:</strong> Built-in performance profiling tools</li>
-                    </ul>
-
-                    <h3>Version 1.7.0 (Future)</h3>
+                    <h3>Version 1.6.0 (Planned)</h3>
                     <ul>
                         <li><strong>Advanced GUI Components:</strong> More complex UI elements and layouts</li>
                         <li><strong>File System Utilities:</strong> Safe file operations and data management</li>
@@ -343,28 +471,20 @@
                         <li><strong>Event System:</strong> Custom event handling and dispatching</li>
                     </ul>
 
-                    <h3>Version 1.8.0 (Future)</h3>
-                    <ul>
-                        <li><strong>Advanced World Generation:</strong> Custom world generation utilities</li>
-                        <li><strong>Multiplayer Features:</strong> Enhanced multiplayer support and synchronization</li>
-                        <li><strong>Resource Management:</strong> Advanced resource loading and caching</li>
-                        <li><strong>Security Features:</strong> Built-in security and validation utilities</li>
-                    </ul>
-
-                    <h3>Version 1.9.0 (Future)</h3>
-                    <ul>
-                        <li><strong>Mod Integration:</strong> Better integration with other mods</li>
-                        <li><strong>Advanced Configuration:</strong> Dynamic configuration system</li>
-                        <li><strong>Debugging Tools:</strong> Comprehensive debugging and logging utilities</li>
-                        <li><strong>API Stability:</strong> Final API polish and stability improvements</li>
-                    </ul>
-
-                    <h3>Version 2.0.0 (Future)</h3>
+                    <h3>Version unknown (Future)</h3>
                     <ul>
                         <li><strong>Plugin System:</strong> Extensible plugin architecture</li>
                         <li><strong>Advanced GUI Framework:</strong> Complete GUI building system</li>
                         <li><strong>Database Integration:</strong> Built-in database utilities</li>
                         <li><strong>Multi-language Support:</strong> Internationalization framework</li>
+                        <li><strong>Mod Integration:</strong> Better integration with other mods</li>
+                        <li><strong>Advanced Configuration:</strong> Dynamic configuration system</li>
+                        <li><strong>Debugging Tools:</strong> Comprehensive debugging and logging utilities</li>
+                        <li><strong>API Stability:</strong> Final API polish and stability improvements</li>
+                        <li><strong>Advanced World Generation:</strong> Custom world generation utilities</li>
+                        <li><strong>Multiplayer Features:</strong> Enhanced multiplayer support and synchronization</li>
+                        <li><strong>Resource Management:</strong> Advanced resource loading and caching</li>
+                        <li><strong>Security Features:</strong> Built-in security and validation utilities</li>
                     </ul>
 
                     <div class="text-center mt-4">
@@ -382,8 +502,8 @@
                     <h3>ChosenLib</h3>
                     <p>A comprehensive utility library for Fabric modding that streamlines common development tasks.</p>
                     <div class="footer-version">
-                        <span class="version-badge">v1.4.0</span>
-                        <span class="last-updated">Last updated: September 6 2025</span>
+                        <span class="version-badge">v1.5.0</span>
+                        <span class="last-updated">Last updated: October 6 2025</span>
                     </div>
                 </div>
                 
@@ -497,5 +617,15 @@
       </div>
 
     <script src="script.js"></script>
+    <script>
+        function toggleVersion(versionId) {
+            const element = document.getElementById(versionId);
+            if (element.style.display === 'none' || element.style.display === '') {
+                element.style.display = 'table-row';
+            } else {
+                element.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>

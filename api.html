@@ -30,14 +30,580 @@
     <main>
         <div class="container">
             <section class="hero">
-                <h1>API Reference v1.4.0</h1>
+                <h1>API Reference v1.5.0</h1>
                 <p>Comprehensive documentation for all ChosenLib utility classes and methods.</p>
             </section>
 
             <section class="content">
-                <!-- NEW: WorldUtils -->
+                <!-- NEW: AdvancedBlockOps -->
                 <div class="card">
-                    <h2>🌍 WorldUtils <span class="new-badge">NEW</span></h2>
+                    <h2>🔧 AdvancedBlockOps <span class="new-badge">NEW v1.5.0</span></h2>
+                    <p>Enhanced block manipulation with safety checks, transactional editing, and undo systems.</p>
+                    
+                    <h3>Transactional Operations</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>startTransaction(World world)</code></td>
+                                <td>Begins a new transaction for safe block operations</td>
+                                <td><code>AdvancedBlockOps.startTransaction(world)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>commitTransaction(TransactionId id)</code></td>
+                                <td>Commits all changes in transaction</td>
+                                <td><code>AdvancedBlockOps.commitTransaction(transactionId)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>rollbackTransaction(TransactionId id)</code></td>
+                                <td>Rolls back all changes in transaction</td>
+                                <td><code>AdvancedBlockOps.rollbackTransaction(transactionId)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>safeSetBlock(World world, BlockPos pos, BlockState state)</code></td>
+                                <td>Safely sets block with validation</td>
+                                <td><code>AdvancedBlockOps.safeSetBlock(world, pos, state)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Area Operations</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>fillArea(World world, BlockPos pos1, BlockPos pos2, BlockState state)</code></td>
+                                <td>Fills area with specified block</td>
+                                <td><code>AdvancedBlockOps.fillArea(world, pos1, pos2, state)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>replaceInArea(World world, BlockPos pos1, BlockPos pos2, BlockState from, BlockState to)</code></td>
+                                <td>Replaces blocks in area</td>
+                                <td><code>AdvancedBlockOps.replaceInArea(world, pos1, pos2, from, to)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>copyArea(World world, BlockPos source1, BlockPos source2, BlockPos dest)</code></td>
+                                <td>Copies block area to new location</td>
+                                <td><code>AdvancedBlockOps.copyArea(world, source1, source2, dest)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>analyzeArea(World world, BlockPos pos1, BlockPos pos2)</code></td>
+                                <td>Analyzes area for patterns and statistics</td>
+                                <td><code>AdvancedBlockOps.analyzeArea(world, pos1, pos2)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- NEW: EntityAIUtils -->
+                <div class="card">
+                    <h2>🤖 EntityAIUtils <span class="new-badge">NEW v1.5.0</span></h2>
+                    <p>AI utilities for custom mobs and behavior management with goal systems and pathfinding.</p>
+                    
+                    <h3>Goal Management</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>addGoal(MobEntity entity, Goal goal, int priority)</code></td>
+                                <td>Adds AI goal with priority</td>
+                                <td><code>EntityAIUtils.addGoal(entity, goal, 1)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>removeGoal(MobEntity entity, Class&lt;? extends Goal&gt; goalClass)</code></td>
+                                <td>Removes specific goal type</td>
+                                <td><code>EntityAIUtils.removeGoal(entity, FollowPlayerGoal.class)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>clearGoals(MobEntity entity)</code></td>
+                                <td>Clears all AI goals</td>
+                                <td><code>EntityAIUtils.clearGoals(entity)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>getActiveGoals(MobEntity entity)</code></td>
+                                <td>Gets list of active goals</td>
+                                <td><code>EntityAIUtils.getActiveGoals(entity)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Behavior States</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>setBehaviorState(MobEntity entity, String state)</code></td>
+                                <td>Sets custom behavior state</td>
+                                <td><code>EntityAIUtils.setBehaviorState(entity, "aggressive")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>getBehaviorState(MobEntity entity)</code></td>
+                                <td>Gets current behavior state</td>
+                                <td><code>EntityAIUtils.getBehaviorState(entity)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>addMemory(MobEntity entity, String key, Object value)</code></td>
+                                <td>Adds memory to AI system</td>
+                                <td><code>EntityAIUtils.addMemory(entity, "lastPlayer", player)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>getMemory(MobEntity entity, String key)</code></td>
+                                <td>Retrieves AI memory</td>
+                                <td><code>EntityAIUtils.getMemory(entity, "lastPlayer")</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- NEW: DataPersistence -->
+                <div class="card">
+                    <h2>💾 DataPersistence <span class="new-badge">NEW v1.5.0</span></h2>
+                    <p>World, player, and global data storage with compression and migration support.</p>
+                    
+                    <h3>World Data</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>saveWorldData(ServerWorld world, String key, Object data)</code></td>
+                                <td>Saves data to world</td>
+                                <td><code>DataPersistence.saveWorldData(world, "config", configData)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>loadWorldData(ServerWorld world, String key, Class&lt;T&gt; type)</code></td>
+                                <td>Loads data from world</td>
+                                <td><code>DataPersistence.loadWorldData(world, "config", Config.class)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>deleteWorldData(ServerWorld world, String key)</code></td>
+                                <td>Deletes world data</td>
+                                <td><code>DataPersistence.deleteWorldData(world, "oldData")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>hasWorldData(ServerWorld world, String key)</code></td>
+                                <td>Checks if world data exists</td>
+                                <td><code>DataPersistence.hasWorldData(world, "config")</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Player Data</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>savePlayerData(PlayerEntity player, String key, Object data)</code></td>
+                                <td>Saves data to player</td>
+                                <td><code>DataPersistence.savePlayerData(player, "stats", statsData)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>loadPlayerData(PlayerEntity player, String key, Class&lt;T&gt; type)</code></td>
+                                <td>Loads player data</td>
+                                <td><code>DataPersistence.loadPlayerData(player, "stats", Stats.class)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>migratePlayerData(UUID playerId, String fromKey, String toKey)</code></td>
+                                <td>Migrates player data</td>
+                                <td><code>DataPersistence.migratePlayerData(playerId, "oldKey", "newKey")</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- NEW: EffectsUtils -->
+                <div class="card">
+                    <h2>✨ EffectsUtils <span class="new-badge">NEW v1.5.0</span></h2>
+                    <p>Sound and particle effect utilities with timing control and combinations.</p>
+                    
+                    <h3>Sound Effects</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>playSound(World world, Vec3d pos, SoundEvent sound, float volume, float pitch)</code></td>
+                                <td>Plays sound at position</td>
+                                <td><code>EffectsUtils.playSound(world, pos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>playSoundToPlayer(PlayerEntity player, SoundEvent sound, float volume, float pitch)</code></td>
+                                <td>Plays sound to specific player</td>
+                                <td><code>EffectsUtils.playSoundToPlayer(player, sound, 1.0f, 1.0f)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>playDelayedSound(World world, Vec3d pos, SoundEvent sound, int delay)</code></td>
+                                <td>Plays sound after delay</td>
+                                <td><code>EffectsUtils.playDelayedSound(world, pos, sound, 20)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>createSoundSequence(SoundEvent[] sounds, int[] delays)</code></td>
+                                <td>Creates sound sequence</td>
+                                <td><code>EffectsUtils.createSoundSequence(sounds, delays)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Particle Effects</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>spawnParticle(World world, ParticleEffect particle, Vec3d pos)</code></td>
+                                <td>Spawns particle at position</td>
+                                <td><code>EffectsUtils.spawnParticle(world, ParticleTypes.EXPLOSION, pos)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>spawnParticleLine(World world, ParticleEffect particle, Vec3d start, Vec3d end, int count)</code></td>
+                                <td>Spawns particles in line</td>
+                                <td><code>EffectsUtils.spawnParticleLine(world, particle, start, end, 10)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>spawnParticleSphere(World world, ParticleEffect particle, Vec3d center, double radius, int count)</code></td>
+                                <td>Spawns particles in sphere</td>
+                                <td><code>EffectsUtils.spawnParticleSphere(world, particle, center, 2.0, 20)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>createParticleSystem(ParticleEffect particle, Vec3d center, int duration)</code></td>
+                                <td>Creates persistent particle system</td>
+                                <td><code>EffectsUtils.createParticleSystem(particle, center, 100)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- NEW: AdvancedNetworking -->
+                <div class="card">
+                    <h2>🌐 AdvancedNetworking <span class="new-badge">NEW v1.5.0</span></h2>
+                    <p>Sophisticated packet handling with routing, synchronization, compression, and encryption.</p>
+                    
+                    <h3>Packet Routing</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>createPacket(String type, Object data)</code></td>
+                                <td>Creates typed packet</td>
+                                <td><code>AdvancedNetworking.createPacket("data", dataObject)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>routePacket(Identifier channel, PacketByteBuf buffer, PacketRoute route)</code></td>
+                                <td>Routes packet with custom logic</td>
+                                <td><code>AdvancedNetworking.routePacket(channel, buffer, route)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>broadcastPacket(Identifier channel, PacketByteBuf buffer, Predicate&lt;PlayerEntity&gt; filter)</code></td>
+                                <td>Broadcasts packet with filter</td>
+                                <td><code>AdvancedNetworking.broadcastPacket(channel, buffer, player -> true)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>syncData(Identifier channel, String key, Object data)</code></td>
+                                <td>Synchronizes data across clients</td>
+                                <td><code>AdvancedNetworking.syncData(channel, "config", config)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Compression and Encryption</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>compressPacket(PacketByteBuf buffer)</code></td>
+                                <td>Compresses packet data</td>
+                                <td><code>AdvancedNetworking.compressPacket(buffer)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>decompressPacket(PacketByteBuf buffer)</code></td>
+                                <td>Decompresses packet data</td>
+                                <td><code>AdvancedNetworking.decompressPacket(buffer)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>encryptPacket(PacketByteBuf buffer, String key)</code></td>
+                                <td>Encrypts packet data</td>
+                                <td><code>AdvancedNetworking.encryptPacket(buffer, "secret")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>decryptPacket(PacketByteBuf buffer, String key)</code></td>
+                                <td>Decrypts packet data</td>
+                                <td><code>AdvancedNetworking.decryptPacket(buffer, "secret")</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- NEW: DimensionUtils -->
+                <div class="card">
+                    <h2>🌍 DimensionUtils <span class="new-badge">NEW v1.5.0</span></h2>
+                    <p>Custom dimension management with teleportation and portal systems.</p>
+                    
+                    <h3>Dimension Management</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>createDimension(Identifier dimensionId, DimensionType dimensionType)</code></td>
+                                <td>Creates new custom dimension</td>
+                                <td><code>DimensionUtils.createDimension(new Identifier("mymod", "custom"), dimensionType)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>deleteDimension(Identifier dimensionId)</code></td>
+                                <td>Deletes custom dimension</td>
+                                <td><code>DimensionUtils.deleteDimension(dimensionId)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>getDimensionInfo(Identifier dimensionId)</code></td>
+                                <td>Gets dimension information</td>
+                                <td><code>DimensionUtils.getDimensionInfo(dimensionId)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>listCustomDimensions()</code></td>
+                                <td>Lists all custom dimensions</td>
+                                <td><code>DimensionUtils.listCustomDimensions()</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Teleportation</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>teleportToDimension(Entity entity, Identifier dimensionId, Vec3d pos)</code></td>
+                                <td>Teleports entity to dimension</td>
+                                <td><code>DimensionUtils.teleportToDimension(entity, dimensionId, pos)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>createPortal(World world, BlockPos pos, Identifier destination)</code></td>
+                                <td>Creates portal to dimension</td>
+                                <td><code>DimensionUtils.createPortal(world, pos, destination)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>findPortal(World world, Identifier dimensionId)</code></td>
+                                <td>Finds existing portal</td>
+                                <td><code>DimensionUtils.findPortal(world, dimensionId)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- NEW: RedstoneUtils -->
+                <div class="card">
+                    <h2>🔴 RedstoneUtils <span class="new-badge">NEW v1.5.0</span></h2>
+                    <p>Redstone circuit analysis and automation with signal manipulation and logic gates.</p>
+                    
+                    <h3>Circuit Analysis</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>analyzeCircuit(World world, BlockPos pos, int radius)</code></td>
+                                <td>Analyzes redstone circuit</td>
+                                <td><code>RedstoneUtils.analyzeCircuit(world, pos, 10)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>getSignalStrength(World world, BlockPos pos)</code></td>
+                                <td>Gets redstone signal strength</td>
+                                <td><code>RedstoneUtils.getSignalStrength(world, pos)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>setSignalStrength(World world, BlockPos pos, int strength)</code></td>
+                                <td>Sets redstone signal strength</td>
+                                <td><code>RedstoneUtils.setSignalStrength(world, pos, 15)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>findRedstoneComponents(World world, BlockPos center, int radius)</code></td>
+                                <td>Finds redstone components</td>
+                                <td><code>RedstoneUtils.findRedstoneComponents(world, center, 5)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Logic Gates</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>createANDGate(World world, BlockPos pos, List&lt;BlockPos&gt; inputs)</code></td>
+                                <td>Creates AND logic gate</td>
+                                <td><code>RedstoneUtils.createANDGate(world, pos, inputs)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>createORGate(World world, BlockPos pos, List&lt;BlockPos&gt; inputs)</code></td>
+                                <td>Creates OR logic gate</td>
+                                <td><code>RedstoneUtils.createORGate(world, pos, inputs)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>createNOTGate(World world, BlockPos pos, BlockPos input)</code></td>
+                                <td>Creates NOT logic gate</td>
+                                <td><code>RedstoneUtils.createNOTGate(world, pos, input)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>simulateLogicGate(LogicGateType type, int[] inputs)</code></td>
+                                <td>Simulates logic gate operation</td>
+                                <td><code>RedstoneUtils.simulateLogicGate(LogicGateType.AND, inputs)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- NEW: PerformanceMonitor -->
+                <div class="card">
+                    <h2>📊 PerformanceMonitor <span class="new-badge">NEW v1.5.0</span></h2>
+                    <p>Built-in performance profiling with memory monitoring, tick analysis, and reporting.</p>
+                    
+                    <h3>Memory Monitoring</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>getMemoryUsage()</code></td>
+                                <td>Gets current memory usage</td>
+                                <td><code>PerformanceMonitor.getMemoryUsage()</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>getHeapUsage()</code></td>
+                                <td>Gets heap memory usage</td>
+                                <td><code>PerformanceMonitor.getHeapUsage()</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>startMemoryTracking()</code></td>
+                                <td>Starts memory tracking</td>
+                                <td><code>PerformanceMonitor.startMemoryTracking()</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>stopMemoryTracking()</code></td>
+                                <td>Stops memory tracking</td>
+                                <td><code>PerformanceMonitor.stopMemoryTracking()</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Performance Analysis</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>startProfiling(String name)</code></td>
+                                <td>Starts performance profiling</td>
+                                <td><code>PerformanceMonitor.startProfiling("myOperation")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>endProfiling(String name)</code></td>
+                                <td>Ends performance profiling</td>
+                                <td><code>PerformanceMonitor.endProfiling("myOperation")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>getTPSData(ServerWorld world)</code></td>
+                                <td>Gets TPS (Ticks Per Second) data</td>
+                                <td><code>PerformanceMonitor.getTPSData(world)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>generatePerformanceReport(ServerWorld world)</code></td>
+                                <td>Generates comprehensive report</td>
+                                <td><code>PerformanceMonitor.generatePerformanceReport(world)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ENHANCED: WorldUtils -->
+                <div class="card">
+                    <h2>🌍 WorldUtils <span class="enhanced-badge">ENHANCED v1.5.0</span></h2>
                     <p>World and block manipulation utilities with safe operations and area queries.</p>
                     
                     <h3>Block Operations</h3>
@@ -733,7 +1299,7 @@
                 <!-- Performance and Caching -->
                 <div class="card">
                     <h2>⚡ Performance and Caching</h2>
-                    <p>ChosenLib v1.4.0 includes comprehensive caching systems for optimal performance.</p>
+                    <p>ChosenLib v1.5.0 includes comprehensive caching systems for optimal performance.</p>
                     
                     <h3>Cache Management</h3>
                     <table>
@@ -777,7 +1343,7 @@
                     </ul>
 
                     <div class="note note-neutral">
-                        <p><strong>📋 API Versioning:</strong> This API reference is for v1.4.0. Future versions (1.5.0-1.9.0) may add new methods or deprecate existing ones. We maintain backward compatibility within major versions. Check our <a href="changelog.html">changelog</a> for detailed version information.</p>
+                        <p><strong>📋 API Versioning:</strong> This API reference is for v1.5.0. Future versions (1.6.0-1.9.0) may add new methods or deprecate existing ones. We maintain backward compatibility within major versions. Check our <a href="changelog.html">changelog</a> for detailed version information.</p>
                     </div>
                 </div>
             </section>
@@ -791,8 +1357,8 @@
                     <h3>ChosenLib</h3>
                     <p>A comprehensive utility library for Fabric modding that streamlines common development tasks.</p>
                     <div class="footer-version">
-                        <span class="version-badge">v1.4.0</span>
-                        <span class="last-updated">Last updated: September 6 2025</span>
+                        <span class="version-badge">v1.5.0</span>
+                        <span class="last-updated">Last updated: October 6 2025</span>
                     </div>
                 </div>
                 
