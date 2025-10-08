@@ -1,17 +1,19 @@
 package com.chosen.lib.util;
-
 import com.chosen.lib.ChosenLib;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldProperties;
 import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.world.dimension.DimensionTypes;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -502,6 +504,7 @@ public class DimensionUtils {
     public static void cleanupRemovedDimensions() {
         // Remove dimensions that no longer exist
         dimensionInfo.entrySet().removeIf(entry -> {
+            RegistryKey<World> dimensionKey = entry.getKey();
             // In a real implementation, check if dimension still exists
             return false; // Placeholder
         });

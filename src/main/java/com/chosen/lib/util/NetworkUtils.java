@@ -3,6 +3,7 @@ package com.chosen.lib.util;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
@@ -20,7 +21,7 @@ import java.util.function.Consumer;
  * Provides helpers for sending packets, managing network data, and communication.
  */
 public class NetworkUtils {
-    
+
     /**
      * Creates a new packet buffer.
      * @return A new PacketByteBuf instance.
@@ -28,94 +29,77 @@ public class NetworkUtils {
     public static PacketByteBuf createBuffer() {
         return PacketByteBufs.create();
     }
-    
+
     /**
-     * Sends a packet to a specific player.
+     * Sends a custom payload packet to a specific player.
      * @param player The target player.
-     * @param channelId The packet channel identifier.
-     * @param buffer The packet data buffer.
+     * @param payload The custom payload to send.
      * @return True if the packet was sent successfully.
      */
-    public static boolean sendToPlayer(ServerPlayerEntity player, Identifier channelId, PacketByteBuf buffer) {
+    public static boolean sendToPlayer(ServerPlayerEntity player, CustomPayload payload) {
         try {
-            // TODO: Fix this method for the current Fabric API version
-            // The ServerPlayNetworking.send method signature has changed
-            // and now requires a CustomPayload instead of Identifier + PacketByteBuf.
-            // You need to create a CustomPayload implementation for your packet type.
-            // For example:
-            // public record MyPacketPayload(int someData) implements CustomPayload { ... }
-            // Then you would create an instance of it and send it:
-            // MyPacketPayload payload = new MyPacketPayload(42);
-            // ServerPlayNetworking.send(player, payload);
-            
-            // Since this is a generic utility method, we cannot know the specific payload type.
-            // The caller of this method should be updated to use the new API.
-            // As a temporary measure, this method is disabled.
-            return false;
+            ServerPlayNetworking.send(player, payload);
+            return true;
         } catch (Exception e) {
             // Log error if needed
         }
         return false;
     }
-    
+
     /**
-     * Sends a packet to multiple players.
+     * Sends a custom payload packet to multiple players.
      * @param players The target players.
-     * @param channelId The packet channel identifier.
-     * @param buffer The packet data buffer.
+     * @param payload The custom payload to send.
      * @return The number of players the packet was sent to.
      */
-    public static int sendToPlayers(Collection<ServerPlayerEntity> players, Identifier channelId, PacketByteBuf buffer) {
+    public static int sendToPlayers(Collection<ServerPlayerEntity> players, CustomPayload payload) {
         int sent = 0;
         for (ServerPlayerEntity player : players) {
-            if (sendToPlayer(player, channelId, buffer)) {
+            if (sendToPlayer(player, payload)) {
                 sent++;
             }
         }
         return sent;
     }
-    
+
     /**
-     * Sends a packet to all players in a world.
+     * Sends a custom payload packet to all players in a world.
      * @param world The target world.
-     * @param channelId The packet channel identifier.
-     * @param buffer The packet data buffer.
+     * @param payload The custom payload to send.
      * @return The number of players the packet was sent to.
      */
-    public static int sendToWorld(ServerWorld world, Identifier channelId, PacketByteBuf buffer) {
-        return sendToPlayers(world.getPlayers(), channelId, buffer);
+    public static int sendToWorld(ServerWorld world, CustomPayload payload) {
+        return sendToPlayers(world.getPlayers(), payload);
     }
-    
+
     /**
-     * Sends a packet to all players within a radius of a position.
+     * Sends a custom payload packet to all players within a radius of a position.
      * @param world The world.
      * @param center The center position.
      * @param radius The radius.
-     * @param channelId The packet channel identifier.
-     * @param buffer The packet data buffer.
+     * @param payload The custom payload to send.
      * @return The number of players the packet was sent to.
      */
-    public static int sendToPlayersInRadius(ServerWorld world, Vec3d center, double radius, 
-                                          Identifier channelId, PacketByteBuf buffer) {
-        List<ServerPlayerEntity> nearbyPlayers = world.getPlayers(player -> 
+    public static int sendToPlayersInRadius(ServerWorld world, Vec3d center, double radius,
+                                          CustomPayload payload) {
+        List<ServerPlayerEntity> nearbyPlayers = world.getPlayers(player ->
             player.getPos().distanceTo(center) <= radius);
-        return sendToPlayers(nearbyPlayers, channelId, buffer);
+        return sendToPlayers(nearbyPlayers, payload);
     }
-    
+
     /**
-     * Sends a packet to all players within a radius of a block position.
+     * Sends a custom payload packet to all players within a radius of a block position.
      * @param world The world.
      * @param center The center block position.
      * @param radius The radius.
-     * @param channelId The packet channel identifier.
-     * @param buffer The packet data buffer.
+     * @param payload The custom payload to send.
      * @return The number of players the packet was sent to.
      */
-    public static int sendToPlayersInRadius(ServerWorld world, BlockPos center, double radius, 
-                                          Identifier channelId, PacketByteBuf buffer) {
-        return sendToPlayersInRadius(world, Vec3d.ofCenter(center), radius, channelId, buffer);
+    public static int sendToPlayersInRadius(ServerWorld world, BlockPos center, double radius,
+                                          CustomPayload payload) {
+        return sendToPlayersInRadius(world, Vec3d.ofCenter(center), radius, payload);
     }
-    
+
     /**
      * Checks if a player can receive a specific packet type.
      * @param player The player.
@@ -125,7 +109,7 @@ public class NetworkUtils {
     public static boolean canSendToPlayer(ServerPlayerEntity player, Identifier channelId) {
         return ServerPlayNetworking.canSend(player, channelId);
     }
-    
+
     /**
      * Writes a string to a packet buffer safely.
      * @param buffer The packet buffer.
@@ -138,7 +122,7 @@ public class NetworkUtils {
             buffer.writeString(string);
         }
     }
-    
+
     /**
      * Reads a string from a packet buffer safely.
      * @param buffer The packet buffer.
@@ -151,7 +135,7 @@ public class NetworkUtils {
             return "";
         }
     }
-    
+
     /**
      * Writes a Text component to a packet buffer.
      * @param buffer The packet buffer.
@@ -164,7 +148,7 @@ public class NetworkUtils {
             buffer.writeString(text.getString());
         }
     }
-    
+
     /**
      * Reads a Text component from a packet buffer.
      * @param buffer The packet buffer.
@@ -177,7 +161,7 @@ public class NetworkUtils {
             return Text.empty();
         }
     }
-    
+
     /**
      * Writes a BlockPos to a packet buffer.
      * @param buffer The packet buffer.
@@ -190,7 +174,7 @@ public class NetworkUtils {
             buffer.writeBlockPos(pos);
         }
     }
-    
+
     /**
      * Reads a BlockPos from a packet buffer.
      * @param buffer The packet buffer.
@@ -203,7 +187,7 @@ public class NetworkUtils {
             return BlockPos.ORIGIN;
         }
     }
-    
+
     /**
      * Writes a Vec3d to a packet buffer.
      * @param buffer The packet buffer.
@@ -220,7 +204,7 @@ public class NetworkUtils {
             buffer.writeDouble(vec.z);
         }
     }
-    
+
     /**
      * Reads a Vec3d from a packet buffer.
      * @param buffer The packet buffer.
@@ -236,7 +220,7 @@ public class NetworkUtils {
             return Vec3d.ZERO;
         }
     }
-    
+
     /**
      * Writes a UUID to a packet buffer.
      * @param buffer The packet buffer.
@@ -249,7 +233,7 @@ public class NetworkUtils {
             buffer.writeUuid(uuid);
         }
     }
-    
+
     /**
      * Reads a UUID from a packet buffer.
      * @param buffer The packet buffer.
@@ -262,7 +246,7 @@ public class NetworkUtils {
             return new UUID(0, 0);
         }
     }
-    
+
     /**
      * Writes an Identifier to a packet buffer.
      * @param buffer The packet buffer.
@@ -275,7 +259,7 @@ public class NetworkUtils {
             buffer.writeIdentifier(identifier);
         }
     }
-    
+
     /**
      * Reads an Identifier from a packet buffer.
      * @param buffer The packet buffer.
@@ -288,7 +272,7 @@ public class NetworkUtils {
             return Identifier.of("minecraft", "air");
         }
     }
-    
+
     /**
      * Writes a boolean array to a packet buffer.
      * @param buffer The packet buffer.
@@ -304,7 +288,7 @@ public class NetworkUtils {
             }
         }
     }
-    
+
     /**
      * Reads a boolean array from a packet buffer.
      * @param buffer The packet buffer.
@@ -322,7 +306,7 @@ public class NetworkUtils {
             return new boolean[0];
         }
     }
-    
+
     /**
      * Writes an integer array to a packet buffer.
      * @param buffer The packet buffer.
@@ -338,7 +322,7 @@ public class NetworkUtils {
             }
         }
     }
-    
+
     /**
      * Reads an integer array from a packet buffer.
      * @param buffer The packet buffer.
@@ -356,7 +340,7 @@ public class NetworkUtils {
             return new int[0];
         }
     }
-    
+
     /**
      * Writes a string array to a packet buffer.
      * @param buffer The packet buffer.
@@ -372,7 +356,7 @@ public class NetworkUtils {
             }
         }
     }
-    
+
     /**
      * Reads a string array from a packet buffer.
      * @param buffer The packet buffer.
@@ -390,7 +374,7 @@ public class NetworkUtils {
             return new String[0];
         }
     }
-    
+
     /**
      * Creates a packet buffer with pre-written data using a consumer.
      * @param writer The consumer that writes data to the buffer.
@@ -401,7 +385,7 @@ public class NetworkUtils {
         writer.accept(buffer);
         return buffer;
     }
-    
+
     /**
      * Safely executes a buffer operation, catching any exceptions.
      * @param buffer The packet buffer.
@@ -417,7 +401,7 @@ public class NetworkUtils {
             return false;
         }
     }
-    
+
     /**
      * Gets the remaining readable bytes in a buffer.
      * @param buffer The packet buffer.
@@ -426,7 +410,7 @@ public class NetworkUtils {
     public static int getReadableBytes(PacketByteBuf buffer) {
         return buffer.readableBytes();
     }
-    
+
     /**
      * Checks if a buffer has readable bytes remaining.
      * @param buffer The packet buffer.
@@ -435,7 +419,7 @@ public class NetworkUtils {
     public static boolean hasReadableBytes(PacketByteBuf buffer) {
         return buffer.readableBytes() > 0;
     }
-    
+
     /**
      * Skips a specified number of bytes in a buffer.
      * @param buffer The packet buffer.
@@ -453,7 +437,7 @@ public class NetworkUtils {
         }
         return false;
     }
-    
+
     /**
      * Resets the reader index of a buffer to the beginning.
      * @param buffer The packet buffer.
@@ -461,7 +445,7 @@ public class NetworkUtils {
     public static void resetReaderIndex(PacketByteBuf buffer) {
         buffer.resetReaderIndex();
     }
-    
+
     /**
      * Marks the current reader index for later reset.
      * @param buffer The packet buffer.
@@ -469,7 +453,7 @@ public class NetworkUtils {
     public static void markReaderIndex(PacketByteBuf buffer) {
         buffer.markReaderIndex();
     }
-    
+
     /**
      * Creates a simple packet with just a string message.
      * @param message The message to include.
@@ -478,7 +462,7 @@ public class NetworkUtils {
     public static PacketByteBuf createSimplePacket(String message) {
         return createBuffer(buffer -> writeString(buffer, message));
     }
-    
+
     /**
      * Creates a position packet with a block position.
      * @param pos The block position.
@@ -487,7 +471,7 @@ public class NetworkUtils {
     public static PacketByteBuf createPositionPacket(BlockPos pos) {
         return createBuffer(buffer -> writeBlockPos(buffer, pos));
     }
-    
+
     /**
      * Creates a vector packet with a Vec3d.
      * @param vec The vector.
@@ -496,7 +480,7 @@ public class NetworkUtils {
     public static PacketByteBuf createVectorPacket(Vec3d vec) {
         return createBuffer(buffer -> writeVec3d(buffer, vec));
     }
-    
+
     /**
      * Creates a UUID packet.
      * @param uuid The UUID.

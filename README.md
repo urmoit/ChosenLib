@@ -1,4 +1,4 @@
-# ChosenLib v1.5.0
+# ChosenLib v1.5.1
 
 A comprehensive utility library for Fabric that streamlines common modding tasks with advanced features. Use it to bootstrap new mods faster and share powerful reusable helpers across projects.
 
@@ -7,31 +7,14 @@ A comprehensive utility library for Fabric that streamlines common modding tasks
 - **Open-source and developer-friendly**
 - **Production-ready** with extensive error handling and performance optimization
 
-## 🚀 New in v1.5.0
+## 🚀 Changes in v1.5.1
 
-### Major New Utility Classes
-- **🔧 AdvancedBlockOps** - Enhanced block manipulation with safety checks and transactional editing
-- **🤖 EntityAIUtils** - AI utilities for custom mobs and advanced entity behaviors  
-- **💾 DataPersistence** - World, player, and global data storage with compression
-- **✨ EffectsUtils** - Sound & particle effect utilities with timing control
-- **🌐 AdvancedNetworking** - Sophisticated packet handling with encryption and compression
-- **🌍 DimensionUtils** - Custom dimension management and portal systems
-- **🔴 RedstoneUtils** - Circuit analysis, automation, and logic gates
-- **📊 PerformanceMonitor** - Built-in profiling and optimization tools
+This is a patch release that addresses a critical bug in the networking utility.
 
-### Enhanced Existing Utilities
-- **WorldUtils** - Transactional editing, undo system, pattern analysis
-- **EntityUtils** - AI integration, enhanced pathfinding, memory system
-- **NetworkUtils** - Reliable packets, compression, encryption
-- **ItemUtils** - Data persistence, advanced validation, custom items
-- **TextUtils** - Rich formatting, performance optimization, localization
+- **NetworkUtils**: Fixed an issue where networking methods were incompatible with the latest Fabric API version. The methods have been updated to use `CustomPayload` for modern, type-safe packet handling. **This is a breaking change** for any mods that were using the old networking methods.
 
-### Performance Improvements
-- **Multi-level caching** (L1/L2/L3) with intelligent invalidation
-- **Batch operations** for blocks, entities, packets, and items
-- **Smart object pooling** and memory leak detection
+Read Full Changelog here: https://urmoit.github.io/ChosenLib/changelog.html or https://github.com/urmoit/ChosenLib/blob/main/Changelogs/CHANGELOG_v1.5.1.md
 
-Read Full Changelog here: https://urmoit.github.io/ChosenLib/changelog.html or https://github.com/urmoit/ChosenLib/blob/main/Changelogs/CHANGELOG_v1.5.0.md
 
 ## Requirements
 - Fabric Loader
@@ -50,7 +33,7 @@ repositories {
 }
 
 dependencies {
-    modImplementation "com.yourgroup:chosenlib:1.5.0"
+    modImplementation "com.yourgroup:chosenlib:v1.5.1"
 }
 ```
 
@@ -84,7 +67,7 @@ ChosenLib.isBetween(5, 1, 10); // true
 ChosenLib.safeEquals("a", "a"); // true
 ```
 
-### Advanced Features (v1.5.0)
+### Advanced Features (v1.5.1)
 ```java
 import com.chosen.lib.util.*;
 
@@ -123,10 +106,8 @@ long elapsedTime = PerformanceMonitor.stopProfiling("my_operation");
 ./gradlew clean build
 ```
 Artifacts are in `build/libs/`:
-- `<name>-1.5.0.jar` (use this)
-- `<name>-1.5.0-sources.jar` (sources)
-
-## 📋 Version History and raodmap: https://urmoit.github.io/ChosenLib/changelog.html
+- `<name>-1.5.1.jar` (use this)
+- `<name>-v1.5.1-sources.jar` (sources)
 
 ## 📄 License
 

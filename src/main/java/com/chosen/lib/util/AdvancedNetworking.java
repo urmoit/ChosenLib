@@ -1,24 +1,27 @@
 package com.chosen.lib.util;
-
-import com.chosen.lib.ChosenLib;
 import java.io.ByteArrayInputStream;
+import com.chosen.lib.ChosenLib;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.entity.Entity;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.security.SecureRandom;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -163,8 +166,8 @@ public class AdvancedNetworking {
     private static class PacketQueue {
         private final LinkedBlockingQueue<CustomPacket> queue = new LinkedBlockingQueue<>();
         private final Set<String> acknowledgedPackets = ConcurrentHashMap.newKeySet();
-        // private final long maxRetryTime = 30000; // 30 seconds
-        // private final int maxRetries = 3;
+        private final long maxRetryTime = 30000; // 30 seconds
+        private final int maxRetries = 3;
         
         public void queuePacket(CustomPacket packet) {
             queue.offer(packet);
@@ -174,17 +177,17 @@ public class AdvancedNetworking {
             return queue.poll();
         }
         
-        // public void acknowledgePacket(String packetId) {
-        //     acknowledgedPackets.add(packetId);
-        // }
+        public void acknowledgePacket(String packetId) {
+            acknowledgedPackets.add(packetId);
+        }
         
-        // public boolean isAcknowledged(String packetId) {
-        //     return acknowledgedPackets.contains(packetId);
-        // }
+        public boolean isAcknowledged(String packetId) {
+            return acknowledgedPackets.contains(packetId);
+        }
         
-        // public int getQueueSize() {
-        //     return queue.size();
-        // }
+        public int getQueueSize() {
+            return queue.size();
+        }
     }
     
     /**
@@ -203,7 +206,7 @@ public class AdvancedNetworking {
         
         public SecretKey getKey() { return key; }
         public boolean isExpired() { return System.currentTimeMillis() >= expires; }
-        // public long getCreated() { return created; }
+        public long getCreated() { return created; }
     }
     
     /**
@@ -218,35 +221,35 @@ public class AdvancedNetworking {
         private long totalLatency = 0;
         private final Map<String, Integer> packetTypeCounts = new HashMap<>();
         
-        // public void recordPacketSent(CustomPacket packet) {
-        //     packetsSent++;
-        //     totalBytesSent += packet.getData().length;
-        //     packetTypeCounts.merge(packet.getType().name(), 1, Integer::sum);
-        // }
+        public void recordPacketSent(CustomPacket packet) {
+            packetsSent++;
+            totalBytesSent += packet.getData().length;
+            packetTypeCounts.merge(packet.getType().name(), 1, Integer::sum);
+        }
         
-        // public void recordPacketReceived(CustomPacket packet) {
-        //     packetsReceived++;
-        //     totalBytesReceived += packet.getData().length;
-        // }
+        public void recordPacketReceived(CustomPacket packet) {
+            packetsReceived++;
+            totalBytesReceived += packet.getData().length;
+        }
         
-        // public void recordPacketLost() {
-        //     packetsLost++;
-        // }
+        public void recordPacketLost() {
+            packetsLost++;
+        }
         
-        // public void recordLatency(long latency) {
-        //     totalLatency += latency;
-        // }
+        public void recordLatency(long latency) {
+            totalLatency += latency;
+        }
         
         // Getters
-        // public int getPacketsSent() { return packetsSent; }
-        // public int getPacketsReceived() { return packetsReceived; }
-        // public int getPacketsLost() { return packetsLost; }
-        // public long getTotalBytesSent() { return totalBytesSent; }
-        // public long getTotalBytesReceived() { return totalBytesReceived; }
-        // public double getAverageLatency() { 
-        //     return packetsReceived > 0 ? (double) totalLatency / packetsReceived : 0.0; 
-        // }
-        // public Map<String, Integer> getPacketTypeCounts() { return packetTypeCounts; }
+        public int getPacketsSent() { return packetsSent; }
+        public int getPacketsReceived() { return packetsReceived; }
+        public int getPacketsLost() { return packetsLost; }
+        public long getTotalBytesSent() { return totalBytesSent; }
+        public long getTotalBytesReceived() { return totalBytesReceived; }
+        public double getAverageLatency() { 
+            return packetsReceived > 0 ? (double) totalLatency / packetsReceived : 0.0; 
+        }
+        public Map<String, Integer> getPacketTypeCounts() { return packetTypeCounts; }
     }
     
     /**
@@ -661,27 +664,27 @@ public class AdvancedNetworking {
         }
     }
     
-    // private static CustomPacket readCustomPacket(PacketByteBuf buffer) {
-    //     String packetId = buffer.readString();
-    //     PacketType type = PacketType.valueOf(buffer.readString());
-    //     Identifier channelId = buffer.readIdentifier();
-    //     byte[] data = buffer.readByteArray();
-    //     long timestamp = buffer.readLong();
-    //     boolean compressed = buffer.readBoolean();
-    //     boolean encrypted = buffer.readBoolean();
-    //     
-    //     CustomPacket packet = new CustomPacket(packetId, type, channelId, data, compressed, encrypted);
-    //     
-    //     // Read metadata
-    //     int metadataSize = buffer.readInt();
-    //     for (int i = 0; i < metadataSize; i++) {
-    //         String key = buffer.readString();
-    //         String value = buffer.readString();
-    //         packet.setMetadata(key, value);
-    //     }
-    //     
-    //     return packet;
-    // }
+    private static CustomPacket readCustomPacket(PacketByteBuf buffer) {
+        String packetId = buffer.readString();
+        PacketType type = PacketType.valueOf(buffer.readString());
+        Identifier channelId = buffer.readIdentifier();
+        byte[] data = buffer.readByteArray();
+        long timestamp = buffer.readLong();
+        boolean compressed = buffer.readBoolean();
+        boolean encrypted = buffer.readBoolean();
+        
+        CustomPacket packet = new CustomPacket(packetId, type, channelId, data, compressed, encrypted);
+        
+        // Read metadata
+        int metadataSize = buffer.readInt();
+        for (int i = 0; i < metadataSize; i++) {
+            String key = buffer.readString();
+            String value = buffer.readString();
+            packet.setMetadata(key, value);
+        }
+        
+        return packet;
+    }
     
     private static boolean routeSyncPacket(SyncPacket packet) {
         // Route sync packet to appropriate handler

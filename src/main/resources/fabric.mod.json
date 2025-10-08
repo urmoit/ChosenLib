@@ -4,7 +4,7 @@
   "version": "${version}",
   "name": "ChosenLib",
   "description": "A chosen utility library for Fabric mods",
-  "authors": ["Your Name"],
+  "authors": ["ChosenTechies"],
   "contact": {
     "homepage": "https://github.com/yourusername/chosenlib",
     "sources": "https://github.com/yourusername/chosenlib"
