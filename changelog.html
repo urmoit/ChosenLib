@@ -49,11 +49,36 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="current-version" onclick="toggleVersion('v1-5-0')">
+                                <tr class="current-version" onclick="toggleVersion('v1-5-1')">
+                                    <td><strong>1.5.1</strong></td>
+                                    <td>October 8 2025</td>
+                                    <td>Network fix</td>
+                                    <td><span class="status current">Current</span></td>
+                                </tr>
+                                <tr class="version-details" id="v1-5-1" style="display: none;">
+                                    <td colspan="4">
+                                        <div class="version-changelog">
+                                            <h3>Bug Fixes</h3>
+                                            <h4>NetworkUtils</h4>
+                                            <ul>
+                                                <li>Fixed an issue where networking methods were incompatible with the latest Fabric API version. The methods have been updated to use `CustomPayload` for modern, type-safe packet handling. This is a breaking change for any mods that were using the old networking methods.</li>
+                                                <li><strong>Safety Validation:</strong> validateBlockPlacement(), checkBlockIntegrity(), verifyAreaAccess()</li>
+                                            </ul>
+                                            <h3>🔧 General</h3>
+                                            <ul>
+                                                <li><strong>Internal version updated to:</strong> 1.5.1</li>
+                                            </ul>
+                                            <div class="text-center mt-4">
+                                                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" class="btn btn-primary">📥 Download v1.5.1</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="stable-version" onclick="toggleVersion('v1-5-0')">
                                     <td><strong>1.5.0</strong></td>
                                     <td>October 6 2025</td>
                                     <td>Advanced Block Operations, Entity AI Utilities, Data Persistence, Sound & Particle Effects, Advanced Networking, Custom Dimensions, Redstone Integration, Performance Monitoring</td>
-                                    <td><span class="status current">Current</span></td>
+                                    <td><span class="status stable">stable</span></td>
                                 </tr>
                                 <tr class="version-details" id="v1-5-0" style="display: none;">
                                     <td colspan="4">
@@ -206,9 +231,6 @@
                                                 <li><strong>Performance monitoring:</strong> and optimization tools built-in</li>
                                                 <li><strong>Advanced debugging:</strong> and profiling capabilities</li>
                                             </ul>
-                                            <div class="text-center mt-4">
-                                                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" class="btn btn-primary">📥 Download v1.5.0</a>
-                                            </div>
                                         </div>
                                     </td>
                                 </tr>
@@ -502,8 +524,8 @@
                     <h3>ChosenLib</h3>
                     <p>A comprehensive utility library for Fabric modding that streamlines common development tasks.</p>
                     <div class="footer-version">
-                        <span class="version-badge">v1.5.0</span>
-                        <span class="last-updated">Last updated: October 6 2025</span>
+                        <span class="version-badge">v1.5.1</span>
+                        <span class="last-updated">Last updated: October 8 2025</span>
                     </div>
                 </div>
                 

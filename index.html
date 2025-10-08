@@ -30,12 +30,21 @@
     <main>
         <div class="container">
             <section class="hero">
-                <h1>ChosenLib v1.5.0</h1>
+                <h1>ChosenLib v1.5.1</h1>
                 <p>A comprehensive utility library for Fabric that streamlines common modding tasks. Build better mods faster with our advanced collection of utilities including AI systems, performance monitoring, custom dimensions, and much more.</p>
                 <div class="hero-buttons">
                     <a href="getting-started.html" class="btn btn-primary">🚀 Get Started</a>
                     <a href="api.html" class="btn btn-secondary">📚 API Reference</a>
                     <a href="https://github.com/chosenlib/chosenlib" class="btn btn-secondary">💻 GitHub</a>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>🚀 New Update: Version 1.5.1</h2>
+                <div class="note note-warning">
+                    <p><strong>ChosenLib v1.5.1 is here!</strong> This is a patch release that addresses a critical bug in the networking utility, ensuring compatibility with the latest Fabric API.
+                    </p>
+                    <p>The networking methods in <code>NetworkUtils</code> have been updated to use <code>CustomPayload</code> for modern, type-safe packet handling. <strong>This is a breaking change</strong> for any mods that were using the old networking methods. Please review the <a href="changelog.html">changelog</a> for more details.</p>
                 </div>
             </section>
 
@@ -92,7 +101,7 @@
                     <div class="feature-card">
                         <div class="feature-icon">🌐</div>
                         <h3>AdvancedNetworking</h3>
-                        <p><span class="new-badge">NEW v1.5.0</span> Sophisticated packet handling with encryption and compression.</p>
+                        <p><span class="fixed-badge">fixed v1.5.1</span> Sophisticated packet handling with encryption and compression.</p>
                         <ul>
                             <li>Packet routing</li>
                             <li>Synchronization</li>
@@ -238,7 +247,7 @@
                     
                     <h3>1. Add as Dependency</h3>
                     <pre><code>dependencies {
-    modImplementation "com.yourgroup:chosenlib:1.4.0"
+    modImplementation "com.yourgroup:chosenlib:1.5.1"
 }</code></pre>
 
                     <h3>2. Import Utilities</h3>
@@ -270,43 +279,15 @@ PerformanceMonitor.getMemoryUsage();</code></pre>
                 </div>
 
                 <div class="card">
-                    <h2>🚀 What's New in v1.5.0 - Major Feature Release!</h2>
+                    <h2>🚀 What's New in v1.5.1 - Patch Release!</h2>
                     <div class="features-grid">
                         <div>
-                            <h3>🔧 AdvancedBlockOps</h3>
-                            <p>Enhanced block manipulation with safety checks, transactional editing, and undo systems.</p>
-                        </div>
-                        <div>
-                            <h3>🤖 EntityAIUtils</h3>
-                            <p>AI utilities for custom mobs and behavior management with goal systems and pathfinding.</p>
-                        </div>
-                        <div>
-                            <h3>💾 DataPersistence</h3>
-                            <p>World, player, and global data storage with compression and migration support.</p>
-                        </div>
-                        <div>
                             <h3>✨ EffectsUtils</h3>
-                            <p>Sound and particle effect utilities with timing control and combinations.</p>
-                        </div>
-                        <div>
-                            <h3>🌐 AdvancedNetworking</h3>
-                            <p>Sophisticated packet handling with routing, synchronization, compression, and encryption.</p>
-                        </div>
-                        <div>
-                            <h3>🌍 DimensionUtils</h3>
-                            <p>Custom dimension management with teleportation and portal systems.</p>
-                        </div>
-                        <div>
-                            <h3>🔴 RedstoneUtils</h3>
-                            <p>Redstone circuit analysis and automation with signal manipulation and logic gates.</p>
-                        </div>
-                        <div>
-                            <h3>📊 PerformanceMonitor</h3>
-                            <p>Built-in performance profiling with memory monitoring, tick analysis, and reporting.</p>
+                            <p><span class="fixed-badge">FIXED</span> This release includes a fix for networking methods to ensure compatibility with the latest Fabric API. The `EffectsUtils` continues to provide a powerful utility for creating stunning visual and audio effects, with support for custom particles and sounds.</p>
                         </div>
                     </div>
                     <div class="note note-success">
-                        <p><strong>🎉 Released:</strong> All v1.5.0 features are now available! Plus enhanced existing utilities with new capabilities. Check out our <a href="changelog.html">changelog</a> for detailed information.</p>
+                        <p><strong>🎉 Released:</strong> Version 1.5.1 is now available! This release includes important bug fixes and ensures compatibility with the latest Minecraft and Fabric versions. Check out our <a href="changelog.html">changelog</a> for detailed information.</p>
                     </div>
                     <p class="text-center mt-3">
                         <a href="changelog.html" class="btn btn-primary">📋 View Full Changelog</a>
@@ -350,8 +331,8 @@ PerformanceMonitor.getMemoryUsage();</code></pre>
                     <h3>ChosenLib</h3>
                     <p>A comprehensive utility library for Fabric modding that streamlines common development tasks.</p>
                     <div class="footer-version">
-                        <span class="version-badge">v1.5.0</span>
-                        <span class="last-updated">Last updated: October 6 2025</span>
+                        <span class="version-badge">v1.5.1</span>
+                        <span class="last-updated">Last updated: October 8 2025</span>
                     </div>
                 </div>
                 
