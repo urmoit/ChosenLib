@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChosenLib - Modern Fabric Utility Library</title>
+    <title data-i18n="title"></title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+        var _jipt = [];
+        _jipt.push(['project', 'YOUR_PROJECT_IDENTIFIER']);
+        (function() {
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = '//cdn.crowdin.com/jipt/jipt.js';
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+        })();
+    </script>
 </head>
 <body>
     <header class="header">
         <nav class="nav-container">
             <a href="index.html" class="logo">ChosenLib</a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="getting-started.html">Getting Started</a></li>
-                <li><a href="installation.html">Installation</a></li>
-                <li><a href="usage.html">Usage</a></li>
-                <li><a href="api.html">API Reference</a></li>
-                <li><a href="changelog.html">Changelog</a></li>
+                <li><a href="getting-started.html" data-i18n="nav_getting_started"></a></li>
+                <li><a href="installation.html" data-i18n="nav_installation"></a></li>
+                <li><a href="usage.html" data-i18n="nav_usage"></a></li>
+                <li><a href="api.html" data-i18n="nav_api_reference"></a></li>
+                <li><a href="changelog.html" data-i18n="nav_changelog"></a></li>
             </ul>
             <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
                 <span class="hamburger-line"></span>
@@ -30,21 +42,20 @@
     <main>
         <div class="container">
             <section class="hero">
-                <h1>ChosenLib v1.5.1</h1>
-                <p>A comprehensive utility library for Fabric that streamlines common modding tasks. Build better mods faster with our advanced collection of utilities including AI systems, performance monitoring, custom dimensions, and much more.</p>
+                <h1 data-i18n="hero_title"></h1>
+                <p data-i18n="hero_subtitle"></p>
                 <div class="hero-buttons">
-                    <a href="getting-started.html" class="btn btn-primary">🚀 Get Started</a>
-                    <a href="api.html" class="btn btn-secondary">📚 API Reference</a>
-                    <a href="https://github.com/chosenlib/chosenlib" class="btn btn-secondary">💻 GitHub</a>
+                    <a href="getting-started.html" class="btn btn-primary" data-i18n="hero_button_get_started"></a>
+                    <a href="api.html" class="btn btn-secondary" data-i18n="hero_button_api_reference"></a>
+                    <a href="https://github.com/chosenlib/chosenlib" class="btn btn-secondary" data-i18n="hero_button_github"></a>
                 </div>
             </section>
 
             <section class="card">
-                <h2>🚀 New Update: Version 1.5.1</h2>
+                <h2 data-i18n="new_update_title"></h2>
                 <div class="note note-warning">
-                    <p><strong>ChosenLib v1.5.1 is here!</strong> This is a patch release that addresses a critical bug in the networking utility, ensuring compatibility with the latest Fabric API.
-                    </p>
-                    <p>The networking methods in <code>NetworkUtils</code> have been updated to use <code>CustomPayload</code> for modern, type-safe packet handling. <strong>This is a breaking change</strong> for any mods that were using the old networking methods. Please review the <a href="changelog.html">changelog</a> for more details.</p>
+                    <p data-i18n="new_update_text_1"></p>
+                    <p data-i18n="new_update_text_2"></p>
                 </div>
             </section>
 
@@ -52,212 +63,212 @@
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">🔧</div>
-                        <h3>AdvancedBlockOps</h3>
-                        <p><span class="new-badge">NEW v1.5.0</span> Enhanced block manipulation with safety checks and transactional editing.</p>
+                        <h3 data-i18n="feature_advanced_block_ops_title"></h3>
+                        <p data-i18n="feature_advanced_block_ops_description"></p>
                         <ul>
-                            <li>Transactional operations</li>
-                            <li>Safety validation</li>
-                            <li>Undo system</li>
-                            <li>Area operations</li>
+                            <li data-i18n="feature_advanced_block_ops_item_1"></li>
+                            <li data-i18n="feature_advanced_block_ops_item_2"></li>
+                            <li data-i18n="feature_advanced_block_ops_item_3"></li>
+                            <li data-i18n="feature_advanced_block_ops_item_4"></li>
                         </ul>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">🤖</div>
-                        <h3>EntityAIUtils</h3>
-                        <p><span class="new-badge">NEW v1.5.0</span> AI utilities for custom mobs and advanced entity behaviors.</p>
+                        <h3 data-i18n="feature_entity_ai_utils_title"></h3>
+                        <p data-i18n="feature_entity_ai_utils_description"></p>
                         <ul>
-                            <li>Goal management</li>
-                            <li>Pathfinding</li>
-                            <li>Behavior states</li>
-                            <li>Memory system</li>
+                            <li data-i18n="feature_entity_ai_utils_item_1"></li>
+                            <li data-i18n="feature_entity_ai_utils_item_2"></li>
+                            <li data-i18n="feature_entity_ai_utils_item_3"></li>
+                            <li data-i18n="feature_entity_ai_utils_item_4"></li>
                         </ul>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">💾</div>
-                        <h3>DataPersistence</h3>
-                        <p><span class="new-badge">NEW v1.5.0</span> World, player, and global data storage with compression.</p>
+                        <h3 data-i18n="feature_data_persistence_title"></h3>
+                        <p data-i18n="feature_data_persistence_description"></p>
                         <ul>
-                            <li>World data storage</li>
-                            <li>Player data management</li>
-                            <li>Data validation</li>
-                            <li>Compression support</li>
+                            <li data-i18n="feature_data_persistence_item_1"></li>
+                            <li data-i18n="feature_data_persistence_item_2"></li>
+                            <li data-i18n="feature_data_persistence_item_3"></li>
+                            <li data-i18n="feature_data_persistence_item_4"></li>
                         </ul>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">✨</div>
-                        <h3>EffectsUtils</h3>
-                        <p><span class="new-badge">NEW v1.5.0</span> Sound & particle effect utilities with timing control.</p>
+                        <h3 data-i18n="feature_effects_utils_title"></h3>
+                        <p data-i18n="feature_effects_utils_description"></p>
                         <ul>
-                            <li>Sound effects</li>
-                            <li>Particle systems</li>
-                            <li>Effect combinations</li>
-                            <li>Custom effects</li>
+                            <li data-i18n="feature_effects_utils_item_1"></li>
+                            <li data-i18n="feature_effects_utils_item_2"></li>
+                            <li data-i18n="feature_effects_utils_item_3"></li>
+                            <li data-i18n="feature_effects_utils_item_4"></li>
                         </ul>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">🌐</div>
-                        <h3>AdvancedNetworking</h3>
-                        <p><span class="fixed-badge">fixed v1.5.1</span> Sophisticated packet handling with encryption and compression.</p>
+                        <h3 data-i18n="feature_advanced_networking_title"></h3>
+                        <p data-i18n="feature_advanced_networking_description"></p>
                         <ul>
-                            <li>Packet routing</li>
-                            <li>Synchronization</li>
-                            <li>Compression</li>
-                            <li>Encryption</li>
+                            <li data-i18n="feature_advanced_networking_item_1"></li>
+                            <li data-i18n="feature_advanced_networking_item_2"></li>
+                            <li data-i18n="feature_advanced_networking_item_3"></li>
+                            <li data-i18n="feature_advanced_networking_item_4"></li>
                         </ul>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">🌍</div>
-                        <h3>DimensionUtils</h3>
-                        <p><span class="new-badge">NEW v1.5.0</span> Custom dimension management and portal systems.</p>
+                        <h3 data-i18n="feature_dimension_utils_title"></h3>
+                        <p data-i18n="feature_dimension_utils_description"></p>
                         <ul>
-                            <li>Dimension management</li>
-                            <li>Teleportation</li>
-                            <li>Portal creation</li>
-                            <li>Chunk management</li>
+                            <li data-i18n="feature_dimension_utils_item_1"></li>
+                            <li data-i18n="feature_dimension_utils_item_2"></li>
+                            <li data-i18n="feature_dimension_utils_item_3"></li>
+                            <li data-i18n="feature_dimension_utils_item_4"></li>
                         </ul>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">🔴</div>
-                        <h3>RedstoneUtils</h3>
-                        <p><span class="new-badge">NEW v1.5.0</span> Circuit analysis, automation, and logic gates.</p>
+                        <h3 data-i18n="feature_redstone_utils_title"></h3>
+                        <p data-i18n="feature_redstone_utils_description"></p>
                         <ul>
-                            <li>Circuit analysis</li>
-                            <li>Signal manipulation</li>
-                            <li>Logic gates</li>
-                            <li>Automation</li>
+                            <li data-i18n="feature_redstone_utils_item_1"></li>
+                            <li data-i18n="feature_redstone_utils_item_2"></li>
+                            <li data-i18n="feature_redstone_utils_item_3"></li>
+                            <li data-i18n="feature_redstone_utils_item_4"></li>
                         </ul>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">📊</div>
-                        <h3>PerformanceMonitor</h3>
-                        <p><span class="new-badge">NEW v1.5.0</span> Built-in profiling and optimization tools.</p>
+                        <h3 data-i18n="feature_performance_monitor_title"></h3>
+                        <p data-i18n="feature_performance_monitor_description"></p>
                         <ul>
-                            <li>Profiling</li>
-                            <li>Memory monitoring</li>
-                            <li>Tick analysis</li>
-                            <li>Reporting</li>
+                            <li data-i18n="feature_performance_monitor_item_1"></li>
+                            <li data-i18n="feature_performance_monitor_item_2"></li>
+                            <li data-i18n="feature_performance_monitor_item_3"></li>
+                            <li data-i18n="feature_performance_monitor_item_4"></li>
                         </ul>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">🌍</div>
-                        <h3>WorldUtils</h3>
-                        <p><span class="enhanced-badge">ENHANCED</span> Enhanced with transactional editing, undo system, and pattern analysis.</p>
+                        <h3 data-i18n="feature_world_utils_title"></h3>
+                        <p data-i18n="feature_world_utils_description"></p>
                         <ul>
-                            <li>Transactional editing</li>
-                            <li>Undo system</li>
-                            <li>Pattern analysis</li>
-                            <li>Safety checks</li>
+                            <li data-i18n="feature_world_utils_item_1"></li>
+                            <li data-i18n="feature_world_utils_item_2"></li>
+                            <li data-i18n="feature_world_utils_item_3"></li>
+                            <li data-i18n="feature_world_utils_item_4"></li>
                         </ul>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">🤖</div>
-                        <h3>EntityUtils</h3>
-                        <p><span class="enhanced-badge">ENHANCED</span> AI integration, enhanced pathfinding, and memory system.</p>
+                        <h3 data-i18n="feature_entity_utils_title"></h3>
+                        <p data-i18n="feature_entity_utils_description"></p>
                         <ul>
-                            <li>AI integration</li>
-                            <li>Enhanced pathfinding</li>
-                            <li>Memory system</li>
-                            <li>Behavior states</li>
+                            <li data-i18n="feature_entity_utils_item_1"></li>
+                            <li data-i18n="feature_entity_utils_item_2"></li>
+                            <li data-i18n="feature_entity_utils_item_3"></li>
+                            <li data-i18n="feature_entity_utils_item_4"></li>
                         </ul>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">🌐</div>
-                        <h3>NetworkUtils</h3>
-                        <p><span class="enhanced-badge">ENHANCED</span> Reliable packets, compression, and encryption support.</p>
+                        <h3 data-i18n="feature_network_utils_title"></h3>
+                        <p data-i18n="feature_network_utils_description"></p>
                         <ul>
-                            <li>Reliable packets</li>
-                            <li>Compression</li>
-                            <li>Encryption</li>
-                            <li>Error recovery</li>
+                            <li data-i18n="feature_network_utils_item_1"></li>
+                            <li data-i18n="feature_network_utils_item_2"></li>
+                            <li data-i18n="feature_network_utils_item_3"></li>
+                            <li data-i18n="feature_network_utils_item_4"></li>
                         </ul>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">🎨</div>
-                        <h3>GuiUtils</h3>
-                        <p><span class="enhanced-badge">ENHANCED</span> Server-side compatible with major enhancements.</p>
+                        <h3 data-i18n="feature_gui_utils_title"></h3>
+                        <p data-i18n="feature_gui_utils_description"></p>
                         <ul>
-                            <li>Server-side utilities</li>
-                            <li>Color operations</li>
-                            <li>Mathematical helpers</li>
-                            <li>Progress utilities</li>
+                            <li data-i18n="feature_gui_utils_item_1"></li>
+                            <li data-i18n="feature_gui_utils_item_2"></li>
+                            <li data-i18n="feature_gui_utils_item_3"></li>
+                            <li data-i18n="feature_gui_utils_item_4"></li>
                         </ul>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">📝</div>
-                        <h3>TextUtils</h3>
-                        <p><span class="enhanced-badge">ENHANCED</span> Rich formatting, performance optimization, and localization.</p>
+                        <h3 data-i18n="feature_text_utils_title"></h3>
+                        <p data-i18n="feature_text_utils_description"></p>
                         <ul>
-                            <li>Rich formatting</li>
-                            <li>Performance optimization</li>
-                            <li>Localization support</li>
-                            <li>Accessibility features</li>
+                            <li data-i18n="feature_text_utils_item_1"></li>
+                            <li data-i18n="feature_text_utils_item_2"></li>
+                            <li data-i18n="feature_text_utils_item_3"></li>
+                            <li data-i18n="feature_text_utils_item_4"></li>
                         </ul>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">🎒</div>
-                        <h3>ItemUtils</h3>
-                        <p><span class="enhanced-badge">ENHANCED</span> Data persistence, advanced validation, and custom items.</p>
+                        <h3 data-i18n="feature_item_utils_title"></h3>
+                        <p data-i18n="feature_item_utils_description"></p>
                         <ul>
-                            <li>Data persistence</li>
-                            <li>Advanced validation</li>
-                            <li>Custom items</li>
-                            <li>Performance optimization</li>
+                            <li data-i18n="feature_item_utils_item_1"></li>
+                            <li data-i18n="feature_item_utils_item_2"></li>
+                            <li data-i18n="feature_item_utils_item_3"></li>
+                            <li data-i18n="feature_item_utils_item_4"></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="card">
-                    <h2>✨ Why Choose ChosenLib?</h2>
+                    <h2 data-i18n="why_choose_title"></h2>
                     <div class="features-grid">
                         <div>
-                            <h3>🚀 Modern & Fast</h3>
-                            <p>Built with the latest Fabric toolchain, Java 21, and optimized for performance.</p>
+                            <h3 data-i18n="why_choose_modern_title"></h3>
+                            <p data-i18n="why_choose_modern_description"></p>
                         </div>
                         <div>
-                            <h3>🔧 Well-Documented</h3>
-                            <p>Comprehensive JavaDoc coverage with practical examples and usage patterns.</p>
+                            <h3 data-i18n="why_choose_documented_title"></h3>
+                            <p data-i18n="why_choose_documented_description"></p>
                         </div>
                         <div>
-                            <h3>🎯 Cross-Platform</h3>
-                            <p>Works seamlessly on both client and server (GuiUtils is client-side only).</p>
+                            <h3 data-i18n="why_choose_cross_platform_title"></h3>
+                            <p data-i18n="why_choose_cross_platform_description"></p>
                         </div>
                         <div>
-                            <h3>📦 MIT Licensed</h3>
-                            <p>Open-source and free to use in any project, commercial or personal.</p>
+                            <h3 data-i18n="why_choose_mit_licensed_title"></h3>
+                            <p data-i18n="why_choose_mit_licensed_description"></p>
                         </div>
                     </div>
                 </div>
 
                 <div class="card">
-                    <h2>💻 Quick Start</h2>
-                    <p>Get up and running with ChosenLib in minutes:</p>
+                    <h2 data-i18n="quick_start_title"></h2>
+                    <p data-i18n="quick_start_description"></p>
                     
-                    <h3>1. Add as Dependency</h3>
+                    <h3 data-i18n="quick_start_step_1_title"></h3>
                     <pre><code>dependencies {
     modImplementation "com.yourgroup:chosenlib:1.5.1"
 }</code></pre>
 
-                    <h3>2. Import Utilities</h3>
+                    <h3 data-i18n="quick_start_step_2_title"></h3>
                     <pre><code>import com.chosen.lib.util.*;
 // New in v1.5.0
 import com.chosen.lib.util.WorldUtils;
 import com.chosen.lib.util.EntityUtils;
 import com.chosen.lib.util.NetworkUtils;</code></pre>
 
-                    <h3>3. Start Using</h3>
+                    <h3 data-i18n="quick_start_step_3_title"></h3>
                     <pre><code>// Advanced block operations (NEW v1.5.0!)
 TransactionId transaction = AdvancedBlockOps.startTransaction(world);
 AdvancedBlockOps.safeSetBlock(world, pos, newState);
@@ -279,44 +290,44 @@ PerformanceMonitor.getMemoryUsage();</code></pre>
                 </div>
 
                 <div class="card">
-                    <h2>🚀 What's New in v1.5.1 - Patch Release!</h2>
+                    <h2 data-i18n="whats_new_title"></h2>
                     <div class="features-grid">
                         <div>
-                            <h3>✨ EffectsUtils</h3>
-                            <p><span class="fixed-badge">FIXED</span> This release includes a fix for networking methods to ensure compatibility with the latest Fabric API. The `EffectsUtils` continues to provide a powerful utility for creating stunning visual and audio effects, with support for custom particles and sounds.</p>
+                            <h3 data-i18n="whats_new_feature_title"></h3>
+                            <p data-i18n="whats_new_feature_description"></p>
                         </div>
                     </div>
                     <div class="note note-success">
-                        <p><strong>🎉 Released:</strong> Version 1.5.1 is now available! This release includes important bug fixes and ensures compatibility with the latest Minecraft and Fabric versions. Check out our <a href="changelog.html">changelog</a> for detailed information.</p>
+                        <p data-i18n="whats_new_released_note"></p>
                     </div>
                     <p class="text-center mt-3">
-                        <a href="changelog.html" class="btn btn-primary">📋 View Full Changelog</a>
+                        <a href="changelog.html" class="btn btn-primary" data-i18n="whats_new_button"></a>
                     </p>
                 </div>
 
 
                 <div class="card">
-                    <h2>🔗 Community & Resources</h2>
+                    <h2 data-i18n="community_title"></h2>
                     <div class="features-grid">
                         <div>
-                            <h3>📖 Documentation</h3>
-                            <p>Comprehensive guides and API reference for all utilities.</p>
-                            <a href="api.html" class="btn btn-secondary">View API</a>
+                            <h3 data-i18n="community_docs_title"></h3>
+                            <p data-i18n="community_docs_description"></p>
+                            <a href="api.html" class="btn btn-secondary" data-i18n="community_docs_button"></a>
                         </div>
                         <div>
-                            <h3>💬 Discord</h3>
-                            <p>Join our community for support, discussions, and updates.</p>
-                            <a href="https://discord.gg/yourinvite" class="btn btn-secondary">Join Discord</a>
+                            <h3 data-i18n="community_discord_title"></h3>
+                            <p data-i18n="community_discord_description"></p>
+                            <a href="https://discord.gg/yourinvite" class="btn btn-secondary" data-i18n="community_discord_button"></a>
                         </div>
                         <div>
-                            <h3>🐛 Issues</h3>
-                            <p>Found a bug or have a feature request? Let us know!</p>
-                            <a href="https://github.com/yourusername/chosenlib/issues" class="btn btn-secondary">Report Issue</a>
+                            <h3 data-i18n="community_issues_title"></h3>
+                            <p data-i18n="community_issues_description"></p>
+                            <a href="https://github.com/yourusername/chosenlib/issues" class="btn btn-secondary" data-i18n="community_issues_button"></a>
                         </div>
                         <div>
-                            <h3>⭐ Star on GitHub</h3>
-                            <p>Show your support by starring the repository.</p>
-                            <a href="https://github.com/yourusername/chosenlib" class="btn btn-secondary">Star Repo</a>
+                            <h3 data-i18n="community_github_title"></h3>
+                            <p data-i18n="community_github_description"></p>
+                            <a href="https://github.com/yourusername/chosenlib" class="btn btn-secondary" data-i18n="community_github_button"></a>
                         </div>
                     </div>
                 </div>
@@ -329,26 +340,26 @@ PerformanceMonitor.getMemoryUsage();</code></pre>
             <div class="footer-main">
                 <div class="footer-section">
                     <h3>ChosenLib</h3>
-                    <p>A comprehensive utility library for Fabric modding that streamlines common development tasks.</p>
+                    <p data-i18n="footer_description"></p>
                     <div class="footer-version">
                         <span class="version-badge">v1.5.1</span>
-                        <span class="last-updated">Last updated: October 8 2025</span>
+                        <span class="last-updated" data-i18n="footer_last_updated"></span>
                     </div>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
+                    <h4 data-i18n="footer_quick_links_title"></h4>
                     <div class="footer-links">
-                        <a href="getting-started.html">Getting Started</a>
-                        <a href="installation.html">Installation</a>
-                        <a href="usage.html">Usage Guide</a>
-                        <a href="api.html">API Reference</a>
-                        <a href="changelog.html">Changelog</a>
+                        <a href="getting-started.html" data-i18n="nav_getting_started"></a>
+                        <a href="installation.html" data-i18n="nav_installation"></a>
+                        <a href="usage.html" data-i18n="nav_usage"></a>
+                        <a href="api.html" data-i18n="nav_api_reference"></a>
+                        <a href="changelog.html" data-i18n="nav_changelog"></a>
                     </div>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Download</h4>
+                    <h4 data-i18n="footer_downloads_title"></h4>
                     <div class="footer-download-links">
                         <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" class="download-link">
                             <span class="icon">📥</span> CurseForge
@@ -363,7 +374,7 @@ PerformanceMonitor.getMemoryUsage();</code></pre>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Community</h4>
+                    <h4 data-i18n="footer_community_title"></h4>
                     <div class="footer-social-links">
                         <a href="https://github.com/urmoit/ChosenLib" class="social-link">
                             <span class="icon">🐙</span> GitHub
@@ -371,11 +382,9 @@ PerformanceMonitor.getMemoryUsage();</code></pre>
                         <a href="https://discord.gg/CFwkrnFD4P" class="social-link">
                             <span class="icon">💬</span> Discord
                         </a>
-                        <a href="#" onclick="showLicensePopup(); return false;" class="social-link">
-                            <span class="icon">📄</span> MIT License
+                        <a href="#" onclick="showLicensePopup(); return false;" class="social-link" data-i18n="footer_mit_license">
                         </a>
-                        <a href="#" onclick="showModsPopup(); return false;" class="social-link">
-                            <span class="icon">🧩</span> Mods using ChosenLib
+                        <a href="#" onclick="showModsPopup(); return false;" class="social-link" data-i18n="footer_mods_using">
                         </a>
                     </div>
                 </div>
@@ -383,13 +392,13 @@ PerformanceMonitor.getMemoryUsage();</code></pre>
             
             <div class="footer-bottom">
                 <div class="footer-copyright">
-                    <p>&copy; 2025 ChosenTechies. All rights reserved.</p>
-                    <p>ChosenLib is licensed under the MIT License.</p>
+                    <p data-i18n="footer_copyright"></p>
+                    <p data-i18n="footer_license_text"></p>
                 </div>
                 <div class="footer-tech">
-                    <span>Built with ❤️ for the Minecraft community</span>
+                    <span data-i18n="footer_built_with"></span>
                     <span>•</span>
-                    <span>Fabric • Java 21 • MIT License</span>
+                    <span data-i18n="footer_tech_stack"></span>
                 </div>
             </div>
         </div>
@@ -446,5 +455,36 @@ PerformanceMonitor.getMemoryUsage();</code></pre>
       </div>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const setLanguage = (language) => {
+                fetch(`translations/${language}.json`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(translations => {
+                        document.querySelectorAll('[data-i18n]').forEach(element => {
+                            const key = element.getAttribute('data-i18n');
+                            if (translations[key]) {
+                                element.innerHTML = translations[key];
+                            }
+                        });
+                        // Also update the title
+                        if (translations['title']) {
+                            document.title = translations['title'];
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error loading translation file:', error);
+                    });
+            };
+
+            // Set default language
+            setLanguage('en');
+        });
+    </script>
 </body>
 </html>
