@@ -74,6 +74,38 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+// Page Changelog Modal Functions
+function showPageChangelogPopup() {
+    const modal = document.getElementById('pageChangelogModal');
+    if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closePageChangelogPopup() {
+    const modal = document.getElementById('pageChangelogModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Close modal when clicking outside of it
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('pageChangelogModal');
+    if (event.target === modal) {
+        closePageChangelogPopup();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closePageChangelogPopup();
+    }
+});
+
 // Mobile Menu Functions
 function toggleMobileMenu() {
     const navMenu = document.getElementById('navMenu');

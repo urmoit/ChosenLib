@@ -41,41 +41,49 @@
                     
                     <div class="features-grid">
                         <div class="feature-card">
-                            <h3>🔧 AdvancedBlockOps <span class="new-badge">NEW v1.5.1</span></h3>
+                            <h3>📂 FileUtils <span class="new-badge">NEW v1.6.0</span></h3>
+                            <p>File system utilities for safe file operations and data management.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>💻 Command Framework <span class="new-badge">NEW v1.6.0</span></h3>
+                            <p>A framework for creating and managing commands.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🔧 AdvancedBlockOps <span class="new-badge">NEW v1.5.0</span></h3>
                             <p>Enhanced block manipulation with safety checks, transactional editing, and undo systems.</p>
                         </div>
                         <div class="feature-card">
-                            <h3>🤖 EntityAIUtils <span class="new-badge">NEW v1.5.1</span></h3>
+                            <h3>🤖 EntityAIUtils <span class="new-badge">NEW v1.5.0</span></h3>
                             <p>AI utilities for custom mobs and behavior management with goal systems and pathfinding.</p>
                         </div>
                         <div class="feature-card">
-                            <h3>💾 DataPersistence <span class="new-badge">NEW v1.5.1</span></h3>
+                            <h3>💾 DataPersistence <span class="new-badge">NEW v1.5.0</span></h3>
                             <p>World, player, and global data storage with compression and migration support.</p>
                         </div>
                         <div class="feature-card">
-                            <h3>✨ EffectsUtils <span class="new-badge">NEW v1.5.1</span></h3>
+                            <h3>✨ EffectsUtils <span class="new-badge">NEW v1.5.0</span></h3>
                             <p>Sound and particle effect utilities with timing control and combinations.</p>
                         </div>
                         <div class="feature-card">
-                            <h3>🌐 AdvancedNetworking <span class="new-badge">NEW v1.5.1</span></h3>
+                            <h3>🌐 AdvancedNetworking <span class="fixed-badge">fixed v1.5.1</span></h3>
                             <p>Sophisticated packet handling with routing, synchronization, compression, and encryption.</p>
                         </div>
                         <div class="feature-card">
-                            <h3>🌍 DimensionUtils <span class="new-badge">NEW v1.5.1</span></h3>
+                            <h3>🌍 DimensionUtils <span class="new-badge">NEW v1.5.0</span></h3>
                             <p>Custom dimension management with teleportation and portal systems.</p>
                         </div>
                         <div class="feature-card">
-                            <h3>🔴 RedstoneUtils <span class="new-badge">NEW v1.5.1</span></h3>
+                            <h3>🔴 RedstoneUtils <span class="new-badge">NEW v1.5.0</span></h3>
                             <p>Redstone circuit analysis and automation with signal manipulation and logic gates.</p>
                         </div>
                         <div class="feature-card">
-                            <h3>📊 PerformanceMonitor <span class="new-badge">NEW v1.5.1</span></h3>
+                            <h3>📊 PerformanceMonitor <span class="new-badge">NEW v1.5.0</span></h3>
                             <p>Built-in performance profiling with memory monitoring, tick analysis, and reporting.</p>
                         </div>
                     </div>
                     
                     <div class="note note-info">
-                        <p><strong>🚀 Enhanced Existing Utilities:</strong> All existing utilities (WorldUtils, EntityUtils, NetworkUtils, TextUtils, GuiUtils, ItemUtils) have been significantly enhanced in v1.5.1 with new features, performance improvements, and additional functionality.</p>
+                        <p><strong>🚀 Enhanced Existing Utilities:</strong> All existing utilities (WorldUtils, EntityUtils, NetworkUtils, TextUtils, GuiUtils, ItemUtils) have been significantly enhanced in v1.6.0 with new features, performance improvements, and additional functionality.</p>
                     </div>
                 </div>
 
@@ -108,9 +116,26 @@
 
                 <div class="card">
                     <h2>🚀 Quick Overview</h2>
-                    <p>Here's what you can do with ChosenLib v1.5.1:</p>
+                    <p>Here's what you can do with ChosenLib v1.6.0:</p>
                     
-                    <h3>🔧 Advanced Block Operations (NEW v1.5.1!)</h3>
+                    <h3>📂 FileUtils (NEW v1.6.0!)</h3>
+                    <pre><code>// Read and write files
+String content = FileUtils.readFile(Paths.get("config.txt"));
+FileUtils.writeFile(Paths.get("data.json"), "{ \"key\": \"value\" }");
+
+// Search for files
+List<Path> jsonFiles = FileUtils.searchFiles(Paths.get("."), "*.json");
+</code></pre>
+
+                    <h3>💻 Command Framework (NEW v1.6.0!)</h3>
+                    <pre><code>// Create and register a command
+public class MyCommand implements com.chosen.lib.command.Command {
+    // ... register command logic
+}
+CommandManager.registerCommand(new MyCommand());
+</code></pre>
+
+                    <h3>🔧 Advanced Block Operations (NEW v1.5.0!)</h3>
                     <pre><code>// Transactional block operations with safety
 TransactionId transaction = AdvancedBlockOps.startTransaction(world);
 AdvancedBlockOps.safeSetBlock(world, pos, newState);
@@ -120,7 +145,7 @@ AdvancedBlockOps.commitTransaction(transaction);
 AdvancedBlockOps.fillArea(world, pos1, pos2, blockState);
 AdvancedBlockOps.replaceInArea(world, pos1, pos2, fromState, toState);</code></pre>
 
-                    <h3>🤖 Entity AI Utilities (NEW v1.5.1!)</h3>
+                    <h3>🤖 Entity AI Utilities (NEW v1.5.0!)</h3>
                     <pre><code>// AI goal management
 EntityAIUtils.addGoal(mob, new FollowPlayerGoal(), 1);
 EntityAIUtils.setBehaviorState(mob, "aggressive");
@@ -130,7 +155,7 @@ EntityAIUtils.addMemory(mob, "lastPlayer", player);
 String state = EntityAIUtils.getBehaviorState(mob);
 EntityAIUtils.clearGoals(mob);</code></pre>
 
-                    <h3>💾 Data Persistence (NEW v1.5.1!)</h3>
+                    <h3>💾 Data Persistence (NEW v1.5.0!)</h3>
                     <pre><code>// World and player data storage
 DataPersistence.saveWorldData(world, "config", configData);
 DataPersistence.savePlayerData(player, "stats", statsData);
@@ -138,7 +163,7 @@ DataPersistence.savePlayerData(player, "stats", statsData);
 // Data migration support
 DataPersistence.migratePlayerData(playerId, "oldKey", "newKey");</code></pre>
 
-                    <h3>✨ Effects &amp; Particles (NEW v1.5.1!)</h3>
+                    <h3>✨ Effects &amp; Particles (NEW v1.5.0!)</h3>
                     <pre><code>// Sound and particle effects
 EffectsUtils.playSound(world, pos, sound, 1.0f, 1.0f);
 EffectsUtils.spawnParticleSphere(world, particle, center, 2.0, 20);
@@ -147,7 +172,7 @@ EffectsUtils.spawnParticleSphere(world, particle, center, 2.0, 20);
 EffectsUtils.playDelayedSound(world, pos, sound, 20);
 EffectsUtils.createSoundSequence(sounds, delays);</code></pre>
 
-                    <h3>🌐 Advanced Networking (NEW v1.5.1!)</h3>
+                    <h3>🌐 Advanced Networking (fixed v1.5.1!)</h3>
                     <pre><code>// Sophisticated packet handling
 AdvancedNetworking.createPacket("data", dataObject);
 AdvancedNetworking.routePacket(channel, buffer, customRoute);
@@ -156,7 +181,7 @@ AdvancedNetworking.routePacket(channel, buffer, customRoute);
 AdvancedNetworking.compressPacket(buffer);
 AdvancedNetworking.encryptPacket(buffer, "secret");</code></pre>
 
-                    <h3>🌍 Custom Dimensions (NEW v1.5.1!)</h3>
+                    <h3>🌍 Custom Dimensions (NEW v1.5.0!)</h3>
                     <pre><code>// Dimension management
 DimensionUtils.createDimension(dimensionId, dimensionType);
 DimensionUtils.teleportToDimension(entity, dimensionId, pos);
@@ -165,13 +190,13 @@ DimensionUtils.teleportToDimension(entity, dimensionId, pos);
 DimensionUtils.createPortal(world, pos, destination);
 DimensionUtils.findPortal(world, dimensionId);</code></pre>
 
-                    <h3>🔴 Redstone Automation (NEW v1.5.1!)</h3>
+                    <h3>🔴 Redstone Automation (NEW v1.5.0!)</h3>
                     <pre><code>// Circuit analysis and logic gates
 RedstoneUtils.analyzeCircuit(world, pos, 10);
 RedstoneUtils.createANDGate(world, pos, inputs);
 RedstoneUtils.simulateLogicGate(LogicGateType.OR, inputs);</code></pre>
 
-                    <h3>📊 Performance Monitoring (NEW v1.5.1!)</h3>
+                    <h3>📊 Performance Monitoring (NEW v1.5.0!)</h3>
                     <pre><code>// Built-in performance profiling
 PerformanceMonitor.startProfiling("myOperation");
 PerformanceMonitor.getMemoryUsage();
@@ -240,7 +265,7 @@ NetworkUtils.enableCompression(channel);</code></pre>
                     </ul>
 
                     <div class="note note-success">
-                        <p><strong>🎉 Version Note:</strong> ChosenLib v1.5.1 is the current stable release with 8 new utility classes and significant enhancements to existing utilities. All features are production-ready with comprehensive documentation and examples. Check our <a href="changelog.html">changelog</a> for detailed information about all new features.</p>
+                        <p><strong>🎉 Version Note:</strong> ChosenLib v1.6.0 is the current stable release with new features like FileUtils and a Command Framework. All features are production-ready with comprehensive documentation and examples. Check our <a href="changelog.html">changelog</a> for detailed information about all new features.</p>
                     </div>
                 </div>
 
@@ -278,7 +303,7 @@ NetworkUtils.enableCompression(channel);</code></pre>
                     <p>A comprehensive utility library for Fabric modding that streamlines common development tasks.</p>
                     <div class="footer-version">
                         <span class="version-badge">v1.5.1</span>
-                        <span class="last-updated">Last updated: October 8 2025</span>
+                        <span class="last-updated">Last updated: November 4 2025</span>
                     </div>
                 </div>
                 
@@ -322,6 +347,9 @@ NetworkUtils.enableCompression(channel);</code></pre>
                         </a>
                         <a href="#" onclick="showModsPopup(); return false;" class="social-link">
                             <span class="icon">🧩</span> Mods using ChosenLib
+                        </a>
+                        <a href="#" onclick="showPageChangelogPopup(); return false;" class="social-link">
+                            <span class="icon">📜</span> Page Changelog
                         </a>
                     </div>
                 </div>
@@ -368,6 +396,35 @@ NetworkUtils.enableCompression(channel);</code></pre>
             </div>
         </div>
     </div>
+
+    <!-- Page Changelog Modal -->
+    <div id="pageChangelogModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Page Changelog</h2>
+            <span class="close" onclick="closePageChangelogPopup()">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="mod-list">
+              <div class="mod-entry">
+                <div class="mod-title">v1.6.0 (In Development)</div>
+                <ul>
+                    <li>Added `FileUtils` API and usage examples.</li>
+                    <li>Added `Command Framework` API and usage examples.</li>
+                    <li>Updated version numbers to `v1.6.0`.</li>
+                    <li>Updated changelog page with `v1.6.0` information.</li>
+                </ul>
+              </div>
+              <div class="mod-entry">
+                <div class="mod-title">v1.5.1</div>
+                <ul>
+                    <li>Initial documentation website creation.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- Mods Using ChosenLib Modal -->
     <div id="modsModal" class="modal">

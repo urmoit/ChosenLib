@@ -72,14 +72,14 @@
 
                     <h3>2. Install the Mod</h3>
                     <ol>
-                        <li>Download the latest <code>chosenlib-1.5.0.jar</code> file</li>
+                        <li>chosenlib-1.6.0.jar</code> file</li>
                         <li>Place it in your <code>mods/</code> folder</li>
                         <li>Make sure you have Fabric API installed</li>
                         <li>Start Minecraft with Fabric Loader</li>
                     </ol>
 
                     <h3>3. Verify Installation</h3>
-                    <p>Once in-game, type <code>/chosenlib</code> to see v1.5.1 version information, new features, and interactive demos. Try the new subcommands:</p>
+                    <p>Once in-game, type <code>/chosenlib</code> to see v1.6.0 version information, new features, and interactive demos. Try the new subcommands:</p>
                     <ul>
                         <li><code>/chosenlib demo</code> - Interactive feature demonstrations</li>
                         <li><code>/chosenlib perf</code> - Real-time performance monitoring</li>
@@ -103,10 +103,10 @@
                     <h3>2. Add Dependency</h3>
                     <p>Add ChosenLib as a dependency:</p>
                     <pre><code>dependencies {
-    modImplementation "com.yourgroup:chosenlib:1.5.0"
+    modImplementation "com.yourgroup:chosenlib:1.6.0"
     
     // For development, you might also want:
-    modRuntimeOnly "com.yourgroup:chosenlib:1.5.0"
+    modRuntimeOnly "com.yourgroup:chosenlib:1.6.0"
 }</code></pre>
 
                     <h3>3. Update Your Mod</h3>
@@ -117,13 +117,18 @@ public class YourMod implements ModInitializer {
     @Override
     public void onInitialize() {
         // Your mod initialization code
-        LOGGER.info("Your mod is loading with ChosenLib v1.5.1 support!");
+        LOGGER.info("Your mod is loading with ChosenLib v1.6.0 support!");
     }
 }</code></pre>
 
                     <h3>4. Import Utilities</h3>
-                    <p>Now you can import and use all ChosenLib v1.5.1 utilities:</p>
-                    <pre><code>// NEW in v1.5.1 - 8 new utility classes!
+                    <p>Now you can import and use all ChosenLib v1.6.0 utilities:</p>
+                    <pre><code>// NEW in v1.6.0
+import com.chosen.lib.util.FileUtils;
+import com.chosen.lib.command.Command;
+import com.chosen.lib.command.CommandManager;
+
+// NEW in v1.5.0
 import com.chosen.lib.util.AdvancedBlockOps;
 import com.chosen.lib.util.EntityAIUtils;
 import com.chosen.lib.util.DataPersistence;
@@ -133,7 +138,7 @@ import com.chosen.lib.util.DimensionUtils;
 import com.chosen.lib.util.RedstoneUtils;
 import com.chosen.lib.util.PerformanceMonitor;
 
-// Enhanced existing utilities (v1.5.1 improvements)
+// Enhanced existing utilities
 import com.chosen.lib.util.WorldUtils;
 import com.chosen.lib.util.EntityUtils;
 import com.chosen.lib.util.NetworkUtils;
@@ -141,17 +146,11 @@ import com.chosen.lib.util.TextUtils;
 import com.chosen.lib.util.GuiUtils;
 import com.chosen.lib.util.ItemUtils;
 
-// Use the new v1.5.1 utilities
-AdvancedBlockOps.safeSetBlock(world, pos, newState);
-EntityAIUtils.addGoal(mob, goal, 1);
-DataPersistence.saveWorldData(world, "config", config);
-EffectsUtils.playSound(world, pos, sound, 1.0f, 1.0f);
-AdvancedNetworking.createPacket("data", dataObject);
-DimensionUtils.createDimension(dimensionId, dimensionType);
-RedstoneUtils.analyzeCircuit(world, pos, 10);
-PerformanceMonitor.startProfiling("myOperation");
+// Use the new v1.6.0 utilities
+FileUtils.writeFile(Paths.get("my-file.txt"), "Hello, world!");
+CommandManager.registerCommand(new MyCommand());
 
-TextUtils.success("ChosenLib v1.5.1 is working with 8 new utilities!");
+TextUtils.success("ChosenLib v1.6.0 is working with new features!");
 </code></pre>
                 </div>
 
@@ -169,9 +168,9 @@ cd chosenlib</code></pre>
                     <h3>3. Find the Artifacts</h3>
                     <p>The built JAR files will be in <code>build/libs/</code>:</p>
                     <ul>
-                        <li><code>chosenlib-1.5.0.jar</code> - Use this for distribution</li>
-                        <li><code>chosenlib-1.5.0-sources.jar</code> - Source code</li>
-                        <li><code>chosenlib-1.5.0-dev.jar</code> - Development version</li>
+                        <li><code>chosenlib-1.6.0.jar</code> - Use this for distribution</li>
+                        <li><code>chosenlib-1.6.0-sources.jar</code> - Source code</li>
+                        <li><code>chosenlib-1.6.0-dev.jar</code> - Development version</li>
                     </ul>
                 </div>
 
@@ -228,7 +227,13 @@ cd chosenlib</code></pre>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>1.5.0</strong></td>
+                                <td><strong>1.6.0</strong></td>
+                                <td>1.21.1</td>
+                                <td>0.17.2+</td>
+                                <td>21+</td>
+                            </tr>
+                            <tr>
+                                <td>1.5.x</td>
                                 <td>1.21.1</td>
                                 <td>0.17.2+</td>
                                 <td>21+</td>
@@ -255,7 +260,7 @@ cd chosenlib</code></pre>
                     </table>
 
                     <div class="note note-success">
-                        <p><strong>🎉 Important:</strong> Always use the latest stable version (currently v1.5.1) for production mods. This version includes 8 new utility classes and significant enhancements to existing utilities. All features are production-ready with comprehensive documentation. Check our <a href="changelog.html">changelog</a> for detailed information about all new features.</p>
+                        <p><strong>🎉 Important:</strong> Always use the latest stable version (currently v1.6.0) for production mods. This version includes new features like FileUtils and a Command Framework. All features are production-ready with comprehensive documentation. Check our <a href="changelog.html">changelog</a> for detailed information about all new features.</p>
                     </div>
                 </div>
             </section>
@@ -270,7 +275,7 @@ cd chosenlib</code></pre>
                     <p>A comprehensive utility library for Fabric modding that streamlines common development tasks.</p>
                     <div class="footer-version">
                         <span class="version-badge">v1.5.1</span>
-                        <span class="last-updated">Last updated: October 8 2025</span>
+                        <span class="last-updated">Last updated: November 4 2025</span>
                     </div>
                 </div>
                 
@@ -314,6 +319,9 @@ cd chosenlib</code></pre>
                         </a>
                         <a href="#" onclick="showModsPopup(); return false;" class="social-link">
                             <span class="icon">🧩</span> Mods using ChosenLib
+                        </a>
+                        <a href="#" onclick="showPageChangelogPopup(); return false;" class="social-link">
+                            <span class="icon">📜</span> Page Changelog
                         </a>
                     </div>
                 </div>
@@ -360,6 +368,35 @@ cd chosenlib</code></pre>
             </div>
         </div>
     </div>
+
+    <!-- Page Changelog Modal -->
+    <div id="pageChangelogModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Page Changelog</h2>
+            <span class="close" onclick="closePageChangelogPopup()">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="mod-list">
+              <div class="mod-entry">
+                <div class="mod-title">v1.6.0 (In Development)</div>
+                <ul>
+                    <li>Added `FileUtils` API and usage examples.</li>
+                    <li>Added `Command Framework` API and usage examples.</li>
+                    <li>Updated version numbers to `v1.6.0`.</li>
+                    <li>Updated changelog page with `v1.6.0` information.</li>
+                </ul>
+              </div>
+              <div class="mod-entry">
+                <div class="mod-title">v1.5.1</div>
+                <ul>
+                    <li>Initial documentation website creation.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- Mods Using ChosenLib Modal -->
     <div id="modsModal" class="modal">

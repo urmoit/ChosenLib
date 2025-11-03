@@ -30,7 +30,7 @@
     <main>
         <div class="container">
             <section class="hero">
-                <h1>ChosenLib v1.5.1</h1>
+                <h1>ChosenLib v1.6.0</h1>
                 <p>A comprehensive utility library for Fabric that streamlines common modding tasks. Build better mods faster with our advanced collection of utilities including AI systems, performance monitoring, custom dimensions, and much more.</p>
                 <div class="hero-buttons">
                     <a href="getting-started.html" class="btn btn-primary">🚀 Get Started</a>
@@ -40,11 +40,14 @@
             </section>
 
             <section class="card">
-                <h2>🚀 New Update: Version 1.5.1</h2>
-                <div class="note note-warning">
-                    <p><strong>ChosenLib v1.5.1 is here!</strong> This is a patch release that addresses a critical bug in the networking utility, ensuring compatibility with the latest Fabric API.
-                    </p>
-                    <p>The networking methods in <code>NetworkUtils</code> have been updated to use <code>CustomPayload</code> for modern, type-safe packet handling. <strong>This is a breaking change</strong> for any mods that were using the old networking methods. Please review the <a href="changelog.html">changelog</a> for more details.</p>
+                <h2>🚀 New Update: Version 1.6.0</h2>
+                <div class="note note-info">
+                    <p><strong>ChosenLib v1.6.0 is here!</strong> This release introduces the new File System Utilities and a Command Framework.</p>
+                    <ul>
+                        <li><strong>FileUtils:</strong> A new utility class for safe file operations and data management.</li>
+                        <li><strong>Command Framework:</strong> A new framework to simplify command creation and management.</li>
+                    </ul>
+                    <p>Please review the <a href="changelog.html">changelog</a> for more details.</p>
                 </div>
             </section>
 
@@ -279,23 +282,6 @@ PerformanceMonitor.getMemoryUsage();</code></pre>
                 </div>
 
                 <div class="card">
-                    <h2>🚀 What's New in v1.5.1 - Patch Release!</h2>
-                    <div class="features-grid">
-                        <div>
-                            <h3>✨ EffectsUtils</h3>
-                            <p><span class="fixed-badge">FIXED</span> This release includes a fix for networking methods to ensure compatibility with the latest Fabric API. The `EffectsUtils` continues to provide a powerful utility for creating stunning visual and audio effects, with support for custom particles and sounds.</p>
-                        </div>
-                    </div>
-                    <div class="note note-success">
-                        <p><strong>🎉 Released:</strong> Version 1.5.1 is now available! This release includes important bug fixes and ensures compatibility with the latest Minecraft and Fabric versions. Check out our <a href="changelog.html">changelog</a> for detailed information.</p>
-                    </div>
-                    <p class="text-center mt-3">
-                        <a href="changelog.html" class="btn btn-primary">📋 View Full Changelog</a>
-                    </p>
-                </div>
-
-
-                <div class="card">
                     <h2>🔗 Community & Resources</h2>
                     <div class="features-grid">
                         <div>
@@ -331,8 +317,8 @@ PerformanceMonitor.getMemoryUsage();</code></pre>
                     <h3>ChosenLib</h3>
                     <p>A comprehensive utility library for Fabric modding that streamlines common development tasks.</p>
                     <div class="footer-version">
-                        <span class="version-badge">v1.5.1</span>
-                        <span class="last-updated">Last updated: October 8 2025</span>
+                        <span class="version-badge">v1.6.0</span>
+                        <span class="last-updated">Last updated: November 4 2025</span>
                     </div>
                 </div>
                 
@@ -376,6 +362,9 @@ PerformanceMonitor.getMemoryUsage();</code></pre>
                         </a>
                         <a href="#" onclick="showModsPopup(); return false;" class="social-link">
                             <span class="icon">🧩</span> Mods using ChosenLib
+                        </a>
+                        <a href="#" onclick="showPageChangelogPopup(); return false;" class="social-link">
+                            <span class="icon">📜</span> Page Changelog
                         </a>
                     </div>
                 </div>
@@ -422,6 +411,35 @@ PerformanceMonitor.getMemoryUsage();</code></pre>
             </div>
         </div>
     </div>
+
+    <!-- Page Changelog Modal -->
+    <div id="pageChangelogModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Page Changelog</h2>
+            <span class="close" onclick="closePageChangelogPopup()">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="mod-list">
+              <div class="mod-entry">
+                <div class="mod-title">v1.6.0 (In Development)</div>
+                <ul>
+                    <li>Added `FileUtils` API and usage examples.</li>
+                    <li>Added `Command Framework` API and usage examples.</li>
+                    <li>Updated version numbers to `v1.6.0`.</li>
+                    <li>Updated changelog page with `v1.6.0` information.</li>
+                </ul>
+              </div>
+              <div class="mod-entry">
+                <div class="mod-title">v1.5.1</div>
+                <ul>
+                    <li>Initial documentation website creation.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- Mods Using ChosenLib Modal -->
     <div id="modsModal" class="modal">

@@ -49,11 +49,44 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="current-version" onclick="toggleVersion('v1-5-1')">
-                                    <td><strong>1.5.1</strong></td>
-                                    <td>October 8 2025</td>
-                                    <td>Network fix</td>
+                                <tr class="current-version" onclick="toggleVersion('v1-6-0')">
+                                    <td><strong>1.6.0</strong></td>
+                                    <td>November 4, 2025</td>
+                                    <td>File System Utilities, Command Framework</td>
                                     <td><span class="status current">Current</span></td>
+                                </tr>
+                                <tr class="version-details" id="v1-6-0" style="display: none;">
+                                    <td colspan="4">
+                                        <div class="version-changelog">
+                                            <h3>✨ Major New Utility Classes</h3>
+                                            <h4>📂 FileUtils - File System Utilities</h4>
+                                            <ul>
+                                                <li><strong>File Operations:</strong> `readFile()`, `writeFile()`, `copyFile()`, `moveFile()`, `deleteFile()`</li>
+                                                <li><strong>Directory Operations:</strong> `createDirectory()`, `listFiles()`</li>
+                                                <li><strong>File Search:</strong> `searchFiles()`</li>
+                                            </ul>
+                                            <h4>💻 Command Framework - Easy command creation and management</h4>
+                                            <ul>
+                                                <li><strong>Command Interface:</strong> A simple interface for creating commands.</li>
+                                                <li><strong>Command Manager:</strong> A centralized manager for registering commands.</li>
+                                            </ul>
+                                            <h3>🔧 General</h3>
+                                            <ul>
+                                                <li><strong>Internal version updated to:</strong> 1.6.0</li>
+                                            </ul>
+                                            <div class="text-center mt-4">
+                                                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" class="btn btn-primary">📥 Download CurseForge</a>
+                                                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" class="btn btn-primary">📥 Download Modrinth</a>
+                                                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" class="btn btn-primary">📥 Download GitHub</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="stable-version" onclick="toggleVersion('v1-5-1')">
+                                    <td><strong>1.5.1</strong></td>
+                                    <td>October 8, 2025</td>
+                                    <td>Network fix</td>
+                                    <td><span class="status stable">stable</span></td>
                                 </tr>
                                 <tr class="version-details" id="v1-5-1" style="display: none;">
                                     <td colspan="4">
@@ -68,15 +101,12 @@
                                             <ul>
                                                 <li><strong>Internal version updated to:</strong> 1.5.1</li>
                                             </ul>
-                                            <div class="text-center mt-4">
-                                                <a href="https://www.curseforge.com/minecraft/mc-mods/chosenlib" class="btn btn-primary">📥 Download v1.5.1</a>
-                                            </div>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr class="stable-version" onclick="toggleVersion('v1-5-0')">
                                     <td><strong>1.5.0</strong></td>
-                                    <td>October 6 2025</td>
+                                    <td>October 6, 2025</td>
                                     <td>Advanced Block Operations, Entity AI Utilities, Data Persistence, Sound & Particle Effects, Advanced Networking, Custom Dimensions, Redstone Integration, Performance Monitoring</td>
                                     <td><span class="status stable">stable</span></td>
                                 </tr>
@@ -236,7 +266,7 @@
                                 </tr>
                                 <tr class="version-row" onclick="toggleVersion('v1-4-0')">
                                     <td><strong>1.4.0</strong></td>
-                                    <td>September 6 2025</td>
+                                    <td>September 6, 2025</td>
                                     <td>WorldUtils, EntityUtils, NetworkUtils, Performance optimizations</td>
                                     <td><span class="status stable">Stable</span></td>
                                 </tr>
@@ -484,17 +514,10 @@
                         <p><strong>📝 Note:</strong> These planned features may change based on community feedback, technical requirements, and development priorities.</p>
                     </div>
                     
-
-                    <h3>Version 1.6.0 (Planned)</h3>
+                    <h3>Coming soon</h3>
                     <ul>
                         <li><strong>Advanced GUI Components:</strong> More complex UI elements and layouts</li>
-                        <li><strong>File System Utilities:</strong> Safe file operations and data management</li>
-                        <li><strong>Command Framework:</strong> Easy command creation and management</li>
                         <li><strong>Event System:</strong> Custom event handling and dispatching</li>
-                    </ul>
-
-                    <h3>Version unknown (Future)</h3>
-                    <ul>
                         <li><strong>Plugin System:</strong> Extensible plugin architecture</li>
                         <li><strong>Advanced GUI Framework:</strong> Complete GUI building system</li>
                         <li><strong>Database Integration:</strong> Built-in database utilities</li>
@@ -525,7 +548,7 @@
                     <p>A comprehensive utility library for Fabric modding that streamlines common development tasks.</p>
                     <div class="footer-version">
                         <span class="version-badge">v1.5.1</span>
-                        <span class="last-updated">Last updated: October 8 2025</span>
+                        <span class="last-updated">Last updated: November 4 2025</span>
                     </div>
                 </div>
                 
@@ -569,6 +592,9 @@
                         </a>
                         <a href="#" onclick="showModsPopup(); return false;" class="social-link">
                             <span class="icon">🧩</span> Mods using ChosenLib
+                        </a>
+                        <a href="#" onclick="showPageChangelogPopup(); return false;" class="social-link">
+                            <span class="icon">📜</span> Page Changelog
                         </a>
                     </div>
                 </div>
@@ -615,6 +641,35 @@
             </div>
         </div>
     </div>
+
+    <!-- Page Changelog Modal -->
+    <div id="pageChangelogModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Page Changelog</h2>
+            <span class="close" onclick="closePageChangelogPopup()">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="mod-list">
+              <div class="mod-entry">
+                <div class="mod-title">v1.6.0 (In Development)</div>
+                <ul>
+                    <li>Added `FileUtils` API and usage examples.</li>
+                    <li>Added `Command Framework` API and usage examples.</li>
+                    <li>Updated version numbers to `v1.6.0`.</li>
+                    <li>Updated changelog page with `v1.6.0` information.</li>
+                </ul>
+              </div>
+              <div class="mod-entry">
+                <div class="mod-title">v1.5.1</div>
+                <ul>
+                    <li>Initial documentation website creation.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- Mods Using ChosenLib Modal -->
     <div id="modsModal" class="modal">

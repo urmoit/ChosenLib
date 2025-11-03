@@ -30,17 +30,22 @@
     <main>
         <div class="container">
             <section class="hero">
-                <h1>Usage Guide v1.5.1</h1>
+                <h1>Usage Guide v1.6.0</h1>
                 <p>Learn how to use ChosenLib utilities effectively in your Fabric mods with practical examples and best practices.</p>
             </section>
 
             <section class="content">
                 <div class="card">
                     <h2>🚀 Quick Start</h2>
-                    <p>Get started with ChosenLib v1.5.1 in just a few steps:</p>
+                    <p>Get started with ChosenLib v1.6.0 in just a few steps:</p>
                     
                     <h3>1. Import the Utilities</h3>
-                    <pre><code>// NEW in v1.5.0 - 8 new utility classes!
+                    <pre><code>// NEW in v1.6.0
+import com.chosen.lib.util.FileUtils;
+import com.chosen.lib.command.Command;
+import com.chosen.lib.command.CommandManager;
+
+// NEW in v1.5.0
 import com.chosen.lib.util.AdvancedBlockOps;
 import com.chosen.lib.util.EntityAIUtils;
 import com.chosen.lib.util.DataPersistence;
@@ -50,7 +55,7 @@ import com.chosen.lib.util.DimensionUtils;
 import com.chosen.lib.util.RedstoneUtils;
 import com.chosen.lib.util.PerformanceMonitor;
 
-// Enhanced existing utilities (v1.5.0 improvements)
+// Enhanced existing utilities
 import com.chosen.lib.util.WorldUtils;
 import com.chosen.lib.util.EntityUtils;
 import com.chosen.lib.util.NetworkUtils;
@@ -59,7 +64,13 @@ import com.chosen.lib.util.GuiUtils;
 import com.chosen.lib.util.ItemUtils;</code></pre>
 
                     <h3>2. Use Basic Functions</h3>
-                    <pre><code>// Advanced block operations (NEW v1.5.0!)
+                    <pre><code>// File operations (NEW v1.6.0!)
+FileUtils.writeFile(Paths.get("my-file.txt"), "Hello, world!");
+
+// Command framework (NEW v1.6.0!)
+CommandManager.registerCommand(new MyCommand());
+
+// Advanced block operations (NEW v1.5.0!)
 TransactionId transaction = AdvancedBlockOps.startTransaction(world);
 AdvancedBlockOps.safeSetBlock(world, pos, newState);
 
@@ -566,6 +577,66 @@ for (String line : lines) {
 }</code></pre>
                 </div>
 
+                <!-- NEW: FileUtils Examples -->
+                <div class="card">
+                    <h2>📂 FileUtils Examples <span class="new-badge">NEW v1.6.0</span></h2>
+                    <p>FileUtils provides utilities for safe file operations and data management.</p>
+
+                    <h3>File Operations</h3>
+                    <pre><code>// Read a file
+String content = FileUtils.readFile(Paths.get("config.txt"));
+
+// Write to a file
+boolean success = FileUtils.writeFile(Paths.get("data.json"), "{ \"key\": \"value\" }");
+
+// Copy a file
+FileUtils.copyFile(Paths.get("source.txt"), Paths.get("destination.txt"));
+
+// Move a file
+FileUtils.moveFile(Paths.get("old.txt"), Paths.get("new.txt"));
+
+// Delete a file
+FileUtils.deleteFile(Paths.get("temp.txt"));</code></pre>
+
+                    <h3>Directory Operations</h3>
+                    <pre><code>// Create a directory
+FileUtils.createDirectory(Paths.get("my_folder"));
+
+// List files in a directory
+List<Path> files = FileUtils.listFiles(Paths.get("."));
+for (Path file : files) {
+    System.out.println(file.getFileName());
+}
+
+// Search for files
+List<Path> jsonFiles = FileUtils.searchFiles(Paths.get("."), "*.json");
+System.out.println("Found " + jsonFiles.size() + " JSON files.");</code></pre>
+                </div>
+
+                <!-- NEW: Command Framework Examples -->
+                <div class="card">
+                    <h2>💻 Command Framework Examples <span class="new-badge">NEW v1.6.0</span></h2>
+                    <p>The command framework simplifies command creation and management.</p>
+
+                    <h3>Creating a Command</h3>
+                    <pre><code>// 1. Create a class that implements the Command interface
+public class MyCommand implements com.chosen.lib.command.Command {
+    @Override
+    public void register(CommandDispatcher<ServerCommandSource> dispatcher) {
+        dispatcher.register(CommandManager.literal("mycommand")
+            .executes(context -> {
+                context.getSource().sendFeedback(() -> Text.literal("Hello from MyCommand!"), false);
+                return Command.SINGLE_SUCCESS;
+            })
+        );
+    }
+}
+
+// 2. Register the command in your mod's onInitialize method
+CommandManager.registerCommand(new MyCommand());
+</code></pre>
+                </div>
+
                 <!-- ENHANCED: WorldUtils Examples -->
                 <div class="card">
                     <h2>🌍 Enhanced WorldUtils Examples <span class="enhanced-badge">ENHANCED v1.5.0</span></h2>
@@ -886,7 +957,7 @@ ClientGuiUtils.drawGradient(context, x, y, w, h, startColor, endColor, horizonta
 
                 <div class="card">
                     <h2>🎯 Real-World Examples</h2>
-                    <p>Here are some practical examples using v1.5.0 features:</p>
+                    <p>Here are some practical examples using v1.6.0 features:</p>
 
                     <h3>World Modification Tool</h3>
                     <pre><code>public class WorldTool {
@@ -1041,28 +1112,28 @@ TextUtils.clearCache();</code></pre>
                     </ul>
 
                     <div class="note note-success">
-                        <p><strong>📚 API Stability:</strong> The current API (v1.5.0) is stable for production use with 8 new utility classes and enhanced existing utilities. All features are production-ready with comprehensive documentation. See our <a href="changelog.html">changelog</a> for detailed information about all new features.</p>
+                        <p><strong>📚 API Stability:</strong> The current API (v1.6.0) is stable for production use. All features are production-ready with comprehensive documentation. See our <a href="changelog.html">changelog</a> for detailed information about all new features.</p>
                     </div>
                 </div>
 
                 <div class="card">
                     <h2>🔗 Next Steps</h2>
-                    <p>Now that you understand the v1.5.0 features, explore these resources:</p>
+                    <p>Now that you understand the v1.6.0 features, explore these resources:</p>
                     
                     <div class="features-grid">
                         <div class="feature-card">
                             <h3>📚 API Reference</h3>
-                            <p>Complete documentation for all v1.5.1 methods and classes.</p>
+                            <p>Complete documentation for all v1.6.0 methods and classes.</p>
                             <a href="api.html" class="btn btn-primary">View API</a>
                         </div>
                         <div class="feature-card">
                             <h3>📋 Changelog</h3>
-                            <p>See detailed information about v1.5.1 changes and improvements.</p>
+                            <p>See detailed information about v1.6.0 changes and improvements.</p>
                             <a href="changelog.html" class="btn btn-secondary">View Changelog</a>
                         </div>
                         <div class="feature-card">
                             <h3>🚀 Getting Started</h3>
-                            <p>Learn how to set up ChosenLib v1.5.1 in your project.</p>
+                            <p>Learn how to set up ChosenLib v1.6.0 in your project.</p>
                             <a href="getting-started.html" class="btn btn-secondary">Get Started</a>
                         </div>
                     </div>
@@ -1078,8 +1149,8 @@ TextUtils.clearCache();</code></pre>
                     <h3>ChosenLib</h3>
                     <p>A comprehensive utility library for Fabric modding that streamlines common development tasks.</p>
                     <div class="footer-version">
-                        <span class="version-badge">v1.5.1</span>
-                        <span class="last-updated">Last updated: October 8 2025</span>
+                        <span class="version-badge">v1.6.0</span>
+                        <span class="last-updated">Last updated: November 4 2025</span>
                     </div>
                 </div>
                 
@@ -1123,6 +1194,9 @@ TextUtils.clearCache();</code></pre>
                         </a>
                         <a href="#" onclick="showModsPopup(); return false;" class="social-link">
                             <span class="icon">🧩</span> Mods using ChosenLib
+                        </a>
+                        <a href="#" onclick="showPageChangelogPopup(); return false;" class="social-link">
+                            <span class="icon">📜</span> Page Changelog
                         </a>
                     </div>
                 </div>
@@ -1169,6 +1243,35 @@ TextUtils.clearCache();</code></pre>
             </div>
         </div>
     </div>
+
+    <!-- Page Changelog Modal -->
+    <div id="pageChangelogModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Page Changelog</h2>
+            <span class="close" onclick="closePageChangelogPopup()">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="mod-list">
+              <div class="mod-entry">
+                <div class="mod-title">v1.6.0 (In Development)</div>
+                <ul>
+                    <li>Added `FileUtils` API and usage examples.</li>
+                    <li>Added `Command Framework` API and usage examples.</li>
+                    <li>Updated version numbers to `v1.6.0`.</li>
+                    <li>Updated changelog page with `v1.6.0` information.</li>
+                </ul>
+              </div>
+              <div class="mod-entry">
+                <div class="mod-title">v1.5.1</div>
+                <ul>
+                    <li>Initial documentation website creation.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- Mods Using ChosenLib Modal -->
     <div id="modsModal" class="modal">

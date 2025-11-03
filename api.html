@@ -30,7 +30,7 @@
     <main>
         <div class="container">
             <section class="hero">
-                <h1>API Reference v1.5.0</h1>
+                <h1>API Reference v1.6.0</h1>
                 <p>Comprehensive documentation for all ChosenLib utility classes and methods.</p>
             </section>
 
@@ -596,6 +596,104 @@
                                 <td><code>generatePerformanceReport(ServerWorld world)</code></td>
                                 <td>Generates comprehensive report</td>
                                 <td><code>PerformanceMonitor.generatePerformanceReport(world)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- NEW: FileUtils -->
+                <div class="card">
+                    <h2>📂 FileUtils <span class="new-badge">NEW v1.6.0</span></h2>
+                    <p>File system utilities for safe file operations and data management.</p>
+                    
+                    <h3>File Operations</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>readFile(Path path)</code></td>
+                                <td>Reads the content of a file into a string.</td>
+                                <td><code>FileUtils.readFile(Paths.get("config.txt"))</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>writeFile(Path path, String content)</code></td>
+                                <td>Writes content to a file.</td>
+                                <td><code>FileUtils.writeFile(Paths.get("config.txt"), "content")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>copyFile(Path source, Path destination)</code></td>
+                                <td>Copies a file.</td>
+                                <td><code>FileUtils.copyFile(source, destination)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>moveFile(Path source, Path destination)</code></td>
+                                <td>Moves a file.</td>
+                                <td><code>FileUtils.moveFile(source, destination)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>deleteFile(Path path)</code></td>
+                                <td>Deletes a file.</td>
+                                <td><code>FileUtils.deleteFile(path)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Directory Operations</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>createDirectory(Path path)</code></td>
+                                <td>Creates a directory.</td>
+                                <td><code>FileUtils.createDirectory(Paths.get("data"))</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>listFiles(Path path)</code></td>
+                                <td>Lists files in a directory.</td>
+                                <td><code>FileUtils.listFiles(Paths.get("data"))</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>searchFiles(Path startPath, String globPattern)</code></td>
+                                <td>Searches for files matching a glob pattern.</td>
+                                <td><code>FileUtils.searchFiles(Paths.get("."), "*.json")</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- NEW: Command Framework -->
+                <div class="card">
+                    <h2>💻 Command Framework <span class="new-badge">NEW v1.6.0</span></h2>
+                    <p>A framework for creating and managing commands.</p>
+                    
+                    <h3>Core Components</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Class/Interface</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>Command</code></td>
+                                <td>An interface that all commands must implement.</td>
+                            </tr>
+                            <tr>
+                                <td><code>CommandManager</code></td>
+                                <td>A manager class to register and initialize commands.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1343,7 +1441,7 @@
                     </ul>
 
                     <div class="note note-neutral">
-                        <p><strong>📋 API Versioning:</strong> This API reference is for v1.5.0. Future versions (1.6.0-1.9.0) may add new methods or deprecate existing ones. We maintain backward compatibility within major versions. Check our <a href="changelog.html">changelog</a> for detailed version information.</p>
+                        <p><strong>📋 API Versioning:</strong> This API reference is for v1.6.0. Future versions may add new methods or deprecate existing ones. We maintain backward compatibility within major versions. Check our <a href="changelog.html">changelog</a> for detailed version information.</p>
                     </div>
                 </div>
             </section>
@@ -1357,8 +1455,8 @@
                     <h3>ChosenLib</h3>
                     <p>A comprehensive utility library for Fabric modding that streamlines common development tasks.</p>
                     <div class="footer-version">
-                        <span class="version-badge">v1.5.1</span>
-                        <span class="last-updated">Last updated: October 8 2025</span>
+                        <span class="version-badge">v1.6.0</span>
+                        <span class="last-updated">Last updated: November 4 2025</span>
                     </div>
                 </div>
                 
@@ -1402,6 +1500,9 @@
                         </a>
                         <a href="#" onclick="showModsPopup(); return false;" class="social-link">
                             <span class="icon">🧩</span> Mods using ChosenLib
+                        </a>
+                        <a href="#" onclick="showPageChangelogPopup(); return false;" class="social-link">
+                            <span class="icon">📜</span> Page Changelog
                         </a>
                     </div>
                 </div>
@@ -1448,6 +1549,35 @@
             </div>
         </div>
     </div>
+
+    <!-- Page Changelog Modal -->
+    <div id="pageChangelogModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Page Changelog</h2>
+            <span class="close" onclick="closePageChangelogPopup()">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="mod-list">
+              <div class="mod-entry">
+                <div class="mod-title">v1.6.0 (In Development)</div>
+                <ul>
+                    <li>Added `FileUtils` API and usage examples.</li>
+                    <li>Added `Command Framework` API and usage examples.</li>
+                    <li>Updated version numbers to `v1.6.0`.</li>
+                    <li>Updated changelog page with `v1.6.0` information.</li>
+                </ul>
+              </div>
+              <div class="mod-entry">
+                <div class="mod-title">v1.5.1</div>
+                <ul>
+                    <li>Initial documentation website creation.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- Mods Using ChosenLib Modal -->
     <div id="modsModal" class="modal">
