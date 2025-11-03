@@ -15,4 +15,4 @@
 
 ## General
 
-- Internal version updated to **1.8.0**
+- Internal version updated to **1.6.0**
