@@ -1,4 +1,4 @@
-# ChosenLib v1.5.1
+# ChosenLib v1.6.0
 
 A comprehensive utility library for Fabric that streamlines common modding tasks with advanced features. Use it to bootstrap new mods faster and share powerful reusable helpers across projects.
 
@@ -7,13 +7,14 @@ A comprehensive utility library for Fabric that streamlines common modding tasks
 - **Open-source and developer-friendly**
 - **Production-ready** with extensive error handling and performance optimization
 
-## 🚀 Changes in v1.5.1
+## 🚀 Changes in v1.6.0
 
-This is a patch release that addresses a critical bug in the networking utility.
+This release introduces the new File System Utilities and a Command Framework.
 
-- **NetworkUtils**: Fixed an issue where networking methods were incompatible with the latest Fabric API version. The methods have been updated to use `CustomPayload` for modern, type-safe packet handling. **This is a breaking change** for any mods that were using the old networking methods.
+- **FileUtils**: A new utility class for safe file operations and data management.
+- **Command Framework**: A new framework to simplify command creation and management.
 
-Read Full Changelog here: https://urmoit.github.io/ChosenLib/changelog.html or https://github.com/urmoit/ChosenLib/blob/main/Changelogs/CHANGELOG_v1.5.1.md
+Read Full Changelog here: https://urmoit.github.io/ChosenLib/changelog.html or https://github.com/urmoit/ChosenLib/blob/main/Changelogs/CHANGELOG_v1.6.0.md
 
 
 ## Requirements
@@ -33,11 +34,42 @@ repositories {
 }
 
 dependencies {
-    modImplementation "com.yourgroup:chosenlib:v1.5.1"
+    modImplementation "com.yourgroup:chosenlib:v1.6.0"
 }
 ```
 
 ## Usage
+
+### Command Framework
+The new command framework simplifies command creation.
+```java
+// 1. Create a class that implements the Command interface
+public class MyCommand implements com.chosen.lib.command.Command {
+    @Override
+    public void register(CommandDispatcher<ServerCommandSource> dispatcher) {
+        dispatcher.register(CommandManager.literal("mycommand")
+            .executes(context -> {
+                context.getSource().sendFeedback(() -> Text.literal("Hello from MyCommand!"), false);
+                return Command.SINGLE_SUCCESS;
+            })
+        );
+    }
+}
+
+// 2. Register the command in your mod's onInitialize method
+CommandManager.registerCommand(new MyCommand());
+```
+
+### FileUtils
+`FileUtils` provides helpers for file operations.
+```java
+// Read and write files
+String content = FileUtils.readFile(Paths.get("config.txt"));
+FileUtils.writeFile(Paths.get("data.json"), "{ \"key\": \"value\" }");
+
+// Search for files
+List<Path> jsonFiles = FileUtils.searchFiles(Paths.get("."), "*.json");
+```
 
 ### Command System
 - `/chosenlib` - Main command with feature showcase
@@ -67,9 +99,13 @@ ChosenLib.isBetween(5, 1, 10); // true
 ChosenLib.safeEquals("a", "a"); // true
 ```
 
-### Advanced Features (v1.5.1)
+### Advanced Features (v1.6.0)
 ```java
 import com.chosen.lib.util.*;
+
+// FileUtils
+String content = FileUtils.readFile(Paths.get("config.txt"));
+FileUtils.writeFile(Paths.get("data.json"), "{ \"key\": \"value\" }");
 
 // Advanced Block Operations
 AdvancedBlockOps.TransactionResult result = AdvancedBlockOps.fillAreaSafely(
@@ -106,8 +142,8 @@ long elapsedTime = PerformanceMonitor.stopProfiling("my_operation");
 ./gradlew clean build
 ```
 Artifacts are in `build/libs/`:
-- `<name>-1.5.1.jar` (use this)
-- `<name>-v1.5.1-sources.jar` (sources)
+- `<name>-1.6.0.jar` (use this)
+- `<name>-v1.6.0-sources.jar` (sources)
 
 ## 📄 License
 
